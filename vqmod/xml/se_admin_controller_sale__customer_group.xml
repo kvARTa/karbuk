@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+		<id>se_admin_controller_sale__customer_group</id>
+		<version>1.0.1</version>
+		<author>Searchanise</author>
+		<vqmver>2.3.2</vqmver>
+		<file name="admin/controller/sale/customer_group.php">
+				<operation>
+						<search position="after"><![CDATA[
+						public function insert() {
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this)) {
+							$this->language->load('module/searchanise');
+						}
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="after"><![CDATA[
+						$this->model_sale_customer_group->addCustomerGroup($this->request->post);
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this)) {
+							$se_re_indexation_notification = str_replace(
+								'[href]', 
+								$this->url->link('module/searchanise', 'token=' . $this->session->data['token'], 'SSL'), 
+								$this->language->get('text_se_check_re_indexation')
+							);
+							$this->session->data['se_check_indexation'] = $se_re_indexation_notification;
+						}
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="after"><![CDATA[
+						protected function getList() {
+						]]></search>
+						
+						<add><![CDATA[
+						if (
+							Searchanise::seCheckSearchaniseStatus($this) 
+							&& isset($this->session->data['se_check_indexation'])
+						) {
+							$this->data['se_check_indexation'] = $this->session->data['se_check_indexation'];
+						
+							unset($this->session->data['se_check_indexation']);
+						} else {
+							$this->data['se_check_indexation'] = '';
+						}
+						]]></add>
+				</operation>
+		</file> 
+</modification>

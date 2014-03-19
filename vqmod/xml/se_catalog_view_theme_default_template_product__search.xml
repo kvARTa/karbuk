@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+		<id>se_catalog_view_theme_default_template_product__search</id>
+		<version>1.0.1</version>
+		<author>Searchanise</author>
+		<vqmver>2.3.2</vqmver>
+		<file name="catalog/view/theme/*/template/product/search.tpl">
+				<operation>
+						<search position="after"><![CDATA[
+						<div class="content"><?php echo $text_empty; ?></div>
+						]]></search>
+						
+						<add><![CDATA[
+						<?php if (isset($suggestions)) { ?>
+							<div>
+								<b>
+									<?php echo $suggestions; ?>
+								</b>
+							</div>
+						<?php } ?>
+						]]></add>
+				</operation>
+		</file>
+</modification>

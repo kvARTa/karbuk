@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+		<id>se_catalog_model_catalog__product</id>
+		<version>1.0.1</version>
+		<author>Searchanise</author>
+		<vqmver>2.3.2</vqmver>
+		<file name="catalog/model/catalog/product.php">
+				<operation>
+						<search position="after"><![CDATA[
+						$sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this) && isset($data['pid'])) {
+							$p_ids = is_array($data['pid']) ? implode(',', $data['pid']) : $data['pid'];
+							$sql .= " AND p.product_id IN (" . $p_ids . ") ";
+						}
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="before"><![CDATA[
+						'p.date_added'
+						]]></search>
+						
+						<add><![CDATA[
+						'relevance',
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="before"><![CDATA[
+						} elseif ($data['sort'] == 'p.price') {
+						]]></search>
+						
+						<add><![CDATA[
+						} elseif (
+							Searchanise::seCheckSearchaniseStatus($this) && isset($data['sort']) 
+							&& $data['sort'] == 'relevance' && isset($data['pid'])
+						) {
+							$p_ids = is_array($data['pid']) ? join("','", $data['pid']) : $data['pid'];
+							$sql .= " ORDER BY FIELD(p.product_id, '" . $p_ids . "')";
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="after"><![CDATA[
+						public function getTotalProducts($data = array()) {
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this) && isset($data['total'])) {
+							return (int)$data['total'];
+						}
+						]]></add>
+				</operation>
+		</file> 
+</modification>

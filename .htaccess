@@ -1,0 +1,1 @@
+RewriteRule index.php?route=checkout/simplecheckout  /index.php?route=checkout/cart [R=301,L]

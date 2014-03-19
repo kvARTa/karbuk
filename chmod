@@ -1,0 +1,40 @@
+#!/bin/sh
+sudo chmod -R 777 image
+sudo chmod -R 777 image/cache
+sudo chmod -R 777 image/data
+sudo chmod -R 777 cache
+sudo chmod -R 777 download
+sudo chmod -R 777 system/cache
+sudo chmod -R 777 system/logs
+sudo chmod -R 777 config.php
+sudo chmod -R 777 index.php
+sudo chmod -R 777 admin/config.php
+sudo chmod -R 777 admin/index.php
+sudo chmod -R 777 vqmod/
+sudo chmod 0644 admin/language/english/module/searchanise.php
+sudo chmod 0644 admin/controller/module/searchanise.php
+sudo chmod 0644 admin/model/module/searchanise.php
+sudo chmod 0644 admin/view/stylesheet/searchanise_style.css
+sudo chmod 0644 admin/view/template/module/searchanise.tpl
+sudo chmod 0644 catalog/language/english/module/searchanise.php
+sudo chmod 0644 catalog/controller/module/searchanise.php
+sudo chmod 0644 catalog/model/module/searchanise.php
+sudo chmod 0644 catalog/view/theme/default/template/module/searchanise.tpl
+sudo chmod 0644 system/library/searchanise.php
+sudo chmod 0644 system/library/http.php
+sudo chmod 0644 vqmod/xml/se_admin_controller_sale__customer_group.xml
+sudo chmod 0644 vqmod/xml/se_catalog_model_checkout__order.xml
+sudo chmod 0644 vqmod/xml/se_admin_controller_setting__store.xml
+sudo chmod 0644 vqmod/xml/se_admin_controller_common__header.xml
+sudo chmod 0644 vqmod/xml/se_catalog_controller_common__header.xml
+sudo chmod 0644 vqmod/xml/se_catalog_model_catalog__product.xml
+sudo chmod 0644 vqmod/xml/se_admin_controller_localisation__language.xml
+sudo chmod 0644 vqmod/xml/se_admin_model_catalog__product.xml
+sudo chmod 0644 vqmod/xml/se_admin_view_template_setting__store_list.xml
+sudo chmod 0644 vqmod/xml/se_admin_view_template_localisation__language_list.xml
+sudo chmod 0644 vqmod/xml/se_catalog_controller_product__search.xml
+sudo chmod 0644 vqmod/xml/se_system__startup.xml
+sudo chmod 0644 vqmod/xml/se_admin_view_template_sale__customer_group_list.xml
+sudo chmod 0644 vqmod/xml/se_admin_view_template_common__header.xml
+sudo chmod 0644 vqmod/xml/se_catalog_view_theme_default_template_product__search.xml
+sudo chmod 0644 vqmod/xml/se_admin_model_catalog__review.xml

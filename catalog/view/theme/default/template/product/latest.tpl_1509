@@ -1,0 +1,109 @@
+<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
+<div id="content"><?php echo $content_top; ?>
+  <div class="breadcrumb">
+    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+    <?php } ?>
+  </div>
+  <h1><?php echo $heading_title; ?></h1>
+ <?php if ($products) { ?>
+  <div class="product-list">
+    <?php foreach ($products as $product) { ?>
+    
+    <div>
+    
+      <div class="up">
+         <div class="left">
+         
+              <?php if ($product['thumb']) { ?>
+      <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+      <?php } ?>
+         
+         </div><!-- end left-->
+         
+         
+         <div class="right">
+         
+         
+                     
+      <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+      
+      
+      <div class="description"><?php echo $product['description']; ?></div>
+      
+   
+     
+      <?php if ($product['rating']) { ?>
+      <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
+      <?php } ?>
+      
+       <div class="price_cart">
+       <?php if ($product['price']) { ?>
+      
+      <div class="price">
+        <?php if (!$product['special']) { ?>
+        <?php echo $product['price']; ?>
+        <?php } else { ?>
+        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
+        <?php } ?>
+        <?php if ($product['tax']) { ?>
+        <br />
+        <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
+        <?php } ?>
+        </div>
+     
+      <?php } ?>
+      </div>
+         
+         
+         </div><!-- end right-->
+         
+      
+      
+      </div><!-- end up-->
+    
+    
+      
+      <div class="down">
+         
+         <div class="model">
+         
+         </div><!-- end model-->
+         
+         
+          <div class="cart">
+    	
+ <input type="text" value="1" id="item-<?php echo $product['product_id']; ?>" class="input_q" />
+
+ <div class="input_arrow_q">  
+ <input type="button" class="quantity_box_button quantity_box_button_up" onclick="var qty_el = document.getElementById('item-<?php echo $product['product_id']; ?>'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" />
+		<input type="button" class="quantity_box_button quantity_box_button_down" onclick="var qty_el = document.getElementById('item-<?php echo $product['product_id']; ?>'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty > 0 ) qty_el.value--;return false;" />
+       </div>
+ 
+ 
+<input type="button" value="<?php echo $button_cart; ?>" onclick="addQtyToCart('<?php echo $product['product_id']; ?>');" class="button_q" />
+      </div><!--end cart-->
+
+     </div><!-- end down-->
+      
+     
+         
+    </div>
+    <?php } ?>
+  </div>
+ 
+  <?php }  else { ?>
+  <div class="content"><?php echo $text_empty; ?></div>
+  <?php }?>
+  <?php echo $content_bottom; ?></div>
+<script type="text/javascript"><!--
+function addQtyToCart(product_id) {
+  var qty = $('#item-' + product_id).val();
+  if ((parseFloat(qty) != parseInt(qty)) || isNaN(qty)) {
+        qty = 1;
+  }
+  addToCart(product_id, qty);
+}
+
+//--></script> 
+<?php echo $footer; ?>

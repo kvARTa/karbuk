@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+		<id>se_admin_view_template_common__header</id>
+		<version>1.0.1</version>
+		<author>Searchanise</author>
+		<vqmver>2.3.2</vqmver>
+		<file name="admin/view/template/common/header.tpl">
+				<operation>
+						<search position="after"><![CDATA[
+						<script type="text/javascript">
+						]]></search>
+						
+						<add><![CDATA[
+						<?php if (isset($se_async_link)) { ?>
+							jQuery(document).ready(function() {
+								<?php if (!empty($se_notifications)) { ?>
+								 $("div.breadcrumb").after('<?php echo $se_notifications; ?>');
+								 <?php }?>
+								jQuery.get("<?php echo $se_async_link; ?>")
+							});
+						<?php } ?>
+						]]></add>
+				</operation>
+		</file> 
+</modification>

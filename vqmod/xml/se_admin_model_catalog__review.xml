@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+		<id>se_admin_model_catalog__review</id>
+		<version>1.0.1</version>
+		<author>Searchanise</author>
+		<vqmver>2.3.2</vqmver>
+		<file name="admin/model/catalog/review.php">
+				<operation>
+						<search position="after"><![CDATA[
+						public function addReview($data) {
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this)) {
+							Searchanise::seAddAction('update', $data['product_id']);
+						}
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="after"><![CDATA[
+						public function editReview($review_id, $data) {
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this)) {
+							Searchanise::seAddAction('update', $data['product_id']);
+						}
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="after"><![CDATA[
+						public function deleteReview($review_id) {
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this)) {
+							$review_product_id = $this->db->query(
+								"SELECT product_id FROM `" . DB_PREFIX . "review` "
+								. " WHERE review_id = " . $review_id
+							);
+							if (isset($review_product_id->row['product_id'])) {
+								Searchanise::seAddAction('update', $review_product_id->row['product_id']);
+							}
+						}
+						]]></add>
+				</operation>
+		</file> 
+</modification>

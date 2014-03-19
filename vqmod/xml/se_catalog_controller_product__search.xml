@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+		<id>se_catalog_controller_product__search</id>
+		<version>1.0.1</version>
+		<author>Searchanise</author>
+		<vqmver>2.3.2</vqmver>
+		<file name="catalog/controller/product/search.php">
+				<operation>
+						<search position="after"><![CDATA[
+						public function index() {
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this)) {
+							$this->language->load('module/searchanise');
+						}
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="after"><![CDATA[
+						$sort = 'p.sort_order';
+						]]></search>
+						
+						<add><![CDATA[
+						if (
+							Searchanise::seCheckSearchaniseStatus($this)
+							&& Searchanise::seGetApiKey($this->config->get('config_store_id'), $this->config->get('config_language'))
+							&& Searchanise::seGetImportStatus($this->config->get('config_store_id'), $this->config->get('config_language')) == "done"
+						) {
+							$sort = 'relevance';
+						}
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="before"><![CDATA[
+						$product_total = $this->model_catalog_product->getTotalProducts($data);
+						]]></search>
+						
+						<add><![CDATA[
+						if (Searchanise::seCheckSearchaniseStatus($this)) {
+							$data['auth'] = array();
+							if ($this->customer->isLogged()) {
+								$data['auth']['customer_group_id'] = $this->customer->getCustomerGroupId();
+							} else {
+								$data['auth']['customer_group_id'] = $this->config->get('config_customer_group_id');
+							}
+
+							$data = Searchanise::seGetSearchParams($data, $this->config->get('config_store_id'), $this->config->get('config_language'), $this);
+
+							if (empty($data['pid']) && !empty($data['suggestions'])) {
+								foreach ($data['suggestions'] as $i => $suggestion) {
+									if ($suggestion == $this->request->get['search']) {
+										continue;
+									}
+									$data['suggestions'][$i] = "<a href=" . $this->url->link('product/search', 'search=' . $suggestion) . ">" . $suggestion . "</a>";
+								}
+								$this->data['text_did_you_mean'] = $this->language->get('text_did_you_mean');
+								$this->data['suggestions'] = str_replace(
+									'[suggestions]', 
+									implode(",", $data['suggestions']), 
+									$this->language->get('text_did_you_mean')
+								);
+							} else {
+								$this->data['suggestions'] = "";
+							}
+						}
+						]]></add>
+				</operation>
+
+				<operation>
+						<search position="after"><![CDATA[
+						$this->data['sorts'] = array();
+						]]></search>
+						
+						<add><![CDATA[
+						if (
+							Searchanise::seCheckSearchaniseStatus($this)
+							&& Searchanise::seGetApiKey($this->config->get('config_store_id'), $this->config->get('config_language'))
+							&& Searchanise::seGetImportStatus($this->config->get('config_store_id'), $this->config->get('config_language')) == "done"
+						) {
+							$this->data['sorts'][] = array(
+								'text'  => $this->language->get('text_relevance'),
+								'value' => 'relevance-ASC',
+								'href'  => $this->url->link('product/search', 'sort=relevance&order=ASC' . $url)
+							);
+						}
+						]]></add>
+				</operation>
+		</file> 
+</modification>

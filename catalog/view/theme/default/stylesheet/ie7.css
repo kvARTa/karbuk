@@ -1,0 +1,107 @@
+/* God I hate Microsoft! */
+#header #cart {
+	
+}
+#header #cart .heading {
+	position: relative;
+	right: 172px;
+	margin-right: 0px;
+}
+#header #cart .content {
+
+}
+#header #search {
+	position: inherit;
+	float: right;
+}
+#header .button-search {
+	top: 1px;
+}
+#header #search input {
+	
+	height: 28px;
+}
+/* menu */
+#menu ul li {
+	position: relative;
+	
+}
+#menu ul li div {
+	
+	z-index: 5;
+	left:0px;
+
+	
+}
+#menu ul li.active div {
+	display:block;
+	
+	
+}
+#menu > ul > li {
+
+}
+#menu > ul > li > a {
+
+
+ display: block;
+        
+
+}
+#menu ul li div ul{
+float:left;
+}
+
+
+.success, .warning, .attention, .information {
+	position: relative;
+}
+.success .close, .warning .close, .attention .close, .information .close {
+	position: absolute;
+	right: 10px;
+}
+.box-product > div {
+	display: inline;
+}
+.product-grid > div {
+	display: inline;
+}
+/* button */
+.prduct-info a.button span {
+	line-height: 12px;
+	display: block;
+}
+.button_q{
+	padding: 0px 0px 0px 0px!important;
+}
+
+.cart-info. table td
+{
+padding:0 ;
+margin:0;
+height:48px;
+}
+
+
+.comment_cart_tb .comment_cart_tb_right div{
+
+border: 0px solid #DBDEE1;
+
+height:5px!important;
+
+width:122px;
+
+float:right;
+
+clear:both;
+
+
+
+}
+.multinput.cart, .input.cart{
+width:500px
+}
+
+
+
+
