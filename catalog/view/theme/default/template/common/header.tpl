@@ -34,6 +34,7 @@
 
 <link rel="stylesheet" type="text/css" href="shadowbox/shadowbox.css">
 <script type="text/javascript" src="shadowbox/shadowbox.js"></script>
+    <!-- vova -->
 
 
 
