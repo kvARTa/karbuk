@@ -80,8 +80,8 @@ DD_belatedPNG.fix('#logo img');
 if (count($_SESSION['compare'])<2){
 ?>
 <script>
-alert('Пожалуйста, выберите более одного товара, для сравнения');
-parent.Shadowbox.close();
+//alert('Пожалуйста, выберите более одного товара, для сравнения');
+//parent.Shadowbox.close();
 </script>
 <?php
 die('<center><h2>Пожалуйста, выберите более одного товара, для сравнения</center</h2>');
