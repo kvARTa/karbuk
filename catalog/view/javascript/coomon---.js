@@ -223,11 +223,3 @@ function addToCompare(product_id) {
 		}
 	});
 }
-
-function saveCartToCsv(){
-	$.get('index.php?route=checkout/cart/addCartCsv',
-		function(data) {
-			location.href = data;
-		}
-	)
-};

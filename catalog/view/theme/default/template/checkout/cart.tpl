@@ -97,14 +97,13 @@
     
   </div>
 
-      <table  border="0" class="comment_cart_tb">
+  <table  border="0" class="comment_cart_tb">
       <tr>
-    <td class="comment_cart_tb_left"> 
-      Комментарии по заказу
-    </td>
-    <td class="comment_cart_tb_right" valign="top"> 
-    </td>
-  </tr>
+    		<td class="comment_cart_tb_left"> 
+      			Комментарии по заказу
+    		</td>
+    		<td class="comment_cart_tb_right" valign="top"></td>
+  	 </tr>
 
     
     
@@ -115,11 +114,10 @@
          <textarea name="comment"  class="multinput cart"></textarea>
        </form>
        </td>
-    <td class="comment_cart_tb_right" valign="baseline"> 
-
-        <a href="<?php echo $checkout; ?>" class="button comment" ></a>
-        
-        </td>
+    
+    <td class="comment_cart_tb_right" valign="baseline">
+            <a href="<?php echo $checkout; ?>" class="button comment" ></a>
+    </td>
   </tr>
 </table>
 
@@ -128,7 +126,7 @@
 <table  border="0" class="tovar_in_cart_tb">
  <form action="index.php?route=checkout/cart/add_model" name="addmodelform" method="post" enctype="multipart/form-data">
  <tr>
-    <td class="tovar_in_cart_tb_left"> 
+    <td class="tovar_in_cart_tb_left quick_kod_title"> 
       Быстрое добавление по коду
     </td>
     <td class="tovar_in_cart_tb_right" valign="top"> 
@@ -149,37 +147,60 @@
 
   
   
-  <div class="price cart" >
+  <div class="price cart">
+  
   <div class="line1">
 
-<!--       <div class="left">
-      </div>
+      <div class="left"></div>
+      
         <div class="center">
-     <a href="#" > Сохранить корзину в файл (формат Excel)</a>
-        </div>
-        </div>
-         <div class="line2">
-
-      <div class="left">
-      </div>
-        <div class="center">
-      <a href="#" >Загрузить корзину из файла</a>
-        </div>
-        </div>
-        -->
-         <div class="line3">
-
-      <div class="left">
-      </div>
-        <div class="center">
-     <a href="/index.php?route=information/information&information_id=10" id="callback" >Скачать каталог товаров “Карбук”</a>
-        </div>
-        </div>
+     		<a onclick="saveCartToCsv()">Сохранить корзину в файл (формат CSV для Excel)</a>
+        </div><!-- end center -->
         
-        
-  </div>
+  </div><!-- end line1 -->
   
-    </div>
+  <script type="text/javascript">
+  $(document).ready(function(){
+  $("a.filecart").click(function(){
+	  $("#uploadfile").show();
+  });			
+})   
+  </script>
+  
+  
+  <div class="line2">
+
+      <div class="left"></div>
+      
+      <div class="center">
+      	<a class="filecart" style="float:left">Загрузить корзину из файла</a>
+        
+        <div id="uploadfile" style="display:none; float:left; margin-left:10px;>
+	  	<form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
+                    
+                    <input name="formcsv" type="hidden" value="1">
+                    <input name="csv" type="file" value="">&nbsp;<input type="submit" value="Загрузить">
+					<input name="flaginfocsv" id="flag-csv-result" type="hidden" value="0">
+        </form>
+        </div><!-- end uploadfile-->
+        </div>
+  </div><!-- end line2-->
+        
+  <div class="line3">
+
+      <div class="left"></div>
+      
+      <div class="center">
+     		<a href="/index.php?route=information/information&information_id=10" id="callback" >Скачать каталог товаров “Карбук”</a>
+      </div>
+  </div><!-- end line 3-->
+  
+  
+    </div><!-- end price cart -->
+    
+    
+    
+    
 </form>
 </div>
 

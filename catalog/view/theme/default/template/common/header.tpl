@@ -34,6 +34,7 @@
 
 <link rel="stylesheet" type="text/css" href="shadowbox/shadowbox.css">
 <script type="text/javascript" src="shadowbox/shadowbox.js"></script>
+    <!-- vova 55 -->
 
 
 
@@ -151,6 +152,17 @@ $(document).ready(function()
 </script>-->
 
 <script type="text/javascript" src="catalog/view/javascript/jquery.animate-shadow-min.js"></script>
+
+
+    <script type="text/javascript">
+        Shadowbox.init({
+            handleOversize:     "drag",
+            displayNav:         true,
+            handleUnsupported:  "remove",
+            autoplayMovies:     false
+        });
+    </script>
+
 </head>
 <body>
 
@@ -175,7 +187,7 @@ $(document).ready(function()
   <a href="index.php?route=account/wishlist">
   Избранные товары</a>
 &nbsp;&nbsp;&nbsp;
-  <a class="to_compare_page" href="index.php?route=product/compare">
+  <a class="to_compare_page" href="index.php?route=product/compare" rel="shadowbox; width=1024">
   Товары для сравнения</a>
 &nbsp;&nbsp;&nbsp;
 <a href="index.php?route=account/account">Личный кабинет</a>
