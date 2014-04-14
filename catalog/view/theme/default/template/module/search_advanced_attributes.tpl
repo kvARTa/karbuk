@@ -15,8 +15,8 @@
      <?php if ($filter['prices']['hint']) { ?>
      &nbsp;<span class="required hint" title="<?php echo $filter['prices']['hint']; ?>">(?)</span>
      <?php } ?>
-    </em>&nbsp;&nbsp;&nbsp;</br><br />
-    <input name="fp[min]" style="text-align:right; border:none;border:1px solid #CCC;" type="text" size="7" class="price_input left"/>&mdash;<input name="fp[max]" style="text-align:left; border:1px solid #CCC;" type="text" size="7" class="price_input right" /><br /><br />
+    </em>&nbsp;&nbsp;&nbsp;
+    <input name="fp[min]" style="text-align:right; border:none;" type="text" size="7" />&mdash;<input name="fp[max]" style="text-align:left; border:none;" type="text" size="7" />
     <div id="slider_price" ></div><br />
 	<script type="text/javascript">
 	$("#slider_price").slider({

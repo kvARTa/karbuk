@@ -17,7 +17,7 @@ Shadowbox.init({
 
 
 <?php echo $content_top; ?>
-  <div class="breadcrumb" style="display:block;">
+  <div class="breadcrumb">
 
 
      <?php foreach ($breadcrumbs as $i=> $breadcrumb) { ?>
@@ -31,45 +31,65 @@ Shadowbox.init({
 
   <?php if ($products) { ?>
 
-<div class="product-filter">
+
+  <div class="product-filter">
 
      <?
      //dymm
      ?> 
     <div class="price-download">
-    	<a href="index.php?route=tool/price/download&path=<?=$price_path?>">Скачать прайс</a>
+    	<a href="index.php?route=tool/price/download">Скачать прайс</a>
     </div>
+	<div class="display"><b class="display_text">Вид</b> <div class="list active">&nbsp; </div> <a onclick="display('grid');" class="setka">&nbsp; </a></div>
     <div style="float: right">
-    <div class="limit sa-limit"><b><?php echo $text_limit; ?></b>
+    <div class="limit"><b><?php echo $text_limit; ?></b>
 
 
-     <select onchange="location = this.value;">
-    <?php foreach ($limits as $limits1) { ?>
-    <?php if ($limits1['value'] == $limit) { ?>
-    <option value="<?php echo $limits1['href']; ?>" selected="selected"><?php echo $limits1['text']; ?></option>
-    <?php } else { ?>
-    <option value="<?php echo $limits1['href']; ?>"><?php echo $limits1['text']; ?></option>
-    <?php } ?>
-    <?php } ?>
-   </select>
+      <a href="<?php echo $hreflimit15; ?>">15</a>
+       <a href="<?php echo $hreflimit30; ?>">30</a>
+        <a href="<?php echo $hreflimit100; ?>">100</a>
 
 
     </div>
     <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?>  <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>
 
-    <div class="sort sa-sort"><b><?php echo $text_sort; ?></b>
+    <div class="sort"><b><?php echo $text_sort; ?></b>
 
     <!--sort-->
 
-   <select onchange="location = this.value;">
-    <?php foreach ($sorts as $sorts1) { ?>
-    <?php if ($sorts1['value'] == $sort . '-' . $order) { ?>
-    <option value="<?php echo $sorts1['href']; ?>" selected="selected"><?php echo $sorts1['text']; ?></option>
-    <?php } else { ?>
-    <option value="<?php echo $sorts1['href']; ?>"><?php echo $sorts1['text']; ?></option>
-    <?php } ?>
-    <?php } ?>
-   </select>
+     <?php if ($order=='ASC') { ?>
+         <a href="<?php echo $href2; ?>">по цене</a>
+
+        <?php } ?>
+         <?php if ($order=='DESC') { ?>
+         <a href="<?php echo $href; ?>">по цене</a>
+
+        <?php } ?>
+
+
+
+
+     <?php if ($order=='ASC') { ?>
+         <a href="<?php echo $hrefna2; ?>">по наименованию</a>
+
+        <?php } ?>
+         <?php if ($order=='DESC') { ?>
+         <a href="<?php echo $hrefna; ?>">по наименованию</a>
+
+        <?php } ?>
+
+
+         <?php if ($order=='ASC') { ?>
+         <a href="<?php echo $hrefrating2; ?>">по популярности</a>
+
+        <?php } ?>
+         <?php if ($order=='DESC') { ?>
+         <a href="<?php echo $hrefrating; ?>">по популярности</a>
+
+        <?php } ?>
+
+
+
 
 
     <!--sort-->
@@ -80,10 +100,8 @@ Shadowbox.init({
     </div>
   </div>
 
-  <div class="pagination"><?php echo $pagination; ?></div>
-
   <div class="product-list">
-    <?php $k=0;  $p=0; foreach ($products as $product) {  $k=$k+1; $p=$p+1; ?>
+    <?php $k=0;  $p=0; foreach ($products as $product) {  $k=$k+1; $p=$p+1;?>
     <div <? if ($k==1) { echo 'class="grey"';  } if ($k==2) $k=0; ?>  <? if ($p==3) { echo 'id="thre"';  } if ($p==3) $p=0; ?> >
        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
 
@@ -91,12 +109,10 @@ Shadowbox.init({
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
       <?php } ?>
       <div class="model">Код: <?php echo $product['model'];  ?></div>
-	  <?php if($product['multiplicity'] && $product['multiplicity'] > 1){ ?>
-	  <div class="multiplicity">Кратность товара равна <?php echo $product['multiplicity'];  ?></div>
-		<?php } ?>
+
       <div class="manufacturer">Производитель <span ><?php echo $product['manufacturer']; ?></span></div>
       <?php if ($product['price']) { ?>
-	  <div class="stock"><?php echo $text_stock;?> <?php echo $product['stock']; ?></div>
+	  <div class="stock">Наличие: <?php echo $product['stock']; ?></div>
       <?php } ?>
 
 
@@ -131,7 +147,7 @@ Shadowbox.init({
 		<input type="button" class="quantity_box_button quantity_box_button_up" onclick="var qty_st = <?php echo $product['multiplicity']; ?>; var qty_el = document.getElementById('item-<?php echo $product['product_id']; ?>'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value=qty_el.value*1+qty_st;return false;" />
 		<input type="button" class="quantity_box_button quantity_box_button_down" onclick="var qty_st = <?php echo $product['multiplicity']; ?>; var qty_el = document.getElementById('item-<?php echo $product['product_id']; ?>'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty > 0 ) if(qty_el.value*1-qty_st>0)qty_el.value=qty_el.value*1-qty_st;return false;" />
 		</div>
-		<input type="button" value="<?php echo $button_cart; ?>" onclick="addQtyToCart('<?php echo $product['product_id']; ?>', this);" class="button_q" />
+		<input type="button" value="<?php echo $button_cart; ?>" onclick="addQtyToCart('<?php echo $product['product_id']; ?>');" class="button_q" />
       </div>
       <?php } ?>
       <?
@@ -176,75 +192,22 @@ Shadowbox.init({
     </div>
     <?php } ?>
   </div>
-  <div class="pagination"><?php echo $pagination; ?></div>
+  <div class="pagination"></div>
   <div class="product-filter">
 
         <div class="price-download">
     	<a href="index.php?route=tool/price/download">Скачать прайс</a>
     </div>
-    <div style="float: right">
-
-        <div class="limit sa-limit"><b><?php echo $text_limit; ?></b>
-
-
-     <select onchange="location = this.value;">
-    <?php foreach ($limits as $limits2) { ?>
-    <?php if ($limits2['value'] == $limit) { ?>
-    <option value="<?php echo $limits2['href']; ?>" selected="selected"><?php echo $limits2['text']; ?></option>
-    <?php } else { ?>
-    <option value="<?php echo $limits2['href']; ?>"><?php echo $limits2['text']; ?></option>
-    <?php } ?>
-    <?php } ?>
-   </select>
-
-
-    </div>
-    <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?>  <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>
-
-    <div class="sort sa-sort"><b><?php echo $text_sort; ?></b>
-
-    <!--sort-->
-
-   <select onchange="location = this.value;">
-    <?php foreach ($sorts as $sorts) { ?>
-    <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-    <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
-    <?php } else { ?>
-    <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
-    <?php } ?>
-    <?php } ?>
-   </select>
-
-
-    <!--sort-->
-
-
-   </div>
-    <!--sort-->
-
-
-
-
-    </div>
+	<div class="display"><b class="display_text">Вид</b> <div class="list active">&nbsp; </div> <a onclick="display('grid');" class="setka">&nbsp; </a></div>
   </div>
 
   <?php } ?>
-
-
   <?php echo $content_bottom; ?></div></div>
 <script type="text/javascript"><!--
 
 
 
-function addQtyToCart(product_id, self){
-	$(self).animate({"box-shadow":"0px 0px 10px #f6364d"});
-    // Animation complete.
-	$(self).val("Добавлено");
-	setTimeout(function(){
-		$(self).animate({"box-shadow":"0px 0px 0px"});
-		$(self).val("В корзину");
-	}, 1500);
- 
+function addQtyToCart(product_id) {
   var qty = $('#item-' + product_id).val();
   if ((parseFloat(qty) != parseInt(qty)) || isNaN(qty)) {
         qty = 1;
@@ -303,7 +266,7 @@ function display(view) {
 				html += '<div class="dawn">';
 				html += '<div class="model">' + $(element).find('.model').html() + '</div>';
 			if (price != null) {
-				html += '  <div class="cart">' + $(element).find('.cart').html() + '</div> <div style="float:right;color: #313131;min-height: 11px;padding: 0px 20px 20px;line-height: 32px;font-weight: bold;">'+$(element).find('.multiplicity').html()+'</div>';
+				html += '  <div class="cart">' + $(element).find('.cart').html() + '</div>';
 			}
 			html += '</div>';
 			html = html.replace("null", "");
@@ -312,7 +275,7 @@ function display(view) {
 			$(element).html(html);
 		});
 
-		$('.display').html('<b class="display_text"><?php echo $text_display; ?></b> <div class="list active"><?php echo $text_list; ?></div> <a onclick="display(\'grid\');" class="setka" ><?php echo $text_grid; ?></a>');
+		$('.display').html('<b class="display_text">Вид:</b> <div class="list active">&nbsp;</div> <a onclick="display(\'grid\');" class="setka" >&nbsp;</a>');
 
 		$.cookie('display', 'list');
 	} else {
@@ -358,7 +321,7 @@ function display(view) {
 			    
 		});
 
-		$('.display').html('<b class="display_text"><?php echo $text_display; ?></b> <a onclick="display(\'list\');" class="list" ><?php echo $text_list; ?></a> <div class="setka active"> <?php echo $text_grid; ?></div>');
+		$('.display').html('<b class="display_text">Вид:</b> <a onclick="display(\'list\');" class="list" >&nbsp;</a> <div class="setka active"> &nbsp;</div>');
 
 		$.cookie('display', 'grid');
 	}

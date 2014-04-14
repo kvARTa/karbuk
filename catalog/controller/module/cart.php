@@ -44,12 +44,20 @@ class ControllerModuleCart extends Controller {
 				array_multisort($sort_order, SORT_ASC, $total_data);			
 			}		
 		}
-		
+		//$total = '3240500';
 		$this->data['totals'] = $total_data;
 		
 		$this->data['heading_title'] = $this->language->get('heading_title');
 		
-		$this->data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+		if ($total >= 1000000){
+			$total = $total / 1000000;
+			$total = round($total,2);
+			$formatTotal = (string)$total.' М. руб.';
+			$this->data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $formatTotal);
+		}else{
+			$this->data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+		}
+		
 		$this->data['text_empty'] = $this->language->get('text_empty');
 		$this->data['text_cart'] = $this->language->get('text_cart');
 		$this->data['text_checkout'] = $this->language->get('text_checkout');

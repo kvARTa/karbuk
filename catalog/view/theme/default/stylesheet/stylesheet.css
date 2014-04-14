@@ -2745,28 +2745,40 @@ color:#cd181f;
 	font-size:14px;
 }
 
-.child1 {
-	float:left;
-	width:272px;
-	border-bottom:0px solid #e5e5e5;
-	min-height:70px;
-	text-align:left;
-	padding-bottom:10px;
-	padding-top:10px;
-	padding-left:20px;
+.child1 {	
+	vertical-align: top;
+	width: 272px;
+	border-left: 1px solid #e5e5e5;
+	min-height: 70px;
+	text-align: left;
+	
+	/*padding-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 48px;*/
+	
+	
+	padding:10px 35px 20px 35px;
 	position: relative;
 }
 
+.child1 ul {	
+	float: left;
+	width:100%;
+}
+
 .child1 a{
-        color: #bd080e;
-        font-size:14px;
+	width:100%;
+	display:inline-block;
+    color: #bd080e;
+    font-size:14px;
 	text-decoration: none;
 	position: relative;
 	
 }
 .child2{
 	float:left;
-	width:80%;
+	width:90%;
+	margin-left:15px;
 	padding:0px 0 0px 0;
 	text-align:left;
 	min-height:0;
@@ -2780,6 +2792,7 @@ color:#cd181f;
         color:#313131;
         font-size:12px;
 }
+
 
 .breadcrumb {
 
@@ -8043,6 +8056,9 @@ opacity:0.5;
 
 
 
+}
+.product-filter .sa-limit,.product-filter .sa-sort{
+	padding-top: 3px;
 }
 
 
@@ -15101,286 +15117,60 @@ padding:0 5px 0 0px
 
 
 .cart-info table {
-
-
-
-
-
-
-
 	width: 100%;
-
-
-
-
-
-
-
 	margin-bottom: 0px;
-
-
-
-
-
-
-
 	border-collapse: collapse;
-
-
-
-
-
-
-
 	border-top: 0px solid #DDDDDD;
-
-
-
-
-
-
-
 	border-left: 0px solid #DDDDDD;
-
-
-
-
-
-
-
 	border-right: 0px solid #DDDDDD;
-
-
-
-
-
-
-
 }
-
-
-
-
-
 
 
 .cart-info td {
-
-
-
-
-
-
-
 	padding: 7px;
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
 .cart-info thead td {
-
 	color: #FFF;
 	font-weight: normal;
 	background: #b2b2b2 url(../image/bg_cart_head_03.png) 0 bottom repeat-x ;
-
-
-
-
-
-
-
 	border-bottom: 0px solid #DDDDDD;
-
-
-
-
-
-
-
 	border-left: 1px solid #DDDDDD;
-
-
-
-
-
-
-
 	height:42px;
-
-
-
-
-
-
-
 	padding: 0 7px 0 7px;
-
-
-
-
-
-
-
 }
-
-
-
-
-
 
 
 .cart-info thead .image {
-
-
-
-
-
-
-
 	text-align: center;
-
-
-
-
-
-
-
 }
-
-
-
-
-
 
 
 .cart-info thead .name, .cart-info thead .model, .cart-info thead .quantity {
-
-
-
-
-
-
-
 	text-align: center;
-
-
-
-
-
-
-
 }
-
-
-
-
 
 
 
 .cart-info thead .price, .cart-info thead .total {
-
-
-
-
-
-
-
 	text-align: center;
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .cart-info thead .status{
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 text-align: center;
-
-
-
-
-
-
-
 }
-
-
-
-
 
 
 
 .cart-info  .statuss{
-
-
-
-
-
-
-
 color:#009036;
-
-
-
-
-
-
-
 text-align: center;
-
-
-
 min-width:80px;
-
-
-
 }
 
 
 
-
+.tovar_in_cart_tb td.quick_kod_title{padding-bottom:10px;}
 
 
 
@@ -17549,15 +17339,18 @@ float:left;
 	min-height: 100px;}
 
 .column_power{
-
-width: 220px;
-float: right;
-text-align:right;
-vertical-align:top;
-min-height: 100px;
+	width: 220px;
+	float: right;
+	text-align:right;
+	vertical-align:top;
+	/*min-height: 100px;*/
 }
 
 
+#footer_counter{
+	float:right;
+	clear:right;
+	margin:10px 40px 0px 0px;}
 
 
 

@@ -606,7 +606,16 @@ class ControllerCheckoutCart extends Controller {
 					}
 				}
 				
-				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+				if ($total >= 1000000){
+					$total = $total / 1000000;
+					$total = round($total,2);
+					$formatTotal = (string)$total.' М. руб.';
+					$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $formatTotal);
+				}else{
+					$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+				}
+				
+				//$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
@@ -840,5 +849,63 @@ class ControllerCheckoutCart extends Controller {
         }
         
     }
+
+	public function addCartCsv(){
+	//$this->load->model('cartcsv/csv');
+		$fileDir = 'tmp' . DIRECTORY_SEPARATOR . 'cart.csv';
+		$data= array();
+		$products = $this->cart->getProducts();
+		foreach ($products as $product){
+			$productData[] = array('product_id' => $product['product_id'], 
+									'quantity' => $product['quantity']
+									);
+ 		}
+
+		
+              //print_r($parseData);die;
+		//$headersCsv = array();
+		$headersCsv = array ('Артикул','Количество');
+		$dataRender[] = join(';', $headersCsv);
+		foreach ($productData as $data) {
+			$rowCsvArray  = array(
+				$data['product_id'],
+				$data['quantity']);
+				
+				$dataRender[] = join(';', $rowCsvArray);
+		}
+		//$headersCsv = join(';', $headersCsv);
+		//$dataRender = array_merge($headersCsv, $dataRender);
+               
+		$dataCsv = mb_convert_encoding(join("\n", $dataRender), "windows-1251", "UTF-8");
+		
+		file_put_contents($fileDir, $dataCsv);
+		
+		$this->response->setOutput($fileDir);
+		
+	}
+
+	public function loadCartCsv(){
+		if (!empty($this->request->post['submit'])) {
+			$loadFile;
+			$tmpDirName = 'tmp';
+			$fileName = $_FILES['filecsv']['name'];
+				//$fileName = $this->reguest->files[]
+			if (!(move_uploaded_file($_FILES['filecsv']['tmp_name'], $tmpDirName . DIRECTORY_SEPARATOR . $fileName))) {
+					throw new Exception ('Произошла ошибка при копировании файла');
+			}
+			$loadFile = $tmpDirName . DIRECTORY_SEPARATOR . $fileName;
+			$csvData = (file($loadFile));
+			unlink($loadFile);
+			foreach ($csvData as $csvRow){
+				$csvRow = mb_convert_encoding($csvRow, "UTF-8", "windows-1251");
+				$csv = explode(';', $csvRow);
+				if (trim($csv[0]) != 'Артикул'){
+				$this->cart->add($csv[0], $csv[1]);
+				}
+			}	
+		}
+		header("Location: index.php?route=checkout/cart");
+		//$this->redirect($this->url->link('checkout/cart'));
+	}	
 }
 ?>

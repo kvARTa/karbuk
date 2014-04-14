@@ -123,7 +123,7 @@
      <tr>
       <td class="left"><?php echo $entry_form_categories; ?></td>
       <td class="left">
-       <div class="scrollbox">
+       <div id="category_group1" class="scrollbox" >
         <?php $class = 'odd'; ?>
         <?php foreach ($categories as $category) { ?>
         <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
@@ -138,6 +138,8 @@
         </div>
         <?php } ?>
        </div>
+	   <input type="button" name="all" id="category_all" rel="category_group1" value="Отметить все чекбоксы" />
+		<input type="button" name="none" id="category_none" rel="category_group1" value="Сбросить все" />
       </td>
      </tr>
      <!---->
@@ -555,6 +557,21 @@
  </div>
 </div>
 <script type="text/javascript"><!--
+$(document).ready( function() {
+	// Выбор всех
+	//При клике по кнопке "отметить все" активируем чекбоксы
+	$("#category_all").click( function() {
+	   $("#" + $(this).attr('rel') + " input:checkbox:enabled").attr('checked', true);
+		return false;
+	});
+
+	// При клике по кнопке "сбросить все" убираем отметки
+	$("#category_none").click( function() {
+	   $("#" + $(this).attr('rel') + " input:checkbox:enabled").attr('checked', false);
+		return false;
+	});
+});
+
 function clear_cache() {
 	$.ajax({
 		url: 'index.php?route=module/search_advanced/clearCache&token=<?php echo $token; ?>',

@@ -19,7 +19,7 @@ class ControllerModuleSearchAdvanced extends Controller {
 		$this->data['text_description'] = $this->language->get('text_description');
 		$this->data['text_sub_category'] = $this->language->get('text_sub_category');
 		
-		$this->data['button_search2'] = $this->language->get('button_search2');
+		$this->data['button_search'] = $this->language->get('button_search');
 		$this->data['button_reset'] = $this->language->get('button_reset');
 		
 		$this->data['filter_name'] = (isset ($this->request->get['filter_name'])) ? (string) $this->request->get['filter_name'] : FALSE;

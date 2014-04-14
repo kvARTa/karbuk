@@ -41,6 +41,8 @@ $(document).ready(function() {
 
 
 
+
+
 	$('#menu ul > li > a + div').each(function(index, element) {
 		// IE6 & IE7 Fixes
 		if ($.browser.msie && ($.browser.version == 7 || $.browser.version == 6)) {
@@ -221,11 +223,3 @@ function addToCompare(product_id) {
 		}
 	});
 }
-
-function saveCartToCsv(){
-	$.get('index.php?route=checkout/cart/addCartCsv',
-		function(data) {
-			location.href = data;
-		}
-	)
-};
