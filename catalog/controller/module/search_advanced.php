@@ -138,7 +138,6 @@ class ControllerModuleSearchAdvanced extends Controller {
 		}
 		
 		$this->data['input_status'] = $this->data['filter_status'] = FALSE;
-		
 		foreach ($this->data['setting']['statuses'] as $key => $value) {
 			if ($value) {
 				$this->data['input_status'] = TRUE;
