@@ -100,8 +100,8 @@ class Image {
         $watermark_width = imagesx($watermark);
         $watermark_height = imagesy($watermark);
 		
-		$watermark_pos_x = ($this->info['width'] - $watermark_width)/2;
-		$watermark_pos_y = ($this->info['height'] - $watermark_height)/2;
+		$watermark_pos_x = ($this->info['width'] - $watermark_width);
+		$watermark_pos_y = ($this->info['height'] - $watermark_height);
         
 		if($this->info["width"] > 185 && $this->info["width"] < 600 && !($this->info["width"] == 325 && $this->info["height"] == 325)){
 			imagecopy($this->image, $watermark, $watermark_pos_x, $watermark_pos_y, 0, 0, $watermark_width, $watermark_height);

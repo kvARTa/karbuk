@@ -17,7 +17,7 @@ class ControllerProductSearchAdvanced extends Controller {
 		}
 		
 		$this->data['heading_title'] = $this->language->get('heading_title');
-		$this->data['text_stock'] = $this->language->get('text_stock');
+		
 		$this->data['text_empty'] = $this->language->get('text_empty');
 		$this->data['text_critea'] = $this->language->get('text_critea');
 		$this->data['text_search'] = $this->language->get('text_search');
@@ -131,7 +131,7 @@ class ControllerProductSearchAdvanced extends Controller {
 		$total = $this->model_catalog_search_advanced->getTotalProducts($this->data['setting'], $data);
 		
 		$image_no = $this->model_tool_image->resize('no_image.jpg', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
-		
+
 		foreach ($results as $result) {
 			$price = $special = $tax = $rating = FALSE;
 			
@@ -157,22 +157,15 @@ class ControllerProductSearchAdvanced extends Controller {
 				$rating = (int) $result['rating'];
 			}
 			
-						if ($result['quantity'] <= 0) {
-				$stock = $result['stock_status'];
-			} elseif ($this->config->get('config_stock_display')) {
-				$stock = $result['quantity'];
-			} else {
-				$stock = $this->language->get('text_instock');
-			}
+			
 			
 			$this->data['products'][] = array (
-		'product_id'  => $result['product_id'],
-					'model' => $result['model'],
-					'stock'       => $stock,
-				'manufacturer' => $result['manufacturer'],
-				'multiplicity' => $result['multiplicity'],
+				'product_id'  => $result['product_id'],
 				'thumb'       => $image,
 				'name'        => $result['name'],
+				'manufacturer' => $result['manufacturer'],
+				'multiplicity' => $result['multiplicity'],
+				'model' => $result['model'],
 				'description' => utf8_substr(strip_tags (html_entity_decode ($result['description'], ENT_QUOTES, 'UTF-8')), 0, 400) . '..',
 				'price'       => $price,
 				'special'     => $special,
@@ -188,44 +181,6 @@ class ControllerProductSearchAdvanced extends Controller {
 		$url .= (isset ($this->request->get['limit'])) ? '&limit=' . $this->request->get['limit'] : FALSE;
 		
 		$url = $url_main . $url . $url_attributes . $url_manufacturers . $url_stocks . $url_prices;
-		
-		
-		######################3
-					
-			$this->data['hrefna2'] = $this->url->link('product/search_advanced',  '&sort=pd.name&order=DESC' . $url);
-			$this->data['hrefna'] = $this->url->link('product/search_advanced',  '&sort=pd.name&order=ASC' . $url);
-			##############################
-			######################3
-			
-			$this->data['sortspa'][] = array(
-				'text'  => $this->language->get('text_price_asc'),
-				'value' => 'p.price-ASC',
-				'href'  => $this->url->link('product/search_advanced',  '&sort=p.price&order=ASC' . $url)
-			); 
-
-			
-		
-			
-			$this->data['href2'] = $this->url->link('product/search_advanced',  '&sort=p.price&order=DESC' . $url);
-			$this->data['href'] = $this->url->link('product/search_advanced',  '&sort=p.price&order=ASC' . $url);
-			
-				##############################
-			
-			
-				
-			######################3
-					
-			$this->data['hrefrating2'] = $this->url->link('product/search_advanced',  '&sort=rating&order=DESC' . $url);
-			$this->data['hrefrating'] = $this->url->link('product/search_advanced',  '&sort=rating&order=ASC' . $url);
-			##############################
-			######################3
-					
-			$this->data['hreflimit15'] = $this->url->link('product/search_advanced',  $url .'&limit=15' );
-			$this->data['hreflimit30'] = $this->url->link('product/search_advanced',  $url .'&limit=30' );
-			$this->data['hreflimit100'] = $this->url->link('product/search_advanced',   $url .'&limit=100' );
-			
-			##############################
-		
 		
 		$this->data['sorts'] = array (
 			array (

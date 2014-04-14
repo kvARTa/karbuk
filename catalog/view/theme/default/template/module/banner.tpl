@@ -13,12 +13,14 @@ $(document).ready(function() {
 });
 
 var banner = function() {
-	$('#banner<?php echo $module; ?>').cycle({
+	$('#banner<?php echo $module; ?>').cycle({    
+    
+    	timeout: 7000,
+		
 		before: function(current, next) {
 			$(next).parent().height($(next).outerHeight());
 		}
 	});
 }
-
-setTimeout(banner, 2000);
+setTimeout(banner, 0);
 //--></script>

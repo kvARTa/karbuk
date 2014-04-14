@@ -18,8 +18,8 @@ $_['text_tax'          ] = 'С налогом:';
 $_['text_reviews'      ] = 'Отзывов: %s'; 
 $_['text_compare'      ] = 'Сравнить (%s)'; 
 $_['text_display'      ] = 'Вид:';
-$_['text_list']         = '&nbsp; ';
-$_['text_grid']         = '&nbsp; ';
+$_['text_list'         ] = '&nbsp';
+$_['text_grid'         ] = '&nbsp';
 $_['text_sort'         ] = 'Сортировать по:';
 $_['text_default'      ] = 'По-умолчанию';
 $_['text_name_asc'     ] = 'Имени (от А до Я)';
@@ -41,10 +41,7 @@ $_['text_sub_category' ] = 'в подкатегориях';
 
 $_['text_manufacturers'] = 'Производители';
 $_['text_stock'        ] = 'Состояние на складе';
-$_['text_stock']        = 'Наличие:';
-$_['text_instock']      = '<font color="green">в наличии</font>';
 
 // Buttons
 $_['button_reset'      ] = 'Сброс';
-$_['button_search2'      ] = 'подобрать';
 ?>

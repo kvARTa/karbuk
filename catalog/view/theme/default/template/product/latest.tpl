@@ -147,7 +147,7 @@ Shadowbox.init({
 		<input type="button" class="quantity_box_button quantity_box_button_up" onclick="var qty_st = <?php echo $product['multiplicity']; ?>; var qty_el = document.getElementById('item-<?php echo $product['product_id']; ?>'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value=qty_el.value*1+qty_st;return false;" />
 		<input type="button" class="quantity_box_button quantity_box_button_down" onclick="var qty_st = <?php echo $product['multiplicity']; ?>; var qty_el = document.getElementById('item-<?php echo $product['product_id']; ?>'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty > 0 ) if(qty_el.value*1-qty_st>0)qty_el.value=qty_el.value*1-qty_st;return false;" />
 		</div>
-		<input type="button" value="<?php echo $button_cart; ?>" onclick="addQtyToCart('<?php echo $product['product_id']; ?>');" class="button_q" />
+		<input type="button" value="<?php echo $button_cart; ?>" onclick="addQtyToCart('<?php echo $product['product_id']; ?>', this);" class="button_q" />
       </div>
       <?php } ?>
       <?
@@ -207,7 +207,15 @@ Shadowbox.init({
 
 
 
-function addQtyToCart(product_id) {
+function addQtyToCart(product_id, self){
+	$(self).animate({"box-shadow":"0px 0px 10px #f6364d"});
+    // Animation complete.
+	$(self).val("Добавлено");
+	setTimeout(function(){
+		$(self).animate({"box-shadow":"0px 0px 0px"});
+		$(self).val("В корзину");
+	}, 1500);
+ 
   var qty = $('#item-' + product_id).val();
   if ((parseFloat(qty) != parseInt(qty)) || isNaN(qty)) {
         qty = 1;

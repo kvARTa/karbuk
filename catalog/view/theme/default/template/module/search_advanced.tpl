@@ -1,5 +1,3 @@
-<?php if($this->customer->isLogged()){ ?>
-
 <!-- Module Search Advanced -->
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/search_advanced.css" />
 <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/poshytip/css/poshytip.css" />
@@ -18,7 +16,6 @@
 <style type="text/css">
 #search_attributes_content em {
 	min-width:<?php echo $setting['list_size']['min_width']; ?>px;
-	
 }
 #search_attributes_content div.toggle {
 	min-width:<?php echo $setting['list_size']['min_width'] + 25; ?>px;
@@ -30,7 +27,6 @@
 <style type="text/css">
 #search_attributes_content em {
 	line-height:<?php echo $setting['image_size']['height']; ?>px;
-	width:100px;
 }
 </style>
 <?php } ?>
@@ -42,7 +38,6 @@
 }
 </style>
 <?php } ?>
-
 
 <div class="box">
  <div class="box-heading"><?php echo $heading_title; ?></div>
@@ -160,10 +155,10 @@
     </div>
    </form>
    
-   <table class="buttonss" width="100%">
+   <table class="buttons" width="100%">
     <tr>
      <td class="left" ><a id="button-reset" class="button"><span><?php echo $button_reset; ?></span></a></td>
-     <td class="right"><a id="button-filter" class="button"><span><?php echo $button_search2; ?></span></a></td>
+     <td class="right"><a id="button-filter" class="button"><span><?php echo $button_search; ?></span></a></td>
     </tr>
    </table>
  </div>
@@ -273,7 +268,3 @@ $(document).ready(function() {
 	});
 });
 --></script>
-<script>
-toggle_filter('fm_0');
-</script>
-<?php } ?>

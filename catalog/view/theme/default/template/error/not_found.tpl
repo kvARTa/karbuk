@@ -32,7 +32,25 @@
 		</td>
 	  </tr>
 	</table>
-	</div>	
+	</div>
+
+	<div class="price cart" >
+
+		<div class="line2">
+
+		  <div class="left">
+		 </div>
+		<div class="center">
+		 <a href="#" >Загрузить корзину из файла</a>
+		 <form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
+						<input name="formcsv" type="hidden" value="1">
+						<input name="filecsv" type="file" value="">&nbsp;<input type="submit" name="submit" value="Загрузить">
+						<input name="flaginfocsv" id="flag-csv-result" type="hidden" value="0">
+		</form>
+		</div>
+	</div>
+    
+  </div>
   <? } ?>
   <div class="buttons">
     <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>

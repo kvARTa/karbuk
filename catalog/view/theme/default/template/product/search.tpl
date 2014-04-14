@@ -1,5 +1,15 @@
 <?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content">
+
+<script type="text/javascript">
+    Shadowbox.init({
+        handleOversize:     "drag",
+        displayNav:         true,
+        handleUnsupported:  "remove",
+        autoplayMovies:     false
+    });
+</script>
+
 <div class="box-heading">Поиск
 </div>
 <div class="box-content"><?php echo $content_top; ?>

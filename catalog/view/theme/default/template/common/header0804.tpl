@@ -93,16 +93,8 @@ DD_belatedPNG.fix('#logo img');
     $(document).ready(function () {
         $('#menu ul li').hover(function (e) {
             $('div', this).css("display", "table");
-			
-			var contentH = $('#content').height()+25;
-			var menuH = $('div', this).height();
-			if (menuH > contentH){
-				$('#content').css('height',menuH);
-			}
-			
         }, function () {
             $('div', this).css("display", "none");
-			$('#content').css('height','');
         }, 500);
     })
 </script>
@@ -193,12 +185,12 @@ $(document).ready(function()
   <div style="position: absolute; top: 127px; ">
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="index.php?route=account/wishlist">
-  РР·Р±СЂР°РЅРЅС‹Рµ С‚РѕРІР°СЂС‹</a>
+  Избранные товары</a>
 &nbsp;&nbsp;&nbsp;
   <a class="to_compare_page" href="index.php?route=product/compare" rel="shadowbox; width=1024">
-  РўРѕРІР°СЂС‹ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ</a>
+  Товары для сравнения</a>
 &nbsp;&nbsp;&nbsp;
-<a href="index.php?route=account/account">Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚</a>
+<a href="index.php?route=account/account">Личный кабинет</a>
     </div>
   <?php
   }
@@ -244,7 +236,7 @@ $(document).ready(function()
     <?php } else { ?>
     <input type="text" name="filter_name" value="<?php echo $text_search; ?>" onfocus="this.value = '';" onkeydown="this.style.color = '#000000';" />
     <?php } ?>
-     <div class="button-search" title=" РСЃРєР°С‚СЊ " onclick="this.style.background-image='/catalog/view/theme/default/image/button-search2.png'"></div>
+     <div class="button-search" title=" Искать " onclick="this.style.background-image='/catalog/view/theme/default/image/button-search2.png'"></div>
   </div>
   
   </div>
@@ -253,67 +245,101 @@ $(document).ready(function()
   <!--header_dawn-->
    <div id="header_dawn">
    
-<?php if ($categories) { ?>
-	<div id="menu">
-	  <ul>
-		<?php foreach ($categories as $category) { ?>
-			<li <?php if ($category['active']) { ?> style="width: 139px;"  <?php } else { ?>style="width: 127px; padding-left: 11px;" <?php } ?>>
-			<!--li-->
-			<?php if ($category['active']) { ?>
-				  <a href="<?php echo $category['href']; ?>" class="active first" <?php if ($category['active']) { ?> style="width: 147px; "  <?php } ?>><?php echo $category['name']; ?></a>
-			<?php } else { ?>
-				  <a href="<?php echo $category['href']; ?>" class="first"><?php echo $category['name']; ?></a>
-			<?php } ?>
+   <?php if ($categories) { ?>
+<div id="menu">
+  <ul>
+    <?php foreach ($categories as $category) { ?>
+    <li <?php if ($category['active']) { ?> style="width: 139px;"  <?php } else { ?>style="width: 127px; padding-left: 11px;" <?php } ?>>
+    <!--li--><?php if ($category['active']) { ?>
+  <a href="<?php echo $category['href']; ?>" class="active first" <?php if ($category['active']) { ?> style="width: 147px; "  <?php } ?>><?php echo $category['name']; ?></a>
+  <?php } else { ?>
+  <a href="<?php echo $category['href']; ?>" class="first"><?php echo $category['name']; ?></a>
+  <?php } ?>
 
-			<?php if ($category['children']) { ?>
-				<div>
-				
-				<?php $r=1; $td=1; $col = 1; $catInCol = 1;?>
-				<table style="width: 970px;">
-					<tr>
-						<td class="child1" style = "border-left: 0;">
-								<?php $catCount = count($category['children']); 
-									$maxCatInCol = ceil($catCount/3);
-									foreach($category['children'] as $child) {
-										$children2 = $this->model_catalog_category->getCategories($child['category_id']);
-										?>
-										<a href="<?php echo $child['href']; ?>" style="color: #000; font-weight: bolder; <?php echo  $catInCol == 1 ? '' : 'padding-top:10px;' ?>"><?php echo $child['name']; ?></a>	
-											<? if ($children2){?>
-												<ul>
-												<?php
-													foreach ($children2 as $child2){
-														$href  = $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'].'_'.$child2['category_id']);?>
-														<li class="child2">
-															<a href="<?php echo $href?>"><?php echo $child2['name']?></a>
-														</li>
-													<? } ?>
-												</ul>		
-											<?}
-										if ($catInCol < $maxCatInCol){
-											$catInCol++;
-										}else{ 
-											echo '</td>';
-											echo $col == 3 ? '' : '<td class="child1">';
-											$col ++;
-											$catInCol = 1;
-										}
-										
-									}
-								?>
-					</tr>
-				</table>
-				</div>
-				 
-		  <?php } ?>
-		</li>
-		<?php } ?>
-	  </ul>
-	</div>
+      <?php if ($category['children']) { ?>
+      <div>
+      
+      
+  <?php $r=1; $td=1;?>
+  <table style="width: 970px;"><tr><td class=child1><ul>
+       
+         <?php $k=0; for ($i = 0; $i < count($category['children']);) { ?>
+        
+          <?php $j = $i + ceil(count($category['children']) / $category['column']);
+           count($category['children']);
+          
+           ?>
+      <?php $rj = 1; ?>
+          <?php for (; $i < $j; $i++) 
+          { $k=$k+1;?>
+          <?php if (isset($category['children'][$i])) {
+           $children2 = $this->model_catalog_category->getCategories($category['children'][$i]['category_id']);
+              $str='';
+              if ($children2){ $str='str';}
+          
+           ?>
+         </ul><?php /*if($k>1){echo "<p style=\"padding-top: 10px;\">&nbsp;</p>";}*/ ?>
+<a href="<?php echo $category['children'][$i]['href']; ?>" style="color: #000; font-weight: bolder">
+<?php echo $category['children'][$i]['name']; ?></a><ul>
+           <?php   
+      $next = "<a href=\"".$category['children'][$i]['href']."\" style=\"color: #000; font-weight: bolder\">".$category['children'][$i]['name']."</a>";
+      $r++;
+         
+          if ($children2){
+         
+          foreach ($children2 as $child2) {
+          
+              $href  = $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $category['children'][$i]['category_id'].'_'.$child2['category_id']);
+          
+    $href  = str_replace("\"", '', stripslashes($href));
+              echo '<li class=child2><a href=' .$href. ' class="children2">' .$child2['name']. '</a></li>'."\n";
+         $r++; 
+        if ($r>10){
+      echo "</ul></td>"; 
+      $r=1;
+      $td++;
+      if ($td==4){
+          echo "</tr><tr class=menu_hr><td colspan=4 class=menu_hr></td></tr><tr>\n<td class=child1>".$next."<ul>\n";
+          $td=1;
+      }else{
+          echo "\n<td class=child1 ><ul>\n";
+      }
+        }
+        
+          }
+          
+          }
+          ?>
+          
+          
+          
+          
+          
+          
+         <? /* if ($k=='4' OR $k=='8' OR $k==12 OR $k==16 OR $k==20 OR $k==24 OR $k==26 OR $k==30) { echo  '<!--li class="menu_hr"> </li-->'; }*/?>
+         
+         
+         
+          <?php } ?>
+          <?php } ?>
+       
+        <?php } ?> 
+  <?php $bb = 3 - $td; for($t = 1; $t<$bb; $t++){ echo "</td>"; if ($t!=$bb){echo "<td>";}}?>
+  
+  </ul></td></tr></table>
+    </div>
+     
+      <?php } ?>
+    </li>
+    <?php } ?>
+  </ul>
+</div>
 <?php } ?>
    
    
    
    
+  
   </div>
   
   <!--!header_dawn-->
