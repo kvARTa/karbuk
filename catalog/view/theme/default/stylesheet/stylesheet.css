@@ -8,7 +8,7 @@ html {
     padding: 0;
 }
 
-/*vova1111*/
+
 
 body {
     background: url(../../../../../image/bg.png) repeat-x center top;
@@ -4962,8 +4962,9 @@ a:active {
 /*********************************************************************************************************************/
 .box.blog {
     display: inline-block;
-    width: 389px;
+    width: 365px;
     vertical-align: top;
+    padding:15px 0px 0px 15px;
 }
 
 .moduletable_blog {
