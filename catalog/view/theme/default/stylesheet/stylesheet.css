@@ -10,13 +10,13 @@ html {
 	padding: 0;
 }
 
-
+/*vova*/
 
 body {
 background: url(../../../../../image/bg.png) repeat-x center top;
 
 background-attachment: fixed;
-//	background: #ffffff url(../image/bg.jpg) repeat;
+	background: #ffffff url(../image/bg.jpg) repeat;
 
 
 
@@ -6078,7 +6078,7 @@ border-right:0px solid #cecece;
 
 
 
-.box-product .image, bestdeller .image {
+.box-product .image, .bestdeller .image {
 
 
 
