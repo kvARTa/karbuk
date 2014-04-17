@@ -1,4 +1,5 @@
 <?php
+set_time_limit(0);
 class ControllerFeedGoogleSitemap extends Controller {
 	public function index() {
 		if ($this->config->get('google_sitemap_status')) {
