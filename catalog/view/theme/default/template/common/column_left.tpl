@@ -35,12 +35,18 @@
 
   </div>
 
+
+
+
 </div>
 
 
   <?php
   }
   ?>
+
+
+
 
 
 
@@ -80,5 +86,14 @@ if (eregi('blog_id=64', $module) or eregi('information/contact', $module)){
 
 echo $module; ?>
   <?php } ?>
+
+<!--<div class="box jivo">
+    <div class="box-heading">
+        <p>Онлайн консультант</p>
+    </div>
+    <div class="box-content">
+    </div>
+</div>-->
+
 </div>
 <?php } ?> 

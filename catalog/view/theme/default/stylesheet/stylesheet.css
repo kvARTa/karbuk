@@ -8,7 +8,7 @@ html {
     padding: 0;
 }
 
-/*vova11111*/
+
 
 body {
     background: url(../../../../../image/bg.png) repeat-x center top;
@@ -4960,10 +4960,20 @@ a:active {
 }
 
 /*********************************************************************************************************************/
-.box.blog {
+.bott-cont{}
+
+.bott-cont .box.blog {
     display: inline-block;
-    width: 389px;
+    width: 350px;
     vertical-align: top;
+    padding:10px 0px 0px 30px;
+}
+
+.bott-cont .box.blog:first-child{padding:10px 0px 0px 15px; width: 365px;}
+
+.box.blog .box-category > ul > li{
+    padding:8px 0px 8px 0px;
+
 }
 
 .moduletable_blog {
@@ -5010,6 +5020,7 @@ a:active {
 .product-grid.blog > div {
     margin-left: 5px;
     margin-right: 5px;
+    width: 210px;
 }
 
 .addthis_default_style {
@@ -5068,3 +5079,4 @@ ul.manufacturers li a.active {
     background: url(../image/bg_navigation_03.png) repeat-x;
     text-decoration: none;
 }
+
