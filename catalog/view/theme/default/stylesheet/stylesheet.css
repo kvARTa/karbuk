@@ -5020,6 +5020,7 @@ a:active {
 .product-grid.blog > div {
     margin-left: 5px;
     margin-right: 5px;
+    width: 210px;
 }
 
 .addthis_default_style {
@@ -5078,3 +5079,4 @@ ul.manufacturers li a.active {
     background: url(../image/bg_navigation_03.png) repeat-x;
     text-decoration: none;
 }
+
