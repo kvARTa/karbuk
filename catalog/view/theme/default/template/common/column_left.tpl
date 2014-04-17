@@ -46,14 +46,7 @@
   ?>
 
 
-    <div class="box">
-        <div class="box-heading">
-            <p>Онлайн консультант</p>
-        </div>
-        <div class="box-content">
-            Код счетчика
-        </div>
-    </div>
+
 
 
 
@@ -93,5 +86,15 @@ if (eregi('blog_id=64', $module) or eregi('information/contact', $module)){
 
 echo $module; ?>
   <?php } ?>
+
+<div class="box">
+    <div class="box-heading">
+        <p>Онлайн консультант</p>
+    </div>
+    <div class="box-content">
+        Код счетчика
+    </div>
+</div>
+
 </div>
 <?php } ?> 
