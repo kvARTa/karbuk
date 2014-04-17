@@ -87,19 +87,13 @@ if (eregi('blog_id=64', $module) or eregi('information/contact', $module)){
 echo $module; ?>
   <?php } ?>
 
-<div class="box jivo">
+<!--<div class="box jivo">
     <div class="box-heading">
         <p>Онлайн консультант</p>
     </div>
     <div class="box-content">
-        <!-- BEGIN JIVOSITE CODE {literal} -->
-        <script type='text/javascript'>
-            (function(){ var widget_id = '146153';
-                var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
-        <!-- {/literal} END JIVOSITE CODE -->
-
     </div>
-</div>
+</div>-->
 
 </div>
 <?php } ?> 
