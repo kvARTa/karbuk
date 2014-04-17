@@ -4960,12 +4960,16 @@ a:active {
 }
 
 /*********************************************************************************************************************/
-.box.blog {
+.bott-cont{}
+
+.bott-cont .box.blog {
     display: inline-block;
     width: 365px;
     vertical-align: top;
-    padding:10px 0px 0px 15px;
+    padding:10px 0px 0px 30px;
 }
+
+.bott-cont .box.blog:first-child{padding:10px 0px 0px 15px;}
 
 .box.blog .box-category > ul > li{
     padding:8px 0px 8px 0px;
