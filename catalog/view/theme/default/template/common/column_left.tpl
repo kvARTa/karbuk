@@ -36,14 +36,7 @@
   </div>
 
 
-     <div class="box">
-         <div class="box-heading">
-             <p>Онлайн консультант</p>
-         </div>
-         <div class="box-content">
-             Код счетчика
-         </div>
-     </div>
+
 
 </div>
 
@@ -51,6 +44,16 @@
   <?php
   }
   ?>
+
+
+    <div class="box">
+        <div class="box-heading">
+            <p>Онлайн консультант</p>
+        </div>
+        <div class="box-content">
+            Код счетчика
+        </div>
+    </div>
 
 
 
