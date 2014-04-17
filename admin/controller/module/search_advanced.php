@@ -62,7 +62,7 @@ class ControllerModuleSearchAdvanced extends Controller {
 				$this->request->post['search_advanced_setting']['price']['step'] = 20;
 			}
 			
-			$this->model_setting_setting->editSetting('search_advanced', $this->request->post);
+			$this->model_setting_setting->editSetting('search_advanced', $this->request->post['search_advanced_setting']);
 			
 			$this->cache->delete('product');
 			$this->cache->delete('search_advanced');

@@ -1,1 +1,4 @@
 RewriteRule index.php?route=checkout/simplecheckout  /index.php?route=checkout/cart [R=301,L]
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
