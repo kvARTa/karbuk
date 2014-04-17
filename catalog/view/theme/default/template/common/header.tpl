@@ -171,7 +171,6 @@ $(document).ready(function()
         });
     </script>
 
-
     <!-- BEGIN JIVOSITE CODE {literal} -->
     <script type='text/javascript'>
         (function(){ var widget_id = '146153';
