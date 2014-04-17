@@ -384,13 +384,21 @@ $('#tab-advertising').toggle();
 }
    </style>
 <script>
-function addQtyToCart(product_id) {
-  var qty = $('#item-' + product_id).val();
-  if ((parseFloat(qty) != parseInt(qty)) || isNaN(qty)) {
-        qty = 1;
-  }
-  addToCart(product_id, qty);
-}
+    function addQtyToCart(product_id, self){
+        $(self).animate({"box-shadow":"0px 0px 10px #f6364d"});
+        // Animation complete.
+        $(self).val("Добавлено");
+        setTimeout(function(){
+            $(self).animate({"box-shadow":"0px 0px 0px"});
+            $(self).val("В корзину");
+        }, 1500);
+
+        var qty = $('#item-' + product_id).val();
+        if ((parseFloat(qty) != parseInt(qty)) || isNaN(qty)) {
+            qty = 1;
+        }
+        addToCart(product_id, qty);
+    }
 </script>
 <?php
 	error_reporting (E_ALL ^ E_NOTICE);
@@ -423,7 +431,7 @@ function addQtyToCart(product_id) {
 				<input type="button" class="quantity_box_button quantity_box_button_up" onclick="var qty_st = 1; var qty_el = document.getElementById('item-<?=$product["product_id"]?>'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value=qty_el.value*1+qty_st;return false;">
 				<input type="button" class="quantity_box_button quantity_box_button_down" onclick="var qty_st = 1; var qty_el = document.getElementById('item-<?=$product["product_id"]?>'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) if(qty_el.value*1-qty_st&gt;0)qty_el.value=qty_el.value*1-qty_st;return false;">
 			</div>
-			<input type="button" value="В корзину" onclick="addQtyToCart('<?=$product["product_id"]?>');" class="button_q">
+			<input type="button" value="В корзину" onclick="addQtyToCart('<?php echo $product['product_id']; ?>', this);" class="button_q" />
 		</div>
 		<div class="wishlist" id="wishlist<?=$product["product_id"]?>">
 			<input onclick="addToWishList('<?=$product["product_id"]?>');" name="wishlist" type="checkbox" value="">
