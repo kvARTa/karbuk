@@ -4967,6 +4967,11 @@ a:active {
     padding:10px 0px 0px 15px;
 }
 
+.box.blog .box-category > ul > li{
+    padding:8px 0px 8px 0px;
+
+}
+
 .moduletable_blog {
 }
 
