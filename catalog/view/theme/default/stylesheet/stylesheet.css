@@ -143,7 +143,8 @@ a:hover {
     padding: 0;
     margin: 0;
     width: 330px;
-    left: 0 top : 0;
+    left: 0;
+    top : 0;
 }
 
 #slider1 .overview li {
@@ -241,7 +242,7 @@ form {
 
     padding: 0;
 
-    0 margin: 0;
+    margin: 0;
 
     display: inline;
 
@@ -1777,7 +1778,7 @@ a.button:hover, input.button:hover:hover:hover {
 
 }
 
-.box-product .image img, bestdeller .image img {
+.box-product .image img, .bestdeller .image img {
 
     border: 0px solid #E7E7E7;
 
@@ -1835,7 +1836,7 @@ a.button:hover, input.button:hover:hover:hover {
 
 }
 
-.box-product .rating, bestdeller .rating {
+.box-product .rating, .bestdeller .rating {
 
     display: block;
 
@@ -1843,7 +1844,7 @@ a.button:hover, input.button:hover:hover:hover {
 
 }
 
-.box-product .image, featured .image {
+.box-product .image, .featured .image {
 
     display: block;
 
@@ -1853,7 +1854,7 @@ a.button:hover, input.button:hover:hover:hover {
 
 }
 
-.box-product .image img, featured .image img {
+.box-product .image img, .featured .image img {
 
     border: 0px solid #E7E7E7;
 
@@ -1921,7 +1922,7 @@ a.button:hover, input.button:hover:hover:hover {
 
 }
 
-.box-product .rating, featured .rating {
+.box-product .rating, .featured .rating {
 
     display: block;
 
@@ -4133,7 +4134,8 @@ a.button:hover, input.button:hover:hover:hover {
 
     text-align: right;
 
-    display: table-cell vertical-align : bottom;
+    display: table-cell;
+    vertical-align : bottom;
 
 }
 
@@ -5037,7 +5039,6 @@ a:active {
     width: 80px;
     float: left;
     margin-right: 10px;
-    er
 }
 
 .ui-state-hover {
