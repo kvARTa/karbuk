@@ -1,7 +1,8 @@
 <?php
-set_time_limit(0);
+
 class ControllerFeedGoogleSitemap extends Controller {
 	public function index() {
+        set_time_limit(0);
 		if ($this->config->get('google_sitemap_status')) {
 			$output  = '<?xml version="1.0" encoding="UTF-8"?>';
 			$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
