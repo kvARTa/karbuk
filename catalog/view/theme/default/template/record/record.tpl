@@ -5,7 +5,7 @@
   <h1><?php echo $heading_title; ?></h1>
 </div>
 
-<div class="box-content">
+<div class="box-content" style="padding:25px;">
 
   <div class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
