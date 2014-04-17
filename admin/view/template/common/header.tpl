@@ -67,6 +67,7 @@ $(document).ready(function(){
         <ul>
           <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
           <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
+          <li><a href="index.php?route=module/batch_editor&token=<?php echo $this->session->data['token']; ?>">Batch Editor</a></li>
           <li><a class="parent"><?php echo $text_attribute; ?></a>
             <ul>
               <li><a href="<?php echo $attribute; ?>"><?php echo $text_attribute; ?></a></li>
