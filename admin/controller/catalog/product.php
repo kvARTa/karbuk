@@ -320,7 +320,8 @@ class ControllerCatalogProduct extends Controller {
 			'href'      => $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'),       		
       		'separator' => ' :: '
    		);
-		
+
+        $this->data['metaexport'] = $this->url->link('catalog/product/metaexport', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['insert'] = $this->url->link('catalog/product/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['copy'] = $this->url->link('catalog/product/copy', 'token=' . $this->session->data['token'] . $url, 'SSL');	
 		$this->data['delete'] = $this->url->link('catalog/product/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -1338,5 +1339,15 @@ class ControllerCatalogProduct extends Controller {
 
 		return $output;
 	}
+
+    public function metaexport(){
+        $this->load->model('catalog/meta_export');
+        $metaData = $this->model_catalog_meta_export->getMeta();
+        $dataCsv = $this->model_catalog_meta_export->prepareCsv($metaData);
+       // print_r($dataCsv);die;
+        if ( file_put_contents('../tmp/meta_descriptions.csv', $dataCsv)){
+            $this->redirect(HTTP_CATALOG . 'tmp/meta_descriptions.csv');
+        }
+    }
 }
 ?>
