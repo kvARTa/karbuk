@@ -27,6 +27,7 @@ class ModelCatalogMetaExport extends Model
         $headersCsv[] = 'Мета-тег Keywords';
         $headersCsv[] = 'Мета-тег Description';
 
+        $dataRender = array();
         foreach ($metaData as $data){
             $rowCsvArr = array(
                 $data['product_id'],
@@ -40,7 +41,7 @@ class ModelCatalogMetaExport extends Model
         }
 
         $headersCsv = join(';', $headersCsv);
-        $dataRender = array_merge($headersCsv, $dataRender);
+        $dataRender = array_merge(array($headersCsv), $dataRender);
         return join("\n", $dataRender);
     }
 } 
