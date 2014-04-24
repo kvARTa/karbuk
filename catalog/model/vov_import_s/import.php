@@ -131,7 +131,21 @@ class ModelVovImportsImport extends Model {
 			    $kratn = $row['KRATN'];
 			    $hit = $row['HIT'];
 			    $newn = $row['NEW'];
-
+                if (isset($row['TRANSLIT'])){
+                    $translit = strtolower(trim($row['TRANSLIT']));
+                    $translit = str_replace('/','-',$translit);
+                    $translit = str_replace('+','',$translit);
+                    $translit = str_replace('.','_',$translit);
+                    $translit = str_replace('(','',$translit);
+                    $translit = str_replace(')','',$translit);
+                    $translit = str_replace(', ','_',$translit);
+                    $translit = str_replace(', ','_',$translit);
+                    $translit = str_replace(' ','_',$translit);
+                    $translit = str_replace(',','',$translit);
+                    $translit = str_replace('\'','',$translit);
+                }else{
+                    $translit = '';
+                }
 
 			    $sql_add = '';
 			    for ($j=1; $j<=6; $j++) {
@@ -141,7 +155,7 @@ class ModelVovImportsImport extends Model {
 			    }
 
 
-			    $this->db->query("INSERT INTO vov_export1 SET idn='".(int)$id."', isparent='".(int)$isparent."', parent='".(int)$parent."', title='".$this->db->escape($title)."', price='".(float)$price."', baseprice='".(float)$baseprice."', sp='".(int)$sp."', ssp='".(int)$ssp."', prod='".$this->db->escape($prod)."', article='".(int)$article."', komment='".$this->db->escape($komment)."', ordern='".(int)$ordern."', sklad='".(int)$sklad."', sklad_post='".(int)$sklad_post."', kratn='".(int)$kratn."', hit='".(int)$hit."', newn='".(int)$newn."'  ". $sql_add);
+			    $this->db->query("INSERT INTO vov_export1 SET idn='".(int)$id."', isparent='".(int)$isparent."', parent='".(int)$parent."', title='".$this->db->escape($title)."', price='".(float)$price."', baseprice='".(float)$baseprice."', sp='".(int)$sp."', ssp='".(int)$ssp."', prod='".$this->db->escape($prod)."', article='".(int)$article."', komment='".$this->db->escape($komment)."', ordern='".(int)$ordern."', sklad='".(int)$sklad."', sklad_post='".(int)$sklad_post."', kratn='".(int)$kratn."', hit='".(int)$hit."', translit='" . $this->db->escape($translit) . "', newn='".(int)$newn."'  ". $sql_add);
 			    
 			    
 			    for ($j=1; $j<=15; $j++) {
@@ -239,12 +253,20 @@ class ModelVovImportsImport extends Model {
             $category_id = $this->db->getLastId();
             
             $this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($data['title']) . "'");
-            
+
         } else {
             $this->db->query("UPDATE " . DB_PREFIX . "category SET sort_order='".(int)$data['ordern']."', date_modified = NOW() WHERE category_id = '" . (int)$category_id . "'");
             
             $this->db->query("UPDATE " . DB_PREFIX . "category_description SET  name = '" . $this->db->escape($data['title']) . "' WHERE category_id = '" . (int)$category_id . "' AND language_id = '" . (int)$language_id . "'");
         }
+
+        //url alias
+        $this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'category_id=" . (int)$category_id . "'");
+
+        if (!empty($data['translit'])) {
+            $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'category_id=" . (int)$category_id . "', keyword = '" . $this->db->escape($data['translit']) . "'");
+        }
+        //url alias end
         
         $store_id =  $this->config->get('config_store_id');
         $this->db->query("DELETE FROM " . DB_PREFIX . "category_to_store WHERE category_id = '" . (int)$category_id . "'");
@@ -341,31 +363,31 @@ class ModelVovImportsImport extends Model {
         } else {
             $product_id = 0;
         }
-                
+
         $language_id = $this->config->get('config_language_id');
-        
+
         if (!empty($data['prod'])) {
             $manufacturers_id = $this->get_manufacturers_id($data['prod']);
         } else {
             $manufacturers_id = 0;
         }
-        
+
         if (file_exists(DIR_IMAGE.'data/'.$data['article'].'.jpg')) {
             $image = $this->db->escape('data/'.$data['article'].'.jpg');
         } else {
             $image = NULL;
         }
-        
+
         if ((int)$data['sklad'] || (int)$data['sklad_post'] ) {
             $quantity = 10;
         } else {
             $quantity = 0;
         }
-        
-        
-        
+
+
+
         $data['kratn'] == 0 ? ($data['kratn'] = 1) : false;
-		
+
 		$groups = array(
 			"pr_1" => 8,
 			"pr_2" => 9,
@@ -374,47 +396,55 @@ class ModelVovImportsImport extends Model {
 			"pr_5" => 12,
 			"pr_6" => 13
 		);
-		
-        if(!$product_id) {			
+
+        if(!$product_id) {
             $this->db->query("INSERT INTO " . DB_PREFIX . "product SET price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."', model='".$this->db->escape($data['article'])."' , status = '1', image='".$image."', manufacturer_id='".(int)$manufacturers_id."' , quantity='".(int)$quantity."', sort_order='".(int)$data['ordern']."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."',  date_modified = NOW(), date_available=NOW(), date_added = NOW(), old_id='".$data['idn']."'");
             $product_id = $this->db->getLastId();
-            
+
             $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($data['title']) . "', description='".$this->db->escape($data['komment'])."' ");
-            
+
         } else {
             $this->db->query("UPDATE " . DB_PREFIX . "product SET price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."',  model='".$this->db->escape($data['article'])."' , image='".$image."' , kratn='".$data['kratn']."' , manufacturer_id='".(int)$manufacturers_id."' ,  quantity='".(int)$quantity."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."', sort_order='".(int)$data['ordern']."',  date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
-            
+
             $this->db->query("UPDATE " . DB_PREFIX . "product_description SET  name = '" . $this->db->escape($data['title']) . "' , description='".$this->db->escape($data['komment'])."' WHERE product_id = '" . (int)$product_id . "' AND language_id = '" . (int)$language_id . "'");
         }
 		foreach($groups as $key => $value){
 			$this->db->query("INSERT INTO " . DB_PREFIX . "product_discount SET product_id='".$product_id."', customer_group_id='".$value."', quantity='1', priority='1', price='".number_format((($data[$key] > 0 ? $data[$key] : 1)*$data['baseprice']), 2, '.', '')."'");
 		}
-        
-        
+
+
         $attribs_query = $this->db->query("SELECT * FROM ".DB_PREFIX."vov_export2 WHERE idn='".$data['idn']."'");
-        
+
         $this->db->query("DELETE FROM ".DB_PREFIX."product_attribute WHERE product_id='".$product_id."' ");
-        
+
         foreach($attribs_query->rows as $attrib_data) {
-        
+
             $attribute_id = $this->get_attribs_id($attrib_data['type']);
-            
+
             $this->db->query("INSERT INTO ".DB_PREFIX."product_attribute SET product_id='".$product_id."' , attribute_id = '".(int)$attribute_id."' , language_id='".(int)$language_id."' , text ='".$this->db->escape($attrib_data['val'])."', sort_order='".(int)$attrib_data['sort_order']."'");
         }
-        
+
         $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
-        
-        
+
+
         $add_images = glob(DIR_IMAGE.'data/'.$data['article'].'-*'.'.jpg');
-        
+
         if(is_array($add_images)) {
             foreach ($add_images as $imagefile )   {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $this->db->escape('data/'.basename($imagefile)) . "', sort_order = '" . (int)$imagefile . "'");
             }
         }
 
+        //url alias
+        $this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id. "'");
+
+        if (!empty($data['translit'])) {
+            $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'product_id=" . (int)$product_id . "', keyword = '" . $this->db->escape($data['translit']) . "'");
+        }
+        //url alias end
+
         $parent_id = $this->get_parent_category($data['parent']);
-        
+
         $this->db->query("DELETE FROM  " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "'  ");
         $this->db->query("INSERT INTO  " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "' , category_id='".$parent_id."', main_category='1' ");
 
@@ -482,7 +512,7 @@ class ModelVovImportsImport extends Model {
         $this->cat_parent_cache[0] = 0;
 
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "vov_export1 WHERE isparent=0");
-
+       // print_r($query->rows); die;
         foreach($query->rows as $data) {
             $this->insert_or_update_category($data);
         }
