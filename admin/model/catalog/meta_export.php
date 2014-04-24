@@ -34,13 +34,13 @@ class ModelCatalogMetaExport extends Model
                 $data['seo_h1'],
                 $data['seo_title'],
                 $data['meta_keyword'],
-                $data['meta_description'],
+                $data['meta_description']
             );
             $dataRender[] = join(';', $rowCsvArr);
         }
 
         $headersCsv = join(';', $headersCsv);
-        $dataRender = array_merge([$headersCsv], $dataRender);
+        $dataRender = array_merge($headersCsv, $dataRender);
         return join("\n", $dataRender);
     }
 } 
