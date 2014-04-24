@@ -133,6 +133,7 @@ class ModelVovImportsImport extends Model {
 			    $newn = $row['NEW'];
                 if (isset($row['TRANSLIT'])){
                     $translit = strtolower(trim($row['TRANSLIT']));
+                    $translit = str_replace('"','',$translit);
                     $translit = str_replace('/','-',$translit);
                     $translit = str_replace('+','',$translit);
                     $translit = str_replace('.','_',$translit);
