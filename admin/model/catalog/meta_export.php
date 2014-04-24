@@ -28,14 +28,14 @@ class ModelCatalogMetaExport extends Model
         $headersCsv[] = 'Мета-тег Description';
 
         foreach ($metaData as $data){
-            $rowCsvArr = [
+            $rowCsvArr = array(
                 $data['product_id'],
                 $data['name'],
                 $data['seo_h1'],
                 $data['seo_title'],
                 $data['meta_keyword'],
                 $data['meta_description'],
-            ];
+            );
             $dataRender[] = join(';', $rowCsvArr);
         }
 
