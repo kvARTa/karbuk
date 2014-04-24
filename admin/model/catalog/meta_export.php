@@ -19,7 +19,7 @@ class ModelCatalogMetaExport extends Model
 
     public function prepareCsv($metaData)
     {
-        $headersCsv = [];
+        $headersCsv = array();
         $headersCsv[] = 'Код';
         $headersCsv[] = 'Наименование';
         $headersCsv[] = 'Мета-тег H1 (HTML-тег H1)';
