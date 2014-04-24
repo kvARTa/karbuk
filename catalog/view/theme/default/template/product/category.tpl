@@ -30,11 +30,19 @@ Shadowbox.init({
   <h1><?php echo $heading_title; ?></h1>
 
   <?php if ($categories) { ?>
+    <?php //print_r($categories);?>
   <div class="category-list" style="position: relative; top:-25px;">
     <?php if (count($categories) <= 5) { ?>
     <ul>
       <?php foreach ($categories as $category) { ?>
-      <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+      <li>
+          <a href="<?php echo $category['href']; ?>">
+              <?php if($category['thumb']) { ?>
+                <img src="<?php echo $category['thumb'];?>">
+              <?php } ?>
+              <?php echo $category['name']; ?>
+          </a>
+      </li>
       <?php } ?>
     </ul>
     <?php } else { ?>
@@ -43,7 +51,14 @@ Shadowbox.init({
       <?php $j = $i + ceil(count($categories) / 4); ?>
       <?php for (; $i < $j; $i++) { ?>
       <?php if (isset($categories[$i])) { ?>
-      <li><a href="<?php echo $categories[$i]['href']; ?>"><?php echo $categories[$i]['name']; ?></a></li>
+      <li>
+          <a class="" href="<?php echo $categories[$i]['href']; ?>">
+              <?php if($categories[$i]['thumb']) { ?>
+                <img src="<?php echo $categories[$i]['thumb'];?>">
+              <?php } ?>
+              <?php echo $categories[$i]['name']; ?>
+          </a>
+      </li>
       <?php } ?>
       <?php } ?>
     </ul>

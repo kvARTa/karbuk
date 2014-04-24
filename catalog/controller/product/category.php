@@ -192,11 +192,20 @@ class ControllerProductCategory extends Controller
 					'filter_category_id' => $result['category_id'],
 					'filter_sub_category' => true
 				);
+
+                /* Картинки подкатегорий, только если есть */
+                if ($result['image']) {
+                    $image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+                } else {
+                    $image = null;
+                }
+
 				$product_total = $this->model_catalog_product->getTotalProducts($data);
 
 				$this->data['categories'][] = array(
 					'name' => $result['name'] . ' (' . $product_total . ')',
-					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
+					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url),
+                    'thumb'=> $image
 				);
 			}
 
