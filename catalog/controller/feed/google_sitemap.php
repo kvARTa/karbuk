@@ -52,6 +52,10 @@ class ControllerFeedGoogleSitemap extends Controller {
 			$output .= '</urlset>';
 
 			$this->response->addHeader('Content-Type: application/xml');
+
+            //create sitemap.xml file
+            file_put_contents('sitemap.xml',$output);
+
 			$this->response->setOutput($output);
 		}
 	}
