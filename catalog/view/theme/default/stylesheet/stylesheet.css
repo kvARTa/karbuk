@@ -5085,8 +5085,61 @@ ul.manufacturers li a.active {
 }
 
 .category-list.catimglist ul{
-    margin: 0;
+    margin: 0px 0px 0px 15px;
     padding: 0;
     list-style:none;
+}
+
+.category-list.catimglist ul:first-child{
+    margin-left: 0px;
+}
+
+.category-list.catimglist ul li{
+    position: relative;
+    width:145px;
+    height: 135px;
+    overflow: hidden;
+}
+
+.category-list.catimglist ul li .catimg_container{
+    width: 145px;
+    height: 135px;
+    overflow: hidden;
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 1;
+}
+
+.category-list.catimglist ul li .catimg_container img{
+    max-width: 145px;
+    height: auto;
+}
+
+.category-list.catimglist ul li .catname_container{
+    width: 145px;
+    height: 20px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 2;
+    background-color: #ef7a08;
+}
+
+.category-list.catimglist ul li .catname{
+    font-size: 13px;
+    color:#ffffff;
+    float: left;
+    padding-left: 10px;
+}
+
+.category-list.catimglist ul li .catname a{
+    font-size: 13px;
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.category-list.catimglist ul li .catname a:hover{
+    text-decoration: underline;
 }
 
