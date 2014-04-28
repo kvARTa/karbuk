@@ -5099,10 +5099,13 @@ ul.manufacturers li a.active {
     top:0px;
     left:0px;
     z-index: 1;
+    display: table-cell;
+    vertical-align: top;
+    text-align: center;
 }
 
 .category-list li.catimglist .catimg_container img{
-    max-width: 145px;
+    max-width: 185px;
     height: auto;
 }
 
