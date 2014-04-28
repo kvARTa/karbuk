@@ -31,17 +31,19 @@ Shadowbox.init({
 
   <?php if ($categories) { ?>
     <?php //print_r($categories);?>
-  <div class="category-list catimglist">
+  <div class="category-list <?php if($category['thumb']) { ?>catimglist"<?php } ?>>
     <?php if (count($categories) <= 5) { ?>
     <ul>
       <?php foreach ($categories as $category) { ?>
       <li>
           <a href="<?php echo $category['href']; ?>">
-              <div class="catimg_container">
+
               <?php if($category['thumb']) { ?>
-                <img src="<?php echo $category['thumb'];?>">
+                <div class="catimg_container">
+                    <img src="<?php echo $category['thumb'];?>">
+                </div><!-- end catimg_container-->
               <?php } ?>
-              </div><!-- end catimg_container-->
+
               <div class="catname_container">
                     <div class="catname"><?php echo $category['name']; ?></div>
               </div><!-- end catname_container-->
