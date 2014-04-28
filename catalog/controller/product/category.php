@@ -195,7 +195,7 @@ class ControllerProductCategory extends Controller
 
                 /* Картинки подкатегорий, только если есть */
                 if ($result['image']) {
-                    $image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+                    $image = $this->model_tool_image->resize($result['image'], 145, 115,false);
                 } else {
                     $image = null;
                 }
