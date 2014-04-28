@@ -5096,13 +5096,13 @@ ul.manufacturers li a.active {
 
 .category-list.catimglist ul li{
     position: relative;
-    width:145px;
+    width:155px;
     height: 135px;
     overflow: hidden;
 }
 
 .category-list.catimglist ul li .catimg_container{
-    width: 145px;
+    width: 155px;
     height: 135px;
     overflow: hidden;
     position: absolute;
@@ -5112,12 +5112,12 @@ ul.manufacturers li a.active {
 }
 
 .category-list.catimglist ul li .catimg_container img{
-    max-width: 145px;
+    max-width: 155px;
     height: auto;
 }
 
 .category-list.catimglist ul li .catname_container{
-    width: 145px;
+    width: 155px;
     height: 20px;
     position: absolute;
     left: 0px;
