@@ -37,9 +37,11 @@ Shadowbox.init({
       <?php foreach ($categories as $category) { ?>
       <li>
           <a href="<?php echo $category['href']; ?>">
+              <div class="catimg_container">
               <?php if($category['thumb']) { ?>
                 <img src="<?php echo $category['thumb'];?>">
               <?php } ?>
+              </div><!-- end catimg_container-->
               <?php echo $category['name']; ?>
           </a>
       </li>
