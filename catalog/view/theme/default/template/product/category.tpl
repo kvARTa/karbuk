@@ -35,7 +35,7 @@ Shadowbox.init({
     <?php if (count($categories) <= 5) { ?>
     <ul>
       <?php foreach ($categories as $category) { ?>
-      <li class="<?php if($category['thumb']) { ?>catimglist<?php } ?>">
+      <li>
           <a href="<?php echo $category['href']; ?>">
 
               <?php if($category['thumb']) { ?>
