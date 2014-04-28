@@ -57,10 +57,15 @@ Shadowbox.init({
       <?php if (isset($categories[$i])) { ?>
       <li>
           <a class="" href="<?php echo $categories[$i]['href']; ?>">
-              <?php if($categories[$i]['thumb']) { ?>
-                <img src="<?php echo $categories[$i]['thumb'];?>">
-              <?php } ?>
-              <?php echo $categories[$i]['name']; ?>
+              <div class="catimg_container">
+                  <?php if($categories[$i]['thumb']) { ?>
+                    <img src="<?php echo $categories[$i]['thumb'];?>">
+                  <?php } ?>
+              </div>
+              <div class="catname_container">
+                  <div class="catname"><?php echo $categories[$i]['name']; ?></div>
+              </div><!-- end catname_container-->
+
           </a>
       </li>
       <?php } ?>
