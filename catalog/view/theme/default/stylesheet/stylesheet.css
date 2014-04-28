@@ -5079,13 +5079,65 @@ ul.manufacturers li a.active {
     background: url(../image/bg_navigation_03.png) repeat-x;
     text-decoration: none;
 }
+/***************************************************************/
 
-.category-list.catimglist{
-    position:relative;
+.category-list li.catimglist{
+    position: relative;
+    width:145px;
+    height: 135px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border:solid 1px #ef7a08;
 }
 
+.category-list li.catimglist .catimg_container{
+    width: 145px;
+    height: 135px;
+    overflow: hidden;
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 1;
+}
+
+.category-list li.catimglist .catimg_container img{
+    max-width: 145px;
+    height: auto;
+}
+
+.category-list li.catimglist .catname_container{
+    width: 145px;
+    height: 20px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 2;
+    background-color: #ef7a08;
+}
+
+.category-list li.catimglist .catname{
+    font-size: 13px;
+    color:#ffffff;
+    float: left;
+    padding-left: 10px;
+}
+
+.category-list li.catimglist .catname a{
+    font-size: 13px;
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.category-list li.catimglist .catname a:hover{
+    text-decoration: underline;
+}
+
+
+
+
+/*
 .category-list.catimglist ul{
-    margin: 0px 0px 0px 15px;
+    margin: 0px 15px 0px 0px;
     padding: 0;
     list-style:none;
     width: 23%;

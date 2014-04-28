@@ -31,11 +31,11 @@ Shadowbox.init({
 
   <?php if ($categories) { ?>
     <?php //print_r($categories);?>
-  <div class="category-list <?php if($category['thumb']) { ?>catimglist<?php } ?>">
+  <div class="category-list>
     <?php if (count($categories) <= 5) { ?>
     <ul>
       <?php foreach ($categories as $category) { ?>
-      <li>
+      <li class="<?php if($category['thumb']) { ?>catimglist<?php } ?>">
           <a href="<?php echo $category['href']; ?>">
 
               <?php if($category['thumb']) { ?>
