@@ -5100,6 +5100,8 @@ ul.manufacturers li a.active {
     width:175px;
     height: 165px;
     overflow: hidden;
+    margin-bottom: 20px;
+    border:solid 1px ##ef7a08;
 }
 
 .category-list.catimglist ul li .catimg_container{
