@@ -42,7 +42,9 @@ Shadowbox.init({
                 <img src="<?php echo $category['thumb'];?>">
               <?php } ?>
               </div><!-- end catimg_container-->
+              <div class="catname_container">
               <?php echo $category['name']; ?>
+              </div><!-- end catname_container-->
           </a>
       </li>
       <?php } ?>
