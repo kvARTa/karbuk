@@ -5080,5 +5080,9 @@ ul.manufacturers li a.active {
     text-decoration: none;
 }
 
-.vova{}
+.category-list.catimglist ul{
+    margin: 0;
+    padding: 0
+    list-style:none;
+}
 
