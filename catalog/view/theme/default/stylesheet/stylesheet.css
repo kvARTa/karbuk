@@ -5080,6 +5080,10 @@ ul.manufacturers li a.active {
     text-decoration: none;
 }
 
+.category-list.catimglist{
+    position:relative;
+}
+
 .category-list.catimglist ul{
     margin: 0;
     padding: 0;
