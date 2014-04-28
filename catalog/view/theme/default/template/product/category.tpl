@@ -58,7 +58,7 @@ Shadowbox.init({
       <?php for (; $i < $j; $i++) { ?>
       <?php if (isset($categories[$i])) { ?>
       <li class="<?php if($categories[$i]['thumb']) { ?>catimglist<?php } ?>">
-          <a class="" href="<?php echo $categories[$i]['href']; ?>">
+          <a class="vvv" href="<?php echo $categories[$i]['href']; ?>">
               <div class="catimg_container">
                   <?php if($categories[$i]['thumb']) { ?>
                     <img src="<?php echo $categories[$i]['thumb'];?>">
