@@ -43,7 +43,7 @@ Shadowbox.init({
               <?php } ?>
               </div><!-- end catimg_container-->
               <div class="catname_container">
-                <div class="catname"><?php echo $category['name']; ?></div>
+                    <div class="catname"><?php echo $category['name']; ?></div>
               </div><!-- end catname_container-->
           </a>
       </li>
