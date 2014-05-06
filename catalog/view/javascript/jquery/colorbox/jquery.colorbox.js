@@ -628,7 +628,7 @@
                 }
             }
             
-            $title.html(settings.title).add($loaded).show();
+            //$title.html(settings.title).add($loaded).show();
             
             if (total > 1) { // handle grouping
                 if (typeof settings.current === "string") {
