@@ -35,7 +35,7 @@
         #cboxLoadingOverlay{background:url(images/loading_background.png) no-repeat center center;}
         #cboxLoadingGraphic{background:url(images/loading.gif) no-repeat center center;}
 
-        #cboxTitle{position:absolute; bottom:-27px; left:135px; text-align:center; width:340px; font-weight:bold; color:#7C7C7C; height:20px; overflow: hidden;}
+        #cboxTitle{position:absolute; bottom:-27px; left:135px; text-align:left; width:340px; font-weight:bold; color:#7C7C7C; height:20px; overflow: hidden;}
 
         #cboxCurrent{position:absolute; bottom:-25px; left:58px; font-weight:bold; color:#7C7C7C;}
         
