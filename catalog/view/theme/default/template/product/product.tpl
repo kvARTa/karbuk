@@ -400,7 +400,7 @@ function animBoxShadow(product_id, self){
 <script type="text/javascript">
     $(document).ready(function() {
         $('table.attribute tr:odd').addClass('odd');
-        $('table.attribute tr:odd').addClass('even');
+        $('table.attribute tr:even').addClass('even');
     });
 </script>
 
