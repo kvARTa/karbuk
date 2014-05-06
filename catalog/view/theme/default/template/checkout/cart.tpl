@@ -188,7 +188,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $("input.csvselt").click(function(){
+        $("input.csvsel").click(function(){
             $("input.csvsubmit").removeAttr('disabled');
         });
     })
