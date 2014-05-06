@@ -191,7 +191,7 @@
       <div class="left"></div>
       
       <div class="center">
-     		<a href="/index.php?route=information/information&information_id=10" id="callback" >Скачать каталог товаров “Карбук”</a>
+     		<a href="http://karbuk.ru/catalog.html" id="callback" >Скачать каталог товаров “Карбук”</a>
       </div>
   </div><!-- end line 3-->
   
