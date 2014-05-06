@@ -187,6 +187,12 @@
         </form>
         </div><!-- end uploadfile-->
         </div>
+
+        <div class="right">
+                <a href="/csv_example/cart.csv" class="primer_faila">Скачать пример</a>
+        </div><!-- end right -->
+
+
   </div><!-- end line2-->
 
 <script type="text/javascript">
