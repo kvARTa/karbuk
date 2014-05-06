@@ -167,7 +167,7 @@
 		settings.rel = settings.rel || element.rel || 'nofollow';
 		settings.href = settings.href || $(element).attr('href');
 		settings.title = settings.title || element.title;
-        settings.title = settings.title.substr(0, 40) + "...";
+        settings.title = settings.title.substr(0, 50) + " ...";
         
         if (typeof settings.href === "string") {
             settings.href = $.trim(settings.href);
