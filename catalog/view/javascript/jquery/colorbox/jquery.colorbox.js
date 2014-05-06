@@ -304,7 +304,7 @@
 			$content = $tag(div, "Content").append(
 				$loaded = $tag(div, "LoadedContent", 'width:0; height:0; overflow:hidden'),
 				$loadingOverlay = $tag(div, "LoadingOverlay").add($tag(div, "LoadingGraphic")),
-				$title = $tag(div, "Title testt"),
+				$title = $tag(div, "Title"),
 				$current = $tag(div, "Current"),
 				$next = $tag(div, "Next"),
 				$prev = $tag(div, "Previous"),
