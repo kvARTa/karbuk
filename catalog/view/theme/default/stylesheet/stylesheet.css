@@ -3991,9 +3991,11 @@ a.button:hover, input.button:hover:hover:hover {
 
 .cart-info thead .status {
     text-align: center;
+    display: none;
 }
 
 .cart-info .statuss {
+    display: none;
     color: #009036;
     text-align: center;
     min-width: 80px;
