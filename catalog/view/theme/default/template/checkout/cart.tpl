@@ -179,12 +179,20 @@
 	  	<form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
                     
                     <input name="formcsv" type="hidden" value="1">
-                    <input name="csv" type="file" value="">&nbsp;<input type="submit" value="Загрузить">
+                    <input class="csvsel" name="csv" type="file" value="">&nbsp;<input class="csvsubmit" type="submit" value="Загрузить" disabled="disabled">
 					<input name="flaginfocsv" id="flag-csv-result" type="hidden" value="0">
         </form>
         </div><!-- end uploadfile-->
         </div>
   </div><!-- end line2-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("input.csvselt").click(function(){
+            $("input.csvsubmit").removeAttr('disabled');
+        });
+    })
+</script>
         
   <div class="line3">
 
