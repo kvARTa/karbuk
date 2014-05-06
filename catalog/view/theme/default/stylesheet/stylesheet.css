@@ -3348,6 +3348,14 @@ a.button:hover, input.button:hover:hover:hover {
 
 }
 
+.attribute tr.odd td{
+    background-color: #dfdfdf;
+}
+
+.attribute tr:hover td{
+    background-color: #dddddd;
+}
+
 .attribute tr td:first-child {
     color: #000000;
     font-weight: bold;
