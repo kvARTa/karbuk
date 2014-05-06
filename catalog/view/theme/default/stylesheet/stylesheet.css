@@ -4260,6 +4260,21 @@ a.button:hover, input.button:hover:hover:hover {
 
 }
 
+.line2 .center{
+    float: left;
+}
+
+.line2 .right {
+    margin-left: 20px;
+    height: 27px;
+    width: 16px;
+    background: url(../image/ico_excel.png) 0 0 no-repeat;
+    float: left;
+    padding: 0 0 0 17px;
+
+}
+
+
 .line3 .left {
 
     height: 27px;
