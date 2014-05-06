@@ -196,7 +196,7 @@ $(document).ready(function()
     <div id="header_up_left">
   <?php if ($this->customer->isLogged()) {
   ?>
-  <div style="position: absolute; top: 127px; ">
+  <div style="position: absolute; top: 133px; ">
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="index.php?route=account/wishlist">
   Избранные товары</a>
