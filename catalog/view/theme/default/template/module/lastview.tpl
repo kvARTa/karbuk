@@ -120,7 +120,7 @@ if (isset($products) && count($products)) { ?>
     height: 74px;
     width: 155px;
     border-bottom: 1px solid #E5E5E5;
-    margin-bottom: 10px;}
+    margin: 10px 0px;}
 
 </style>
 <?php endif ;?>
