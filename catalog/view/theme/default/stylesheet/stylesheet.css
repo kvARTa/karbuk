@@ -1472,11 +1472,9 @@ a.button:hover, input.button:hover:hover:hover {
 }
 
 .htabs {
-
+    width: 750px;
     height: 32px;
-
     line-height: 16px;
-
     border-bottom: 1px solid #DDDDDD;
 
 }
