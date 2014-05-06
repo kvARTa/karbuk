@@ -105,7 +105,7 @@ if (isset($products) && count($products)) { ?>
 </div>
 <?php } ?>
 
-
+<?php echo $j; ?>
 <script type="text/javascript">
 
 jQuery(document).ready(function() {
