@@ -105,7 +105,7 @@ if (isset($products) && count($products)) { ?>
 </div>
 <?php } ?>
 
-<? if ($j<'4') :?>
+<? if ($j=<'4') :?>
 <style>
 #mycarousel{
     overflow: hidden;
