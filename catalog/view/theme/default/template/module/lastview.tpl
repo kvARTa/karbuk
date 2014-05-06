@@ -116,7 +116,7 @@ if (isset($products) && count($products)) { ?>
 </style>
 <?php endif ;?>
 
-<? if ($j>'4') :?>
+<? if ($j=='4') :?>
 <script type="text/javascript">
 
 jQuery(document).ready(function() {
