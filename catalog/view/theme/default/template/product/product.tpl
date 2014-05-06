@@ -250,16 +250,11 @@ function animBoxShadow(product_id, self){
   <div id="tab-attribute" class="tab-content">
     <table class="attribute">
       <?php foreach ($attribute_groups as $attribute_group) { ?>
-      <thead>
-        <tr>
-          <td colspan="2"><?php echo $attribute_group['name']; ?></td>
-        </tr>
-      </thead>
       <tbody>
         <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
         <tr>
-          <td><?php echo $attribute['name']; ?></td>
-          <td><?php echo $attribute['text']; ?></td>
+          <td class="tech_fc"><?php echo $attribute['name']; ?></td>
+          <td class="tech_sc"><?php echo $attribute['text']; ?></td>
         </tr>
         <?php } ?>
       </tbody>
