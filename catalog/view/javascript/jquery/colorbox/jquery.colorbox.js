@@ -167,6 +167,7 @@
 		settings.rel = settings.rel || element.rel || 'nofollow';
 		settings.href = settings.href || $(element).attr('href');
 		settings.title = settings.title || element.title;
+        settings.title = settings.title.substr(2, 7);
         
         if (typeof settings.href === "string") {
             settings.href = $.trim(settings.href);
@@ -628,7 +629,7 @@
                 }
             }
             
-            //$title.html(settings.title).add($loaded).show();
+            $title.html(settings.title).add($loaded).show();
             
             if (total > 1) { // handle grouping
                 if (typeof settings.current === "string") {
