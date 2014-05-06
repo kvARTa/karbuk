@@ -3353,7 +3353,7 @@ a.button:hover, input.button:hover:hover:hover {
 }
 
 .attribute tr:hover td{
-    background-color: #dddddd;
+    background-color: #e0f3ff;
 }
 
 .attribute tr td:first-child {
