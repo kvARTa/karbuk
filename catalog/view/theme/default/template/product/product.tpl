@@ -395,6 +395,15 @@ function animBoxShadow(product_id, self){
   </div>
   <?php } ?> </div><?php echo $content_bottom; ?></div>
 
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('table.attribute tr:odd').addClass('odd');
+        $('table.attribute tr:odd').addClass('even');
+    });
+</script>
+
 <script type="text/javascript"><!--
 $('.colorbox').colorbox({
 	overlayClose: true,
