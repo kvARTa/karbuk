@@ -111,8 +111,13 @@ if (isset($products) && count($products)) { ?>
     overflow: hidden;
     padding: 0px;
     position: relative;
-    margin: 0;
-}
+    margin: 0;}
+
+
+#mycarousel li{
+float: left;
+list-style: none outside none;}
+
 </style>
 <?php endif ;?>
 
