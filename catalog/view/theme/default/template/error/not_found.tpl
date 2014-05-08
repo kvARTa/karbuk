@@ -72,6 +72,23 @@
 
     </div><!-- end line2-->
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("input.csvsel").click(function(){
+                $("input.csvsubmit").removeAttr('disabled');
+            });
+        })
+    </script>
+
+    <div class="line3">
+
+        <div class="left"></div>
+
+        <div class="center">
+            <a href="http://karbuk.ru/catalog.html" id="callback" >Скачать каталог товаров “Карбук”</a>
+        </div>
+    </div><!-- end line 3-->
+
 
     
   </div><!-- end price cart -->
