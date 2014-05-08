@@ -238,7 +238,7 @@ class ControllerProductCategory extends Controller
 			$results = $this->model_catalog_product->getProducts($data);
 
 			foreach ($results as $result) {
-                if (!file_exists(DIR_IMAGE . $result['image'])) {
+                if ($this->config->get('config_product_no_image') && !file_exists(DIR_IMAGE . $result['image'])) {
                     continue;
                 }
 
