@@ -48,10 +48,37 @@
 
 	<div class="price cart">
 
+        <div class="line2">
+
+            <div class="left"></div>
+
+            <div class="center">
+                <a class="filecart" style="float:left">Загрузить корзину из файла</a>
+
+                <div id="uploadfile" style="display:none; float:left; margin-left:10px;>
+	  	<form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
+
+                <input name="formcsv" type="hidden" value="1">
+                <input class="csvsel" name="csv" type="file" value="">&nbsp;<input class="csvsubmit" type="submit" value="Загрузить" disabled="disabled">
+                <input name="flaginfocsv" id="flag-csv-result" type="hidden" value="0">
+                </form>
+            </div><!-- end uploadfile-->
+        </div>
+
+        <div class="right">
+            <a href="/csv_example/cart.csv" class="primer_faila">Скачать пример</a>
+        </div><!-- end right -->
+
+
+    </div><!-- end line2-->
+
 
     
   </div><!-- end price cart -->
-  <? } ?>
+
+
+
+    <? } ?>
   <div class="buttons">
     <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
   </div>
