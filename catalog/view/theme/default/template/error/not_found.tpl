@@ -16,7 +16,7 @@
 	<div class="cart-info">
 	<table  border="0" class="tovar_in_cart_tb">
 	 <tr>
-		<td class="tovar_in_cart_tb_left"> 
+		<td class="tovar_in_cart_tb_left quick_kod_title">
 		  Быстрое добавление по коду
 		</td>
 		<td class="tovar_in_cart_tb_right" valign="top"> 
