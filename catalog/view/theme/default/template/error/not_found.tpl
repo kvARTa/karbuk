@@ -46,7 +46,7 @@
 
 
 
-	<div class="price cart">
+	<div class="price cart emptycart">
 
         <div class="line2">
 
