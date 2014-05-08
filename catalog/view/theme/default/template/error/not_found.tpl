@@ -34,20 +34,66 @@
 	</table>
 	</div>
 
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("a.filecart").click(function(){
+                $("#uploadfile").show();
+            });
+        })
+    </script>
+
+
+
+
 	<div class="price cart" >
 
-		<div class="line2">
 
-		  <div class="left">
-		 </div>
-		<div class="center">
-		 <a href="#" >Загрузить корзину из файла</a>
-		 <form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
-						<input name="formcsv" type="hidden" value="1">
-						<input name="filecsv" type="file" value="">&nbsp;<input type="submit" name="submit" value="Загрузить">
-						<input name="flaginfocsv" id="flag-csv-result" type="hidden" value="0">
-		</form>
-		</div>
+
+        <div class="line2">
+
+            <div class="left"></div>
+
+            <div class="center">
+                <a class="filecart" style="float:left">Загрузить корзину из файла</a>
+
+                <div id="uploadfile" style="display:none; float:left; margin-left:10px;>
+	  	<form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
+
+                <input name="formcsv" type="hidden" value="1">
+                <input class="csvsel" name="csv" type="file" value="">&nbsp;<input class="csvsubmit" type="submit" value="Загрузить" disabled="disabled">
+                <input name="flaginfocsv" id="flag-csv-result" type="hidden" value="0">
+                </form>
+            </div><!-- end uploadfile-->
+        </div>
+
+        <div class="right">
+            <a href="/csv_example/cart.csv" class="primer_faila">Скачать пример</a>
+        </div><!-- end right -->
+
+
+    </div><!-- end line2-->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("input.csvsel").click(function(){
+                $("input.csvsubmit").removeAttr('disabled');
+            });
+        })
+    </script>
+
+    <div class="line3">
+
+        <div class="left"></div>
+
+        <div class="center">
+            <a href="http://karbuk.ru/catalog.html" id="callback" >Скачать каталог товаров “Карбук”</a>
+        </div>
+    </div><!-- end line 3-->
+
+
+
+
 	</div>
     
   </div>
