@@ -195,10 +195,21 @@ class ControllerProductCategory extends Controller
 
                 /* Картинки подкатегорий, только если есть */
                 if ($result['image']) {
-                    $image = $this->model_tool_image->resize($result['image'], 145, 115,false);
+                    $image = $this->model_tool_image->resize($result['image'], 145, 115);
                 } else {
                     $image = null;
                 }
+
+                /*
+                 * $cat_img = DIR_IMAGE . 'category_pictures/' . $result['category_id'] . '.jpg';
+                //echo $cat_img;
+                if (file_exists($cat_img)) {
+                    $image = $this->model_tool_image->resize($cat_img, 145, 115);
+                } else {
+                    $image = null;
+                }
+
+                 * */
 
 				$product_total = $this->model_catalog_product->getTotalProducts($data);
 
@@ -227,6 +238,10 @@ class ControllerProductCategory extends Controller
 			$results = $this->model_catalog_product->getProducts($data);
 
 			foreach ($results as $result) {
+                if ($this->config->get('config_product_no_image') && !file_exists(DIR_IMAGE . $result['image'])) {
+                    continue;
+                }
+
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
 				} else {
