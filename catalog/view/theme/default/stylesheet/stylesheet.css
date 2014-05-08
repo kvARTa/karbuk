@@ -4205,13 +4205,16 @@ a.button:hover, input.button:hover:hover:hover {
 }
 
 .price.cart {
+     height: 97px;
+     background: url(../image/bg_price_cart_11.png) 0 0 repeat-x;
+     padding: 0 18px 0 18px;
+ }
 
-    height: 97px;
 
+.price.cart.emptycart {
+    height: 57px;
     background: url(../image/bg_price_cart_11.png) 0 0 repeat-x;
-
     padding: 0 18px 0 18px;
-
 }
 
 .line1, .line2, .line3 {
