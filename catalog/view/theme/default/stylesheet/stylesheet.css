@@ -2298,7 +2298,8 @@ a.button:hover, input.button:hover:hover:hover {
 
     min-height: 212px;
 
-    background: url(../image/bg_hover_list_04.png) 0 bottom repeat-x;
+    background: url(../image/bg_hover_list_04.png) 0 bottom repeat-y;
+    background-position: right top;
 
 }
 
