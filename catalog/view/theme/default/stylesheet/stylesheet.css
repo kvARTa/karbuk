@@ -2298,8 +2298,7 @@ a.button:hover, input.button:hover:hover:hover {
 
     min-height: 212px;
 
-    background: url(../image/bg_hover_list_04.png) 0 bottom repeat-y;
-    background-position: right top;
+
 
 }
 
@@ -2314,6 +2313,15 @@ a.button:hover, input.button:hover:hover:hover {
     border: 0px solid #333;
 
 }
+
+
+.product-list > div:hover .up{
+    background: url(../image/bg_hover_list_04.png) 0 bottom repeat-y;
+    background-position: right top;
+}
+
+
+
 
 .product-list .up .left {
 
