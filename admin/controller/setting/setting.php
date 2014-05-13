@@ -492,6 +492,13 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$this->data['config_product_count'] = $this->config->get('config_product_count');
 		}
+        //Отключить товары без картинок
+        if (isset($this->request->post['config_product_no_image'])) {
+            $this->data['config_product_no_image'] = $this->request->post['config_product_no_image'];
+        } else {
+            $this->data['config_product_no_image'] = $this->config->get('config_product_no_image');
+        }
+        //Отключить товары без картинок
 				
 		if (isset($this->request->post['config_review_status'])) {
 			$this->data['config_review_status'] = $this->request->post['config_review_status'];
