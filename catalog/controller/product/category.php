@@ -194,22 +194,22 @@ class ControllerProductCategory extends Controller
 				);
 
                 /* Картинки подкатегорий, только если есть */
-                if ($result['image']) {
-                    $image = $this->model_tool_image->resize($result['image'], 145, 115);
+               /* if ($result['image']) {
+                    $image = $this->model_tool_image->resize($result['image'], 200, 135, false);
                 } else {
                     $image = null;
-                }
+                }*/
 
-                /*
-                 * $cat_img = DIR_IMAGE . 'category_pictures/' . $result['category_id'] . '.jpg';
-                //echo $cat_img;
+                $dir_cat_img = 'category_images/';
+                $cat_img = DIR_IMAGE . $dir_cat_img . $result['category_id'] . '.jpg';
+                //echo $cat_img.'<br>';
                 if (file_exists($cat_img)) {
-                    $image = $this->model_tool_image->resize($cat_img, 145, 115);
+                    $image = $this->model_tool_image->resize($dir_cat_img . $result['category_id'] . '.jpg', 165, 135, false);
                 } else {
                     $image = null;
                 }
 
-                 * */
+
 
 				$product_total = $this->model_catalog_product->getTotalProducts($data);
 
