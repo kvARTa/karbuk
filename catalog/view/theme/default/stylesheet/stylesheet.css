@@ -2294,11 +2294,11 @@ a.button:hover, input.button:hover:hover:hover {
 
     border-radius: 2px 2px 2px 2px;
 
-    border: 1px solid #c31e24;
+    border: solid 1px #c31e24;
 
     min-height: 212px;
 
-    background: url(../image/bg_hover_list_03.png) 0 bottom repeat-x;
+    background: url(../image/bg_hover_list_04.png) 0 bottom repeat-x;
 
 }
 
