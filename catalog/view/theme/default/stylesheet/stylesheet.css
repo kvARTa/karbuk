@@ -297,6 +297,10 @@ label {
     height: 20px;
     line-height: 20px;
 }
+.link-logout {
+    position: relative;
+    z-index: 1;
+}
 
 #container_up a {
 
