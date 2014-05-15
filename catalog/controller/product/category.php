@@ -138,6 +138,15 @@ class ControllerProductCategory extends Controller
 				$this->data['thumb'] = '';
 			}
 
+            $dir_cat_big_img = 'images_big/';
+            $cat_big_img = DIR_IMAGE . $dir_cat_big_img . $category_id . '.jpg';
+            //echo $cat_img.'<br>';
+            if (file_exists($cat_big_img)) {
+                $this->data['big_image'] = $this->model_tool_image->resize($dir_cat_big_img . $category_id . '.jpg', 771, 250, false);
+            } else {
+                $this->data['big_image'] = null;
+            }
+
 			$this->data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$this->data['compare'] = $this->url->link('product/compare');
 

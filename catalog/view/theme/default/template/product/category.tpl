@@ -29,6 +29,12 @@ Shadowbox.init({
   </div>
   <h1><?php echo $heading_title; ?></h1>
 
+    <?php if($big_image) { ?>
+        <div class="big_image">
+            <img src="<?php echo $big_image; ?>"/>
+        </div>
+    <?php } ?>
+
   <?php if ($categories) { ?>
     <?php //print_r($categories);?>
   <div class="category-list">
