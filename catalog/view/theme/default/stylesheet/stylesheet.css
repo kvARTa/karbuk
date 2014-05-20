@@ -1686,6 +1686,8 @@ a.button:hover, input.button:hover:hover:hover {
 
 #tab-similar .box-product > div .name_price{
     min-height: 100px;
+    display: table-cell;
+    vertical-align: bottom;
 }
 
 .box-product > .four {
