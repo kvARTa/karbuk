@@ -3377,7 +3377,7 @@ a.button:hover, input.button:hover:hover:hover {
 
 .attribute td {
     height:11px;
-    padding: 7px;
+    padding: 3px 7px;
     color: #4D4D4D;
     text-align: left;
     vertical-align: top;
