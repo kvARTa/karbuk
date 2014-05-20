@@ -1684,6 +1684,10 @@ a.button:hover, input.button:hover:hover:hover {
     width: 168px;
 }
 
+#tab-similar .box-product > div .name_price{
+    min-height: 100px;
+}
+
 .box-product > .four {
 
     border-right: 0px
