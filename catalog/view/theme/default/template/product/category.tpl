@@ -37,7 +37,7 @@ Shadowbox.init({
 
   <?php if ($categories) { ?>
     <?php //print_r($categories);?>
-  <div class="category-list"><!--
+  <div class="category-list">
     <?php if (count($categories) <= 5) { ?>
     <ul>
       <?php foreach ($categories as $category) { ?>
@@ -47,17 +47,17 @@ Shadowbox.init({
               <?php if($category['thumb']) { ?>
                 <div class="catimg_container">
                     <img src="<?php echo $category['thumb'];?>">
-                </div>
+                </div><!-- end catimg_container-->
               <?php } ?>
 
               <div class="catname_container">
                     <div class="catname"><?php echo $category['name']; ?></div>
-              </div>
+              </div><!-- end catname_container-->
           </a>
       </li>
       <?php } ?>
     </ul>
-    <?php } else { ?>-->
+    <?php } else { ?>
     <?php for ($i = 0; $i < count($categories);) { ?>
     <ul>
       <?php $j = $i + ceil(count($categories) / 4); ?>
@@ -80,7 +80,7 @@ Shadowbox.init({
       <?php } ?>
     </ul>
     <?php } ?>
-<!--    <?php } ?> -->
+    <?php } ?>
   </div>
   <?php } ?>
 
