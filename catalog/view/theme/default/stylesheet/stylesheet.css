@@ -1685,9 +1685,13 @@ a.button:hover, input.button:hover:hover:hover {
 }
 
 #tab-similar .box-product > div .name_price{
-    min-height: 100px;
+    height: 100px;
     display: table-cell;
     vertical-align: bottom;
+}
+
+#tab-similar .box-product > div .cart{
+    margin-top: 50px;
 }
 
 .box-product > .four {
