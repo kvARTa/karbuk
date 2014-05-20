@@ -210,7 +210,7 @@ class ControllerProductCategory extends Controller
                 }*/
 
                 $dir_cat_img = 'category_images/';
-                $cat_img = DIR_IMAGE . $dir_cat_img . $result['category_id'] . '.jpg';
+                $cat_img = DIR_IMAGE . $dir_cat_img . $result['old_id'] . '.jpg';
                 //echo $cat_img.'<br>';
                 if (file_exists($cat_img)) {
                     $image = $this->model_tool_image->resize($dir_cat_img . $result['category_id'] . '.jpg', 145, 135, false);
