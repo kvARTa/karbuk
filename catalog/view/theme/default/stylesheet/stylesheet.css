@@ -1665,7 +1665,9 @@ a.button:hover, input.button:hover:hover:hover {
 
     vertical-align: top;
 
-    padding: 6px 6px 0 6px;
+    /*padding: 6px 6px 0 6px;*/
+
+    padding: 25px 6px 0 6px;
 
     border-right: 1px solid #DBDEE1;
 
@@ -1863,9 +1865,7 @@ a.button:hover, input.button:hover:hover:hover {
 }
 
 .name_price {
-
-    min-height: 100px;
-
+    /*min-height: 100px;*/
 }
 
 .box-product .name a, .featured .name a {
