@@ -154,6 +154,12 @@ class ModelVovImportsImport extends Model {
                     $type = '';
                 }
 
+                if (isset($row['COLOR'])){
+                    $color = trim(iconv('WINDOWS-1251', 'UTF-8', $row['TYPE']));;
+                }else{
+                    $color = '';
+                }
+
 
 			    $sql_add = '';
 			    for ($j=1; $j<=6; $j++) {
@@ -163,7 +169,7 @@ class ModelVovImportsImport extends Model {
 			    }
 
 
-			    $this->db->query("INSERT INTO vov_export1 SET idn='".(int)$id."', isparent='".(int)$isparent."', parent='".(int)$parent."', title='".$this->db->escape($title)."', price='".(float)$price."', baseprice='".(float)$baseprice."', sp='".(int)$sp."', ssp='".(int)$ssp."', prod='".$this->db->escape($prod)."', article='".(int)$article."', komment='".$this->db->escape($komment)."', ordern='".(int)$ordern."', sklad='".(int)$sklad."', sklad_post='".(int)$sklad_post."', kratn='".(int)$kratn."', hit='".(int)$hit."', translit='" . $this->db->escape($translit) . "', type='" . $this->db->escape($type) . "', newn='".(int)$newn."'  ". $sql_add);
+			    $this->db->query("INSERT INTO vov_export1 SET idn='".(int)$id."', isparent='".(int)$isparent."', parent='".(int)$parent."', title='".$this->db->escape($title)."', price='".(float)$price."', baseprice='".(float)$baseprice."', sp='".(int)$sp."', ssp='".(int)$ssp."', prod='".$this->db->escape($prod)."', article='".(int)$article."', komment='".$this->db->escape($komment)."', ordern='".(int)$ordern."', sklad='".(int)$sklad."', sklad_post='".(int)$sklad_post."', kratn='".(int)$kratn."', hit='".(int)$hit."', translit='" . $this->db->escape($translit) . "', type='" . $this->db->escape($type) . "', color='" . $this->db->escape($color) . "', newn='".(int)$newn."'  ". $sql_add);
 			    
 			    
 			    for ($j=1; $j<=15; $j++) {
@@ -406,13 +412,13 @@ class ModelVovImportsImport extends Model {
 		);
 
         if(!$product_id) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "product SET type='" . $data['type'] . "', price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."', model='".$this->db->escape($data['article'])."' , status = '1', image='".$image."', manufacturer_id='".(int)$manufacturers_id."' , quantity='".(int)$quantity."', sort_order='".(int)$data['ordern']."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."',  date_modified = NOW(), date_available=NOW(), date_added = NOW(), old_id='".$data['idn']."'");
+            $this->db->query("INSERT INTO " . DB_PREFIX . "product SET color='" . $data['color'] . "', type='" . $data['type'] . "', price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."', model='".$this->db->escape($data['article'])."' , status = '1', image='".$image."', manufacturer_id='".(int)$manufacturers_id."' , quantity='".(int)$quantity."', sort_order='".(int)$data['ordern']."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."',  date_modified = NOW(), date_available=NOW(), date_added = NOW(), old_id='".$data['idn']."'");
             $product_id = $this->db->getLastId();
 
             $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($data['title']) . "', description='".$this->db->escape($data['komment'])."' ");
 
         } else {
-            $this->db->query("UPDATE " . DB_PREFIX . "product SET type='" . $data['type'] . "', price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."',  model='".$this->db->escape($data['article'])."' , image='".$image."' , kratn='".$data['kratn']."' , manufacturer_id='".(int)$manufacturers_id."' ,  quantity='".(int)$quantity."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."', sort_order='".(int)$data['ordern']."',  date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
+            $this->db->query("UPDATE " . DB_PREFIX . "product SET color='" . $data['type'] . "', color='" . $data['type'] . "', price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."',  model='".$this->db->escape($data['article'])."' , image='".$image."' , kratn='".$data['kratn']."' , manufacturer_id='".(int)$manufacturers_id."' ,  quantity='".(int)$quantity."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."', sort_order='".(int)$data['ordern']."',  date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
 
             $this->db->query("UPDATE " . DB_PREFIX . "product_description SET  name = '" . $this->db->escape($data['title']) . "' , description='".$this->db->escape($data['komment'])."' WHERE product_id = '" . (int)$product_id . "' AND language_id = '" . (int)$language_id . "'");
         }

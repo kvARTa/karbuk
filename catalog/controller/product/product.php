@@ -204,6 +204,10 @@ class ControllerProductProduct extends Controller {
 
 			$this->load->model('tool/image');
 
+            if ($product_info['type']){
+                $colors = $this->model_catalog_product->getProductColors($product_info['type']);
+            }
+
 			if ($product_info['image']) {
 				$this->data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
 			} else {

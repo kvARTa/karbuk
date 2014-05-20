@@ -39,8 +39,8 @@ Shadowbox.init({
     <?php //print_r($categories);?>
   <div class="category-list">
     <?php if (count($categories) <= 5) { ?>
-    <ul>
       <?php foreach ($categories as $category) { ?>
+      <ul>
       <li class="<?php if($category['thumb']) { ?>catimglist<?php } ?>">
           <a href="<?php echo $category['href']; ?>">
 
@@ -55,9 +55,9 @@ Shadowbox.init({
               </div><!-- end catname_container-->
           </a>
       </li>
-      <?php } ?>
     </ul>
-    <?php } else { ?>
+      <?php } ?>
+      <?php } else { ?>
     <?php for ($i = 0; $i < count($categories);) { ?>
     <ul>
       <?php $j = $i + ceil(count($categories) / 4); ?>
