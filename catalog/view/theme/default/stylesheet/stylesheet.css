@@ -5238,13 +5238,13 @@ ul.manufacturers li a.active {
 /************************************************************************************/
 .product-grid .image_colors_container{
     width: 240px;
-    height: 160px;
+    height: 165px;
     position: relative;
 }
 
 .product-grid .image_colors_container .product_colors{
     position: absolute;
-    bottom:3px;
+    bottom:10px;
     left:10px;
 }
 
