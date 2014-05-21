@@ -885,7 +885,7 @@ class ControllerCheckoutCart extends Controller {
 	}
 
 	public function loadCartCsv(){
-        if ($this->request->server['REQUEST_METHOD'] == 'POST' && $_FILES['filecsv']) {
+        if ($this->request->server['REQUEST_METHOD'] == 'POST' && isset($_FILES['filecsv'])) {
             $loadFile = '';
             $tmpDirName = 'tmp';
             $fileName = $_FILES['filecsv']['name'];
