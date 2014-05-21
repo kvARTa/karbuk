@@ -55,7 +55,7 @@
             <div class="center">
                 <a class="filecart" style="float:left">Загрузить корзину из файла</a>
 
-                <div id="uploadfile" style="display:none; float:left; margin-left:10px;>
+                <div id="uploadfile" style="display:none; float:left; margin-left:10px;">
 	  	<form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
 
                 <input name="formcsv" type="hidden" value="1">
