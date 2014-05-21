@@ -432,29 +432,46 @@ function display(view) {
 			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
 			html += '  <div class="description">' + $(element).find('.description').html() + '</div>';
 
+
+            html += '<div class="pl_bottom_block">';
+
+            html += '<div class="pl_bottom_block_lc">';
+
+
+            var price = $(element).find('.price').html();
+
+            if (price != null) {
+                html += '<div class="price">' + price  + '</div>';
+            }
+
+            var rating = $(element).find('.rating').html();
+
+            if (rating != null) {
+                html += '<div class="rating">' + rating + '</div>';
+            }
+
+            html += '  <div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
+            html += '  <div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';
+
+
+            html += '</div>';
+
+
+            html += '<div class="pl_bottom_block_rc">';
+
             var product_colors = $(element).find('.product_colors').html();
 
             if (product_colors != null) {
                 html += '<div class="product_colors">' + product_colors  + '</div>';
             }
 
-			var price = $(element).find('.price').html();
-
-			if (price != null) {
-				html += '<div class="price">' + price  + '</div>';
-			}
-
-			var rating = $(element).find('.rating').html();
-
-			if (rating != null) {
-				html += '<div class="rating">' + rating + '</div>';
-			}
-
-			html += '  <div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
-			html += '  <div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';
+            html += '</div>';
 
 
-			html += '</div></div>';
+
+
+
+			html += '</div></div></div>';
 
 				html += '<div class="dawn">';
 				html += '<div class="model">' + $(element).find('.model').html() + '</div>';

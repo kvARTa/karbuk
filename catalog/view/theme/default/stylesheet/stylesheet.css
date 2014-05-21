@@ -5182,13 +5182,13 @@ ul.manufacturers li a.active {
 }
 
 /************************************************/
-.product_colors ul{
+.product-list .product_colors ul{
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.product_colors ul li{
+.product-list .product_colors ul li{
     display:block;
     float: left;
     width: 35px;
@@ -5196,9 +5196,9 @@ ul.manufacturers li a.active {
     margin-left: 3px;
 }
 
-.product_colors ul li:first-child{margin-left:0px;}
+.product-list .product_colors ul li:first-child{margin-left:0px;}
 
-.product_colors ul li a img{
+.product-list .product_colors ul li a img{
     width: 35px;
     height: 35px;
     -webkit-border-radius: 5px;
@@ -5208,7 +5208,7 @@ ul.manufacturers li a.active {
     filter:alpha(opacity=70);
 }
 
-.product_colors ul li a:hover img, .product_colors ul li a.current img{
+.product-list .product_colors ul li a:hover img, .product_colors ul li a.current img{
     opacity:1;
     filter:alpha(opacity=100);
 }
