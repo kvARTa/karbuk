@@ -5188,6 +5188,10 @@ ul.manufacturers li a.active {
     list-style: none;
 }
 
+.product-list .product_colors{
+    margin-top: 5px;
+}
+
 .product-list .product_colors ul li{
     display:block;
     float: left;
