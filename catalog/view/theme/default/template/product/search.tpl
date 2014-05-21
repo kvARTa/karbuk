@@ -410,124 +410,153 @@ function addQtyToCart(product_id, self){
 
 
 function display(view) {
-	
-	
-	if (view == 'list') {
-		$('.product-grid').attr('class', 'product-list');
-		
-		$('.product-list > div').each(function(index, element) {
-					
-			html = '<div class="up">';
-			html += '<div class="left">';
-			
-			var image = $(element).find('.image').html();
-			
-			if (image != null) { 
-				html += '<div class="image">' + image + '</div>';
-			}
-			
-			html += '</div>';
-					
-			html += '<div class="right">';
-			html += '  <div class="name">' + $(element).find('.name').html() + '</div>';
-			
-			
-			
-			html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
-			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
-			html += '  <div class="description">' + $(element).find('.description').html() + '</div>';
+
+
+    if (view == 'list') {
+        $('.product-grid').attr('class', 'product-list');
+
+        $('.product-list > div').each(function(index, element) {
+
+            html = '<div class="up">';
+            html += '<div class="left">';
+
+            var image = $(element).find('.image').html();
+
+            if (image != null) {
+                html += '<div class="image">' + image + '</div>';
+            }
+
+            html += '</div>';
+
+            html += '<div class="right">';
+            html += '  <div class="name">' + $(element).find('.name').html() + '</div>';
+
+
+
+            html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
+            html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
+            html += '  <div class="description">' + $(element).find('.description').html() + '</div>';
+
+
+
+
+
+            var price = $(element).find('.price').html();
+
+            if (price != null) {
+                html += '<div class="price">' + price  + '</div>';
+            }
+
+            var rating = $(element).find('.rating').html();
+
+            if (rating != null) {
+                html += '<div class="rating">' + rating + '</div>';
+            }
+
+
+            html += '<div class="pl_bottom_block">';
+
+            html += '<div class="pl_bottom_block_lc">';
+
+            html += '  <div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
+            html += '  <div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';
+
+
+            html += '</div>';
+
+
+            html += '<div class="pl_bottom_block_rc">';
 
             var product_colors = $(element).find('.product_colors').html();
 
             if (product_colors != null) {
                 html += '<div class="product_colors">' + product_colors  + '</div>';
             }
-			
-			var price = $(element).find('.price').html();
-			
-			if (price != null) {
-				html += '<div class="price">' + price  + '</div>';
-			}
-			
-			var rating = $(element).find('.rating').html();
-			
-			if (rating != null) {
-				html += '<div class="rating">' + rating + '</div>';
-			}
-				
-       //dymm
-      html += '  <div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
-      html += '  <div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';  
-			//html += '  <div class="wishlist">' + $(element).find('.wishlist').html() + '</div>';
-			//html += '  <div class="compare">' + $(element).find('.compare').html() + '</div>';
-				
-				
-			html += '</div></div>';
-			
-				html += '<div class="dawn">';
-				html += '<div class="model">' + $(element).find('.model').html() + '</div>';
-			html += '  <div class="cart">' + $(element).find('.cart').html() + '</div>';
-			
-			html += '</div>';	
 
-						
-			$(element).html(html);
-		});		
-		
-		$('.display').html('<b class="display_text"><?php echo $text_display; ?></b> <div class="list active"><?php echo $text_list; ?></div> <a onclick="display(\'grid\');" class="setka" ><?php echo $text_grid; ?></a>');
-		
-		$.cookie('display', 'list'); 
-	} else {
-		$('.product-list').attr('class', 'product-grid');
-		
-		$('.product-grid > div').each(function(index, element) {
-			html = '';
-			
-			var image = $(element).find('.image').html();
-			
-			html += '<div class="name">' + $(element).find('.name').html() + '</div>';
-			
-			if (image != null) {
-				html += '<div class="image">' + image + '</div>';
-			}
-			
-			html += '<div class="model">' + $(element).find('.model').html() + '</div>';
-			html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
-			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
-			html += '<div class="description">' + $(element).find('.description').html() + '</div>';
+            html += '</div>';
+
+
+
+
+
+            html += '</div></div></div>';
+
+            html += '<div class="dawn">';
+            html += '<div class="model">' + $(element).find('.model').html() + '</div>';
+            if (price != null) {
+                html += '  <div class="cart">' + $(element).find('.cart').html() + '</div> <div style="float:right;color: #313131;min-height: 11px;padding: 0px 20px 20px;line-height: 32px;font-weight: bold;">'+$(element).find('.multiplicity').html()+'</div>';
+            }
+            html += '</div>';
+            html = html.replace("null", "");
+
+
+            $(element).html(html);
+        });
+
+        $('.display').html('<b class="display_text"><?php echo $text_display; ?></b> <div class="list active"><?php echo $text_list; ?></div> <a onclick="display(\'grid\');" class="setka" ><?php echo $text_grid; ?></a>');
+
+        $.cookie('display', 'list');
+    } else {
+        $('.product-list').attr('class', 'product-grid');
+
+        $('.product-grid > div').each(function(index, element) {
+            html = '';
+
+            var image = $(element).find('.image').html();
+
+            html += '<div class="name">' + $(element).find('.name').html() + '</div>';
+
+            html += '<div class="image_colors_container">';
+
+            if (image != null) {
+                html += '<div class="image">' + image + '</div>';
+            }
 
             var product_colors = $(element).find('.product_colors').html();
 
             if (product_colors != null) {
                 html += '<div class="product_colors">' + product_colors  + '</div>';
             }
-			
-			var price = $(element).find('.price').html();
-			
-			if (price != null) {
-				html += '<div class="price">' + price  + '</div>';
-			}
-			
-			var rating = $(element).find('.rating').html();
-			
-			if (rating != null) {
-				html += '<div class="rating">' + rating + '</div>';
-			}
-						
-			html += '<div class="cart">' + $(element).find('.cart').html() + '</div>';
-      //dymm
-      html += '  <div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
-      html += '  <div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';
-			//html += '<div class="wishlist">' + $(element).find('.wishlist').html() + '</div>';
-			//html += '<div class="compare">' + $(element).find('.compare').html() + '</div>';
-			
-			$(element).html(html);
-		});	
-					
-		$('.display').html('<b class="display_text"><?php echo $text_display; ?></b> <a onclick="display(\'list\');" class="list" ><?php echo $text_list; ?></a> <div class="setka active"> <?php echo $text_grid; ?></div>');
-		
-		$.cookie('display', 'grid');
-	}
+
+            html += '</div>';
+
+
+
+            html += '<div class="model">' + $(element).find('.model').html() + '</div>';
+            html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
+            html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
+            html += '<div class="description">' + $(element).find('.description').html() + '</div>';
+
+
+
+            var price = $(element).find('.price').html();
+
+            if (price != null) {
+                html += '<div class="price">' + price  + '</div>';
+            }
+
+            var rating = $(element).find('.rating').html();
+
+            if (rating != null) {
+                html += '<div class="rating">' + rating + '</div>';
+            }
+            if (price != null) {
+                html += '<div class="cart">' + $(element).find('.cart').html() + '</div>';
+            }
+            html += '<div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
+            html += '<div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';
+
+
+            html = html.replace('null', '');
+
+            $(element).html(html);
+
+        });
+
+        $('.display').html('<b class="display_text"><?php echo $text_display; ?></b> <a onclick="display(\'list\');" class="list" ><?php echo $text_list; ?></a> <div class="setka active"> <?php echo $text_grid; ?></div>');
+
+        $.cookie('display', 'grid');
+    }
 }
 
 view = $.cookie('display');
