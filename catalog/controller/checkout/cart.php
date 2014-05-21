@@ -885,26 +885,26 @@ class ControllerCheckoutCart extends Controller {
 	}
 
 	public function loadCartCsv(){
-		if (!empty($this->request->post['submit'])) {
-			$loadFile;
-			$tmpDirName = 'tmp';
-			$fileName = $_FILES['filecsv']['name'];
-				//$fileName = $this->reguest->files[]
-			if (!(move_uploaded_file($_FILES['filecsv']['tmp_name'], $tmpDirName . DIRECTORY_SEPARATOR . $fileName))) {
-					throw new Exception ('Произошла ошибка при копировании файла');
-			}
-			$loadFile = $tmpDirName . DIRECTORY_SEPARATOR . $fileName;
-			$csvData = (file($loadFile));
-			unlink($loadFile);
-			foreach ($csvData as $csvRow){
-				$csvRow = mb_convert_encoding($csvRow, "UTF-8", "windows-1251");
-				$csv = explode(';', $csvRow);
-				if (trim($csv[0]) != 'Артикул'){
-				$this->cart->add($csv[0], $csv[1]);
-				}
-			}	
-		}
-		header("Location: index.php?route=checkout/cart");
+        if ($this->request->server['REQUEST_METHOD'] == 'POST' && $_FILES['filecsv']) {
+            $loadFile = '';
+            $tmpDirName = 'tmp';
+            $fileName = $_FILES['filecsv']['name'];
+            if (!(move_uploaded_file($_FILES['filecsv']['tmp_name'], $tmpDirName . DIRECTORY_SEPARATOR . $fileName))) {
+                throw new Exception ('Произошла ошибка при копировании файла');
+            }
+            $loadFile = $tmpDirName . DIRECTORY_SEPARATOR . $fileName;
+            $csvData = (file($loadFile));
+            unlink($loadFile);
+            foreach ($csvData as $csvRow){
+                $csvRow = mb_convert_encoding($csvRow, "UTF-8", "windows-1251");
+                $csv = explode(';', $csvRow);
+                if (trim($csv[0]) != 'Артикул'){
+                    //echo $csv[0] .' ' . $csv[1];
+                    $this->cart->add($csv[0], $csv[1]);
+                }
+            }
+        }
+        header("Location: index.php?route=checkout/cart");
 		//$this->redirect($this->url->link('checkout/cart'));
 	}	
 }
