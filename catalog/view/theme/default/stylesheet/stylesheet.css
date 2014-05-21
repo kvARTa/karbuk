@@ -5283,16 +5283,16 @@ ul.manufacturers li a.active {
 .product-info .product_colors ul li{
     display:block;
     float: left;
-    width: 30px;
-    height: 30px;
-    margin-left: 3px;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
 }
 
 .product-info .product_colors ul li:first-child{margin-left:0px;}
 
 .product-info .product_colors ul li a img{
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
