@@ -223,7 +223,7 @@ Shadowbox.init({
           <ul>
               <?php foreach ($product['product_colors'] as $item) { ?>
               <li>
-                  <a <?php echo $item['current'] ? 'current' : '' ; ?> href="<?php echo $item['href']?>" title="<?php echo $item['color_title']?>">
+                  <a <?php echo $item['current'] ? 'class="current"' : '' ; ?> href="<?php echo $item['href']?>" title="<?php echo $item['color_title']?>">
                   <img src="<?php echo $item['color_img']?>"/>
                   </a>
               </li>

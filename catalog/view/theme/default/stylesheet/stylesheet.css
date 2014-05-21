@@ -5181,6 +5181,35 @@ ul.manufacturers li a.active {
     text-decoration: underline;
 }
 
+/************************************************/
+.product_colors ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.product_colors ul li{
+    display:block;
+    float: left;
+    width: 35px;
+    height: 35px;
+}
+
+.product_colors ul li a img{
+    width: 35px;
+    height: 35px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    opacity:0.8;
+    filter:alpha(opacity=80);
+}
+
+.product_colors ul li a:hover img, .product_colors ul li a.active img{
+    opacity:1;
+    filter:alpha(opacity=100);
+}
+
 
 
 
