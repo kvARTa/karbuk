@@ -66,7 +66,7 @@
         </div>
 
         <div class="right">
-            <a href="/csv_example/cart.csv" class="primer_faila">Скачать пример</a>
+            ( <a href="/csv_example/cart.csv" class="primer_faila">Скачать пример</a> )
         </div><!-- end right -->
 
 
