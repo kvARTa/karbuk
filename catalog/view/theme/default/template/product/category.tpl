@@ -501,20 +501,28 @@ function display(view) {
 
 			html += '<div class="name">' + $(element).find('.name').html() + '</div>';
 
+            html += '<div class="image_colors_container">';
+
 			if (image != null) {
 				html += '<div class="image">' + image + '</div>';
 			}
-
-			html += '<div class="model">' + $(element).find('.model').html() + '</div>';
-			html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
-			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
-			html += '<div class="description">' + $(element).find('.description').html() + '</div>';
 
             var product_colors = $(element).find('.product_colors').html();
 
             if (product_colors != null) {
                 html += '<div class="product_colors">' + product_colors  + '</div>';
             }
+
+            html += '</div>';
+
+
+
+			html += '<div class="model">' + $(element).find('.model').html() + '</div>';
+			html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
+			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
+			html += '<div class="description">' + $(element).find('.description').html() + '</div>';
+
+
 
 			var price = $(element).find('.price').html();
 
