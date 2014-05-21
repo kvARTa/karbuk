@@ -4303,7 +4303,7 @@ a.button:hover, input.button:hover:hover:hover {
     background-image: url(../image/ico_excel.png);
     background-position: left center;
     background-repeat: no-repeat;
-    padding-left: 17px;
+    padding: 3px 0px 3px 17px;
     height: 27px;
 }
 
