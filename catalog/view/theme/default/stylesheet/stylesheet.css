@@ -5309,7 +5309,6 @@ ul.manufacturers li a.active {
 .product-info .product_colors ul li a img:hover, .product-info .product_colors ul li a.current img{
     opacity:1;
     filter:alpha(opacity=100);
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 
