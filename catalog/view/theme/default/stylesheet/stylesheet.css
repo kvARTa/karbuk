@@ -5242,7 +5242,11 @@ ul.manufacturers li a.active {
     position: relative;
 }
 
-.product-grid .image_colors_container{}
+.product-grid .image_colors_container .product_colors{
+    position: absolute;
+    bottom:3px;
+    left:10px;
+}
 
 .product-grid .image_colors_container .product_colors ul li{
     display:block;
