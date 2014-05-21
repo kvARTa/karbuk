@@ -59,7 +59,7 @@
 	  	<form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
 
                 <input name="formcsv" type="hidden" value="1">
-                <input class="csvsel" name="csv" type="file" value="">&nbsp;<input class="csvsubmit" type="submit" value="Загрузить" disabled="disabled">
+                <input class="csvsel" name="filecsv" type="file" value="">&nbsp;<input class="csvsubmit" type="submit" value="Загрузить" disabled="disabled">
                 <input name="flaginfocsv" id="flag-csv-result" type="hidden" value="0">
                 </form>
             </div><!-- end uploadfile-->
