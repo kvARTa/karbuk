@@ -208,6 +208,19 @@ window.onload= function() {
         <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
         <?php } ?>
       </div>
+       <?php if($product['product_colors']) { ?>
+       <div class="product_colors">
+           <ul>
+               <?php foreach ($product['product_colors'] as $item) { ?>
+               <li>
+                   <a <?php echo $item['current'] ? 'current' : '' ; ?> href="<?php echo $item['href']?>" title="<?php echo $item['color_title']?>">
+                   <img src="<?php echo $item['color_img']?>"/>
+                   </a>
+               </li>
+               <?php } ?>
+           </ul>
+       </div>
+       <?php } ?>
       <?php } ?>
       <?php if ($product['rating']) { ?>
       <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
@@ -423,6 +436,12 @@ function display(view) {
 			html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
 			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
 			html += '  <div class="description">' + $(element).find('.description').html() + '</div>';
+
+            var product_colors = $(element).find('.product_colors').html();
+
+            if (product_colors != null) {
+                html += '<div class="product_colors">' + product_colors  + '</div>';
+            }
 			
 			var price = $(element).find('.price').html();
 			
@@ -476,6 +495,12 @@ function display(view) {
 			html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
 			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
 			html += '<div class="description">' + $(element).find('.description').html() + '</div>';
+
+            var product_colors = $(element).find('.product_colors').html();
+
+            if (product_colors != null) {
+                html += '<div class="product_colors">' + product_colors  + '</div>';
+            }
 			
 			var price = $(element).find('.price').html();
 			

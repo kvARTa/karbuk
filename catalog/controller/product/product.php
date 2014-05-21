@@ -204,9 +204,34 @@ class ControllerProductProduct extends Controller {
 
 			$this->load->model('tool/image');
 
+            $product_colors = array();
             if ($product_info['type']){
                 $colors = $this->model_catalog_product->getProductColors($product_info['type']);
+
+                if ($colors) {
+                    foreach ($colors as $item){
+                        $color_img = 'colors' . DIRECTORY_SEPARATOR . $item['color'] . '.jpg';
+                        //if (file_exists(DIR_IMAGE . $color_img)){
+
+                            if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+                                $color_img =  HTTPS_IMAGE . $color_img;
+                            } else {
+                                $color_img = HTTP_IMAGE . $color_img;
+                            }
+
+                            $product_colors[] = array(
+                                'product_id'  => $item['product_id'],
+                                'color_img'   => $color_img,
+                                'color_title' => $item['color'],
+                                'href'        => $this->url->link('product/product', 'product_id=' . $item['product_id']),
+                                'current'     => $this->request->get['product_id'] ==  $item['product_id'] ? true : false,
+                            );
+                       // }
+                    }
+
+                }
             }
+            $this->data['product_colors'] = $product_colors;
 
 			if ($product_info['image']) {
 				$this->data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));

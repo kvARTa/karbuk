@@ -298,6 +298,36 @@ class ControllerProductSearch extends Controller {
 			if(count($query->rows))
 				$parent2 = @$query->rows[0];
 			$path = (count($parent2)>0) ? $parent2['parent_id']."_".$parent["parent_id"]."_".$categ["category_id"] : $parent["parent_id"]."_".$categ["category_id"];
+
+            $product_colors = array();
+            if ($result['type']){
+                $colors = $this->model_catalog_product->getProductColors($result['type']);
+
+                if ($colors) {
+                    foreach ($colors as $item){
+                        $color_img = 'colors' . DIRECTORY_SEPARATOR . $item['color'] . '.jpg';
+                        //if (file_exists(DIR_IMAGE . $color_img)){
+
+                        if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+                            $color_img =  HTTPS_IMAGE . $color_img;
+                        } else {
+                            $color_img = HTTP_IMAGE . $color_img;
+                        }
+
+                        $product_colors[] = array(
+                            'product_id'  => $item['product_id'],
+                            'color_img'   => $color_img,
+                            'color_title' => $item['color'],
+                            'href'        => $this->url->link('product/product', 'product_id=' . $item['product_id']),
+                            'current'     => $result['product_id'] ==  $item['product_id'] ? true : false,
+                        );
+                        // }
+                    }
+
+                }
+            }
+
+
 				$this->data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'model' => $result['model'],
@@ -305,6 +335,7 @@ class ControllerProductSearch extends Controller {
 					'manufacturer' => $result['manufacturer'],
 					'multiplicity' => $result['multiplicity'],
 					'thumb'       => $image,
+                    'product_colors' => $product_colors,
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
 					'price'       => $price,

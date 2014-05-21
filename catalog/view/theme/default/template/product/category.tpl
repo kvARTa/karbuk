@@ -217,6 +217,21 @@ Shadowbox.init({
 
 
       <div class="description"><span style="color: #000"><?php echo $product['description']; ?></span></div>
+
+      <?php if($product['product_colors']) { ?>
+      <div class="product_colors">
+          <ul>
+              <?php foreach ($product['product_colors'] as $item) { ?>
+              <li>
+                  <a <?php echo $item['current'] ? 'current' : '' ; ?> href="<?php echo $item['href']?>" title="<?php echo $item['color_title']?>">
+                  <img src="<?php echo $item['color_img']?>"/>
+                  </a>
+              </li>
+              <?php } ?>
+          </ul>
+      </div>
+      <?php } ?>
+
       <?php if ($product['price']) { ?>
       <div class="price">
         <?php if (!$product['special']) { ?>
@@ -417,6 +432,12 @@ function display(view) {
 			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
 			html += '  <div class="description">' + $(element).find('.description').html() + '</div>';
 
+            var product_colors = $(element).find('.product_colors').html();
+
+            if (product_colors != null) {
+                html += '<div class="product_colors">' + product_colors  + '</div>';
+            }
+
 			var price = $(element).find('.price').html();
 
 			if (price != null) {
@@ -468,6 +489,12 @@ function display(view) {
 			html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
 			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
 			html += '<div class="description">' + $(element).find('.description').html() + '</div>';
+
+            var product_colors = $(element).find('.product_colors').html();
+
+            if (product_colors != null) {
+                html += '<div class="product_colors">' + product_colors  + '</div>';
+            }
 
 			var price = $(element).find('.price').html();
 

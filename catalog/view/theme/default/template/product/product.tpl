@@ -66,7 +66,20 @@ Shadowbox.init({
 <!--         <?php if ($stock) { ?>
         <span><?php echo $text_stock; ?></span> <?php echo $stock; ?>
         <?php } ?> -->
-</div>
+      </div>
+      <?php if($product_colors) { ?>
+            <div class="product_colors">
+                <ul>
+                <?php foreach ($product_colors as $item) { ?>
+                     <li>
+                         <a <?php echo $item['current'] ? 'current' : '' ; ?> href="<?php echo $item['href']?>" title="<?php echo $item['color_title']?>">
+                            <img src="<?php echo $item['color_img']?>"/>
+                         </a>
+                     </li>
+                <?php } ?>
+                </ul>
+            </div>
+        <?php } ?>
       <?php if ($price) { ?>
       <div class="price"><div class="text_price"><?php echo $text_price; ?></div>
         <?php if (!$special) { ?>

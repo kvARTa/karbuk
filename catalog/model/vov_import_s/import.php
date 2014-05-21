@@ -155,7 +155,7 @@ class ModelVovImportsImport extends Model {
                 }
 
                 if (isset($row['COLOR'])){
-                    $color = trim(iconv('WINDOWS-1251', 'UTF-8', $row['TYPE']));;
+                    $color = trim(iconv('WINDOWS-1251', 'UTF-8', $row['COLOR']));;
                 }else{
                     $color = '';
                 }
@@ -418,7 +418,7 @@ class ModelVovImportsImport extends Model {
             $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($data['title']) . "', description='".$this->db->escape($data['komment'])."' ");
 
         } else {
-            $this->db->query("UPDATE " . DB_PREFIX . "product SET color='" . $data['type'] . "', color='" . $data['type'] . "', price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."',  model='".$this->db->escape($data['article'])."' , image='".$image."' , kratn='".$data['kratn']."' , manufacturer_id='".(int)$manufacturers_id."' ,  quantity='".(int)$quantity."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."', sort_order='".(int)$data['ordern']."',  date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
+            $this->db->query("UPDATE " . DB_PREFIX . "product SET color='" . $data['color'] . "', type='" . $data['type'] . "', price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."',  model='".$this->db->escape($data['article'])."' , image='".$image."' , kratn='".$data['kratn']."' , manufacturer_id='".(int)$manufacturers_id."' ,  quantity='".(int)$quantity."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."', sort_order='".(int)$data['ordern']."',  date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
 
             $this->db->query("UPDATE " . DB_PREFIX . "product_description SET  name = '" . $this->db->escape($data['title']) . "' , description='".$this->db->escape($data['komment'])."' WHERE product_id = '" . (int)$product_id . "' AND language_id = '" . (int)$language_id . "'");
         }
