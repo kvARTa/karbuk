@@ -5272,6 +5272,7 @@ ul.manufacturers li a.active {
 .product-info .product_colors{
     widows: 100%;
     overflow: hidden;
+    margin-bottom: 25px;
 }
 
 .product-info .product_colors ul{
