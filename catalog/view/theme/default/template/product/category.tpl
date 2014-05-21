@@ -433,9 +433,7 @@ function display(view) {
 			html += '  <div class="description">' + $(element).find('.description').html() + '</div>';
 
 
-            html += '<div class="pl_bottom_block">';
 
-            html += '<div class="pl_bottom_block_lc">';
 
 
             var price = $(element).find('.price').html();
@@ -449,6 +447,11 @@ function display(view) {
             if (rating != null) {
                 html += '<div class="rating">' + rating + '</div>';
             }
+
+
+            html += '<div class="pl_bottom_block">';
+
+            html += '<div class="pl_bottom_block_lc">';
 
             html += '  <div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
             html += '  <div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';
