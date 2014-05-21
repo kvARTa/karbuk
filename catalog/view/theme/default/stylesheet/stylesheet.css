@@ -5212,6 +5212,11 @@ ul.manufacturers li a.active {
     opacity:1;
     filter:alpha(opacity=100);
 }
+
+
+.pl_bottom_block_rc .product_colors{
+    margin: 20px 0px 0px 20px;
+}
 /*************************************************************************************/
 .pl_bottom_block{
     width: 520px;
@@ -5220,10 +5225,12 @@ ul.manufacturers li a.active {
 
 .pl_bottom_block_lc{
     float: left;
+    width: 50%;
 }
 
 .pl_bottom_block_rc{
     float: right;
+    width: 50%;
 }
 
 
