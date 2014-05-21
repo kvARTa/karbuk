@@ -4294,10 +4294,14 @@ a.button:hover, input.button:hover:hover:hover {
 .line2 .right {
     margin-left: 20px;
     height: 27px;
-    background: url(../image/ico_excel.png) 0 0 no-repeat;
     float: left;
     padding: 0 0 0 17px;
 
+}
+
+.line2 .right a{
+    background: url(../image/ico_excel.png) 0 0 no-repeat;
+    height: 27px;
 }
 
 

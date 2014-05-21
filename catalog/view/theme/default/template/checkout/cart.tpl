@@ -189,7 +189,7 @@
         </div>
 
         <div class="right">
-                ( <a href="/csv_example/cart.csv" class="primer_faila">Скачать пример</a> )
+                ( <a href="/csv_example/cart.csv" class="primer_faila"><span>Скачать пример</span></a> )
         </div><!-- end right -->
 
 
