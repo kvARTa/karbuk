@@ -5212,6 +5212,19 @@ ul.manufacturers li a.active {
     opacity:1;
     filter:alpha(opacity=100);
 }
+/*************************************************************************************/
+.pl_bottom_block{
+    width: 520px;
+    overflow: hidden;
+}
+
+.pl_bottom_block_lc{
+    float: left;
+}
+
+.pl_bottom_block_rc{
+    float: right;
+}
 
 
 
