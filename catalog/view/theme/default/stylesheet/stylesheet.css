@@ -5319,7 +5319,7 @@ ul.manufacturers li a.active {
     border: 1px solid #ffffff;
 }
 
-.product-info .product_colors ul li a img:hover, .product-info .product_colors ul li a.current img{
+.product-info .product_colors ul li a img:hover{
     opacity:1;
     filter:alpha(opacity=100);
 
@@ -5327,6 +5327,8 @@ ul.manufacturers li a.active {
     outline: 1px solid #ec1d24;
     box-shadow:0px 0px 7px #f6364d;
 }
+
+.product-info .product_colors ul li a.current img{}
 
 
 .clear{
