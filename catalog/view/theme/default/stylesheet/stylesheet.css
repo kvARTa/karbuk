@@ -5276,7 +5276,7 @@ ul.manufacturers li a.active {
 /********************************************************************************************/
 .product-info .product_colors{
     widows: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     margin-bottom: 25px;
 }
 
@@ -5313,11 +5313,13 @@ ul.manufacturers li a.active {
 
 
     outline: 1px solid #ec1d24;
-    box-shadow:0px 0px 10px #f6364d;
+    box-shadow:0px 0px 3px #f6364d;
 }
 
 
-
+.clear{
+    clear:both;
+}
 
 
 
