@@ -5276,7 +5276,7 @@ ul.manufacturers li a.active {
     filter:alpha(opacity=100);
 
     outline: 1px solid #ec1d24;
-    box-shadow:0px 0px 7px #f6364d;
+    box-shadow:0px 0px 4px #f6364d;
 }
 /********************************************************************************************/
 .product-info .product_colors{
