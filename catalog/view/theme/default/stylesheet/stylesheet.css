@@ -5310,8 +5310,8 @@ ul.manufacturers li a.active {
     opacity:1;
     filter:alpha(opacity=100);
 
-    border: 2px solid #292929;
-    outline: 2px solid #e3e3e3;
+    border: 2px solid #ffffff;
+    outline: 2px solid #bb0000;
 }
 
 
