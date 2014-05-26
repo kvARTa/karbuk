@@ -79,7 +79,7 @@ Shadowbox.init({
                      </li>
                 <?php } ?>
                 </ul>
-                <div class="clear"></div>
+
             </div>
         <?php } ?>
 
