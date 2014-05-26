@@ -5214,7 +5214,7 @@ ul.manufacturers li a.active {
     border: 1px solid #ffffff;
 }
 
-.product-list .product_colors ul li a:hover img, .product-list .product_colors ul li a.current img{
+.product-list .product_colors ul li a:hover img{
     opacity:1;
     filter:alpha(opacity=100);
 
@@ -5276,7 +5276,7 @@ ul.manufacturers li a.active {
 }
 
 
-.product-grid .image_colors_container .product_colors ul li a img:hover, .product-grid .image_colors_container .product_colors ul li a.current img{
+.product-grid .image_colors_container .product_colors ul li a img:hover{
     opacity:1;
     filter:alpha(opacity=100);
 
