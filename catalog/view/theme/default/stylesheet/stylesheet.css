@@ -5312,8 +5312,8 @@ ul.manufacturers li a.active {
     position: absolute;
     width: 15px;
     height: 15px;
-    bottom:3px;
-    right:3px;
+    bottom:5px;
+    right:5px;
     background-image: url(../image/galka.png);
     background-repeat: no-repeat;
 }
