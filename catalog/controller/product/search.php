@@ -318,7 +318,7 @@ class ControllerProductSearch extends Controller {
                             'product_id'  => $item['product_id'],
                             'color_img'   => $color_img,
                             'color_title' => $item['color'],
-                            'href'        => $this->url->link('product/product', 'product_id=' . $item['product_id']),
+                            'href'        => $this->url->link('product/product', $url . '&product_id=' . $item['product_id']),
                             'current'     => $result['product_id'] ==  $item['product_id'] ? true : false,
                         );
                         // }
