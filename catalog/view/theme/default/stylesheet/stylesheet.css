@@ -5310,8 +5310,8 @@ ul.manufacturers li a.active {
 
 .product-info .product_colors ul li .current_galka{
     position: absolute;
-    width: 23px;
-    height: 23px;
+    width: 16px;
+    height: 16px;
     bottom:5px;
     right:5px;
     background-image: url(../image/galka.png);
