@@ -5303,10 +5303,10 @@ ul.manufacturers li a.active {
     float: left;
     width: 60px;
     height: 60px;
-    margin-left: 9px;
+    margin: 4px;
 }
 
-.product-info .product_colors ul li:first-child{margin-left:0px;}
+
 
 .product-info .product_colors ul li a img{
     width: 58px;
