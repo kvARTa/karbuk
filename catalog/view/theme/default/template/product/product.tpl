@@ -75,6 +75,8 @@ Shadowbox.init({
                      <li>
                          <a <?php echo $item['current'] ? 'class="current"' : '' ; ?> href="<?php echo $item['href']?>" title="<?php echo $item['color_title']?>">
                             <img src="<?php echo $item['color_img']?>"/>
+                            <?php echo $item['current'] ? '<div class="current_galka"></div>' : '' ; ?>
+
                          </a>
                      </li>
                 <?php } ?>
