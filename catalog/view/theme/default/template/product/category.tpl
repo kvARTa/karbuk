@@ -29,34 +29,51 @@ Shadowbox.init({
   </div>
   <h1><?php echo $heading_title; ?></h1>
 
+    <?php if($big_image) { ?>
+        <div class="big_image">
+            <img src="<?php echo $big_image; ?>"/>
+        </div>
+    <?php } ?>
+
   <?php if ($categories) { ?>
     <?php //print_r($categories);?>
-  <div class="category-list" style="position: relative; top:-25px;">
+  <div class="category-list">
     <?php if (count($categories) <= 5) { ?>
-    <ul>
       <?php foreach ($categories as $category) { ?>
-      <li>
+      <ul>
+      <li class="<?php if($category['thumb']) { ?>catimglist<?php } ?>">
           <a href="<?php echo $category['href']; ?>">
+
               <?php if($category['thumb']) { ?>
-                <img src="<?php echo $category['thumb'];?>">
+                <div class="catimg_container">
+                    <img src="<?php echo $category['thumb'];?>">
+                </div><!-- end catimg_container-->
               <?php } ?>
-              <?php echo $category['name']; ?>
+
+              <div class="catname_container">
+                    <div class="catname"><?php echo $category['name']; ?></div>
+              </div><!-- end catname_container-->
           </a>
       </li>
-      <?php } ?>
     </ul>
-    <?php } else { ?>
+      <?php } ?>
+      <?php } else { ?>
     <?php for ($i = 0; $i < count($categories);) { ?>
     <ul>
       <?php $j = $i + ceil(count($categories) / 4); ?>
       <?php for (; $i < $j; $i++) { ?>
       <?php if (isset($categories[$i])) { ?>
-      <li>
-          <a class="" href="<?php echo $categories[$i]['href']; ?>">
-              <?php if($categories[$i]['thumb']) { ?>
-                <img src="<?php echo $categories[$i]['thumb'];?>">
-              <?php } ?>
-              <?php echo $categories[$i]['name']; ?>
+      <li class="<?php if($categories[$i]['thumb']) { ?>catimglist<?php } ?>">
+          <a class="vvv" href="<?php echo $categories[$i]['href']; ?>">
+              <div class="catimg_container">
+                  <?php if($categories[$i]['thumb']) { ?>
+                    <img src="<?php echo $categories[$i]['thumb'];?>">
+                  <?php } ?>
+              </div>
+              <div class="catname_container">
+                  <div class="catname"><?php echo $categories[$i]['name']; ?></div>
+              </div><!-- end catname_container-->
+
           </a>
       </li>
       <?php } ?>
@@ -200,6 +217,21 @@ Shadowbox.init({
 
 
       <div class="description"><span style="color: #000"><?php echo $product['description']; ?></span></div>
+
+      <?php if($product['product_colors']) { ?>
+      <div class="product_colors">
+          <ul>
+              <?php foreach ($product['product_colors'] as $item) { ?>
+              <li>
+                  <a <?php echo $item['current'] ? 'class="current"' : '' ; ?> href="<?php echo $item['href']?>" title="<?php echo $item['color_title']?>">
+                  <img src="<?php echo $item['color_img']?>"/>
+                  </a>
+              </li>
+              <?php } ?>
+          </ul>
+      </div>
+      <?php } ?>
+
       <?php if ($product['price']) { ?>
       <div class="price">
         <?php if (!$product['special']) { ?>
@@ -400,23 +432,49 @@ function display(view) {
 			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
 			html += '  <div class="description">' + $(element).find('.description').html() + '</div>';
 
-			var price = $(element).find('.price').html();
-
-			if (price != null) {
-				html += '<div class="price">' + price  + '</div>';
-			}
-
-			var rating = $(element).find('.rating').html();
-
-			if (rating != null) {
-				html += '<div class="rating">' + rating + '</div>';
-			}
-
-			html += '  <div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
-			html += '  <div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';
 
 
-			html += '</div></div>';
+
+
+            var price = $(element).find('.price').html();
+
+            if (price != null) {
+                html += '<div class="price">' + price  + '</div>';
+            }
+
+            var rating = $(element).find('.rating').html();
+
+            if (rating != null) {
+                html += '<div class="rating">' + rating + '</div>';
+            }
+
+
+            html += '<div class="pl_bottom_block">';
+
+            html += '<div class="pl_bottom_block_lc">';
+
+            html += '  <div class="wishlist" id="'+$(element).find('.wishlist').attr('id')+'">' + $(element).find('.wishlist').html() + '</div>';
+            html += '  <div class="compare" id="'+$(element).find('.compare').attr('id')+'">' + $(element).find('.compare').html() + '</div>';
+
+
+            html += '</div>';
+
+
+            html += '<div class="pl_bottom_block_rc">';
+
+            var product_colors = $(element).find('.product_colors').html();
+
+            if (product_colors != null) {
+                html += '<div class="product_colors">' + product_colors  + '</div>';
+            }
+
+            html += '</div>';
+
+
+
+
+
+			html += '</div></div></div>';
 
 				html += '<div class="dawn">';
 				html += '<div class="model">' + $(element).find('.model').html() + '</div>';
@@ -443,14 +501,28 @@ function display(view) {
 
 			html += '<div class="name">' + $(element).find('.name').html() + '</div>';
 
+            html += '<div class="image_colors_container">';
+
 			if (image != null) {
 				html += '<div class="image">' + image + '</div>';
 			}
+
+            var product_colors = $(element).find('.product_colors').html();
+
+            if (product_colors != null) {
+                html += '<div class="product_colors">' + product_colors  + '</div>';
+            }
+
+            html += '</div>';
+
+
 
 			html += '<div class="model">' + $(element).find('.model').html() + '</div>';
 			html += '<div class="manufacturer">' + $(element).find('.manufacturer').html() + '</div>';
 			html += '<div class="stock">' + $(element).find('.stock').html() + '</div>';
 			html += '<div class="description">' + $(element).find('.description').html() + '</div>';
+
+
 
 			var price = $(element).find('.price').html();
 

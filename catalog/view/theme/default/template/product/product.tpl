@@ -66,7 +66,27 @@ Shadowbox.init({
 <!--         <?php if ($stock) { ?>
         <span><?php echo $text_stock; ?></span> <?php echo $stock; ?>
         <?php } ?> -->
-</div>
+      </div>
+
+        <?php if($product_colors) { ?>
+            <div class="product_colors">
+                <ul>
+                <?php foreach ($product_colors as $item) { ?>
+                     <li>
+                         <a <?php echo $item['current'] ? 'class="current"' : '' ; ?> href="<?php echo $item['href']?>" title="<?php echo $item['color_title']?>">
+                            <img src="<?php echo $item['color_img']?>"/>
+                            <?php echo $item['current'] ? '<div class="current_galka"></div>' : '' ; ?>
+
+                         </a>
+                     </li>
+                <?php } ?>
+                </ul>
+
+            </div>
+        <?php } ?>
+
+
+
       <?php if ($price) { ?>
       <div class="price"><div class="text_price"><?php echo $text_price; ?></div>
         <?php if (!$special) { ?>
@@ -250,16 +270,11 @@ function animBoxShadow(product_id, self){
   <div id="tab-attribute" class="tab-content">
     <table class="attribute">
       <?php foreach ($attribute_groups as $attribute_group) { ?>
-      <thead>
-        <tr>
-          <td colspan="2"><?php echo $attribute_group['name']; ?></td>
-        </tr>
-      </thead>
       <tbody>
         <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
         <tr>
-          <td><?php echo $attribute['name']; ?></td>
-          <td><?php echo $attribute['text']; ?></td>
+          <td class="tech_fc"><?php echo $attribute['name']; ?></td>
+          <td class="tech_sc"><?php echo $attribute['text']; ?></td>
         </tr>
         <?php } ?>
       </tbody>
@@ -399,6 +414,15 @@ function animBoxShadow(product_id, self){
     <?php } ?>
   </div>
   <?php } ?> </div><?php echo $content_bottom; ?></div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('table.attribute tr:odd').addClass('odd');
+        $('table.attribute tr:even').addClass('even');
+    });
+</script>
 
 <script type="text/javascript"><!--
 $('.colorbox').colorbox({

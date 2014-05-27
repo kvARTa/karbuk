@@ -105,7 +105,27 @@ if (isset($products) && count($products)) { ?>
 </div>
 <?php } ?>
 
+<? if ($j<='4') :?>
+<style>
+#mycarousel{
+    overflow: hidden;
+    padding: 0px;
+    position: relative;
+    margin: 0;}
 
+
+#mycarousel li{
+    float: left;
+    list-style: none outside none;
+    height: 74px;
+    width: 155px;
+    border-bottom: 1px solid #E5E5E5;
+    margin: 10px 0px;}
+
+</style>
+<?php endif ;?>
+
+<? if ($j=='5') :?>
 <script type="text/javascript">
 
 jQuery(document).ready(function() {
@@ -117,4 +137,7 @@ jQuery(document).ready(function() {
 });
 
 </script>
+
+<?php endif ;?>
+
 <?php } ?>

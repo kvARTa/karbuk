@@ -138,6 +138,15 @@ class ControllerProductCategory extends Controller
 				$this->data['thumb'] = '';
 			}
 
+            $dir_cat_big_img = 'images_big/';
+            $cat_big_img = DIR_IMAGE . $dir_cat_big_img . $category_id . '.jpg';
+            //echo $cat_img.'<br>';
+            if (file_exists($cat_big_img)) {
+                $this->data['big_image'] = $this->model_tool_image->resize($dir_cat_big_img . $category_id . '.jpg', 771, 250, false);
+            } else {
+                $this->data['big_image'] = null;
+            }
+
 			$this->data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$this->data['compare'] = $this->url->link('product/compare');
 
@@ -194,11 +203,22 @@ class ControllerProductCategory extends Controller
 				);
 
                 /* Картинки подкатегорий, только если есть */
-                if ($result['image']) {
-                    $image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+               /* if ($result['image']) {
+                    $image = $this->model_tool_image->resize($result['image'], 200, 135, false);
+                } else {
+                    $image = null;
+                }*/
+
+                $dir_cat_img = 'category_images/';
+                $cat_img = DIR_IMAGE . $dir_cat_img . $result['old_id'] . '.jpg';
+                //echo $cat_img.'<br>';
+                if (file_exists($cat_img)) {
+                    $image = $this->model_tool_image->resize($dir_cat_img . $result['old_id'] . '.jpg', 145, 135, false);
                 } else {
                     $image = null;
                 }
+
+
 
 				$product_total = $this->model_catalog_product->getTotalProducts($data);
 
@@ -227,6 +247,10 @@ class ControllerProductCategory extends Controller
 			$results = $this->model_catalog_product->getProducts($data);
 
 			foreach ($results as $result) {
+                if ( (!$result['image'] or !file_exists(DIR_IMAGE . $result['image'])) && $this->config->get('config_product_no_image')  ) {
+                    continue;
+                }
+
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
 				} else {
@@ -266,6 +290,34 @@ class ControllerProductCategory extends Controller
 					$stock = $this->language->get('text_instock');
 				}
 
+                $product_colors = array();
+                if ($result['type']){
+                    $colors = $this->model_catalog_product->getProductColors($result['type']);
+
+                    if ($colors) {
+                        foreach ($colors as $item){
+                            $color_img = 'colors' . DIRECTORY_SEPARATOR . $item['color'] . '.jpg';
+                            //if (file_exists(DIR_IMAGE . $color_img)){
+
+                            if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+                                $color_img =  HTTPS_IMAGE . $color_img;
+                            } else {
+                                $color_img = HTTP_IMAGE . $color_img;
+                            }
+
+                            $product_colors[] = array(
+                                'product_id'  => $item['product_id'],
+                                'color_img'   => $color_img,
+                                'color_title' => $item['color'],
+                                'href'        => $this->url->link('product/product', $url . '&product_id=' . $item['product_id']),
+                                'current'     => $result['product_id'] ==  $item['product_id'] ? true : false,
+                            );
+                            // }
+                        }
+
+                    }
+                }
+
 
 				$this->data['products'][] = array(
 					'product_id' => $result['product_id'],
@@ -273,6 +325,7 @@ class ControllerProductCategory extends Controller
 					'multiplicity' => $result['multiplicity'],
 					'model' => $result['model'],
 					'thumb' => $image,
+                    'product_colors' => $product_colors,
 					'stock' => $stock,
 					'name' => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',

@@ -2,9 +2,12 @@
 <?php if ($attention) { ?>
 <div class="attention"><?php echo $attention; ?><img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>
 <?php } ?>
-<?php if ($success) { ?>
-<div class="success"><?php echo $success; ?><img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>
-<?php } ?>
+
+<?php //if ($success) { ?>
+<!--<div class="success"><?php //echo $success; ?><img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>-->
+<?php //} ?>
+
+
 <?php if ($error_warning) { ?>
 <div class="warning"><?php echo $error_warning; ?><img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>
 <?php } ?>
@@ -175,23 +178,37 @@
       <div class="center">
       	<a class="filecart" style="float:left">Загрузить корзину из файла</a>
         
-        <div id="uploadfile" style="display:none; float:left; margin-left:10px;>
+        <div id="uploadfile" style="display:none; float:left; margin-left:10px;">
 	  	<form name="forma" action="index.php?route=checkout/cart/loadCartCsv" method="post" enctype="multipart/form-data">
                     
                     <input name="formcsv" type="hidden" value="1">
-                    <input name="csv" type="file" value="">&nbsp;<input type="submit" value="Загрузить">
+                    <input class="csvsel" name="filecsv" type="file" value="">&nbsp;<input class="csvsubmit" type="submit" value="Загрузить" disabled="disabled">
 					<input name="flaginfocsv" id="flag-csv-result" type="hidden" value="0">
         </form>
         </div><!-- end uploadfile-->
         </div>
+
+        <div class="right">
+                ( <a href="/csv_example/cart.csv" class="primer_faila"><span>Скачать пример</span></a> )
+        </div><!-- end right -->
+
+
   </div><!-- end line2-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("input.csvsel").click(function(){
+            $("input.csvsubmit").removeAttr('disabled');
+        });
+    })
+</script>
         
   <div class="line3">
 
       <div class="left"></div>
       
       <div class="center">
-     		<a href="/index.php?route=information/information&information_id=10" id="callback" >Скачать каталог товаров “Карбук”</a>
+     		<a href="http://karbuk.ru/index.php?route=information/information&information_id=10" id="callback" >Скачать каталог товаров “Карбук”</a>
       </div>
   </div><!-- end line 3-->
   

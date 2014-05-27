@@ -196,7 +196,7 @@ $(document).ready(function()
     <div id="header_up_left">
   <?php if ($this->customer->isLogged()) {
   ?>
-  <div style="position: absolute; top: 127px; ">
+  <div style="position: absolute; top: 133px; ">
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="index.php?route=account/wishlist">
   Избранные товары</a>
@@ -284,7 +284,7 @@ $(document).ready(function()
 										$children2 = $this->model_catalog_category->getCategories($child['category_id']);
 										?>
 										<a href="<?php echo $child['href']; ?>" style="color: #000; font-weight: bolder; <?php echo  $catInCol == 1 ? '' : 'padding-top:10px;' ?>"><?php echo $child['name']; ?></a>	
-											<? if ($children2){?>
+											<? if ($children2){ ?>
 												<ul>
 												<?php
 													foreach ($children2 as $child2){
