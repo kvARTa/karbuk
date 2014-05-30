@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /
 Host: www.karbuk.ru
 Sitemap: http://karbuk.ru/sitemap.xml
 Disallow: /*route=account/
