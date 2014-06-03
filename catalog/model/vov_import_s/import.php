@@ -250,7 +250,8 @@ class ModelVovImportsImport extends Model {
   	
   	private function insert_or_update_category($data) {
 
-        $exist_query = $this->db->query("SELECT category_id FROM ".DB_PREFIX."category WHERE old_id='".$data['idn']."'");
+        //$exist_query = $this->db->query("SELECT category_id FROM ".DB_PREFIX."category WHERE old_id='".$data['idn']."'");
+        $exist_query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "category WHERE category_id='".$data['idn']."'");
         
         
         
@@ -263,7 +264,7 @@ class ModelVovImportsImport extends Model {
         $language_id = $this->config->get('config_language_id');
         
         if(!$category_id) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "category SET parent_id = '0', status = '1', top = '1', date_modified = NOW(), date_added = NOW(), old_id='".$data['idn']."', sort_order='".(int)$data['ordern']."', sorted_parent='0'");
+            $this->db->query("INSERT INTO " . DB_PREFIX . "category SET category_id='" . $this->db->escape($data['idn']) . "', parent_id = '0', status = '1', top = '1', date_modified = NOW(), date_added = NOW(), old_id='".$data['idn']."', sort_order='".(int)$data['ordern']."', sorted_parent='0'");
             $category_id = $this->db->getLastId();
             
             $this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($data['title']) . "'");
@@ -296,7 +297,8 @@ class ModelVovImportsImport extends Model {
         if (isset($this->cat_parent_cache[$parent])) {
             $parent_id = $this->cat_parent_cache[$parent];
         } else {
-            $parent_query = $this->db->query("SELECT c.category_id FROM " . DB_PREFIX . "category c WHERE c.old_id='".$parent."'");
+            //$parent_query = $this->db->query("SELECT c.category_id FROM " . DB_PREFIX . "category c WHERE c.old_id='".$parent."'");
+            $parent_query = $this->db->query("SELECT c.category_id FROM " . DB_PREFIX . "category c WHERE c.category_id='".$parent."'");
             
             if($parent_query->num_rows) {
                 $parent_id = $parent_query->row['category_id'];
@@ -370,7 +372,8 @@ class ModelVovImportsImport extends Model {
   	}
     
     private function insert_or_update_product($data) {
-        $exist_query = $this->db->query("SELECT product_id FROM ".DB_PREFIX."product WHERE old_id='".$data['idn']."'");
+        //$exist_query = $this->db->query("SELECT product_id FROM ".DB_PREFIX."product WHERE old_id='".$data['idn']."'");
+        $exist_query = $this->db->query("SELECT product_id FROM ".DB_PREFIX."product WHERE product_id='".$data['idn']."'");
 
         if($exist_query->num_rows) {
             $product_id = $exist_query->row['product_id'];
@@ -412,7 +415,7 @@ class ModelVovImportsImport extends Model {
 		);
 
         if(!$product_id) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "product SET color='" . $data['color'] . "', type='" . $data['type'] . "', price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."', model='".$this->db->escape($data['article'])."' , status = '1', image='".$image."', manufacturer_id='".(int)$manufacturers_id."' , quantity='".(int)$quantity."', sort_order='".(int)$data['ordern']."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."',  date_modified = NOW(), date_available=NOW(), date_added = NOW(), old_id='".$data['idn']."'");
+            $this->db->query("INSERT INTO " . DB_PREFIX . "product SET product_id='" . $this->db->escape($data['idn']) . "', color='" . $data['color'] . "', type='" . $data['type'] . "', price = '".number_format($data['price'], 2, '.', '')."', multiplicity='".$this->db->escape($data['kratn'])."', model='".$this->db->escape($data['article'])."' , status = '1', image='".$image."', manufacturer_id='".(int)$manufacturers_id."' , quantity='".(int)$quantity."', sort_order='".(int)$data['ordern']."', stock_status_id='8' , special_marker = '".(int)$data['sp']."', hit = '".(int)$data['hit']."', newprod='".(int)$data['newn']."',  date_modified = NOW(), date_available=NOW(), date_added = NOW(), old_id='".$data['idn']."'");
             $product_id = $this->db->getLastId();
 
             $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($data['title']) . "', description='".$this->db->escape($data['komment'])."' ");
@@ -532,7 +535,8 @@ class ModelVovImportsImport extends Model {
         }
 
         //$query = $this->db->query("SELECT c.category_id, ve1.parent, ve1.idn FROM " . DB_PREFIX . "category c, ".DB_PREFIX." vov_export1 ve1 WHERE c.sorted_parent=0 AND c.old_id=ve1.idn");
-        $query = $this->db->query("SELECT c.category_id, ve1.parent, ve1.idn FROM " . DB_PREFIX . "category c, ".DB_PREFIX." vov_export1 ve1 WHERE  c.old_id=ve1.idn");
+        //$query = $this->db->query("SELECT c.category_id, ve1.parent, ve1.idn FROM " . DB_PREFIX . "category c, ".DB_PREFIX." vov_export1 ve1 WHERE  c.old_id=ve1.idn");
+        $query = $this->db->query("SELECT c.category_id, ve1.parent, ve1.idn FROM " . DB_PREFIX . "category c, ".DB_PREFIX." vov_export1 ve1 WHERE  c.category_id=ve1.idn");
 
         foreach($query->rows as $data) {
             $this->set_parent_category($data);
@@ -558,8 +562,8 @@ class ModelVovImportsImport extends Model {
     }
     
     public function delete_absent() {
-        $prods_query = $this->db->query("select p.product_id, ve1.idn from " . DB_PREFIX . "product p LEFT JOIN  vov_export1 ve1 on (p.old_id = ve1.idn) where ve1.idn IS NULL");
-        
+        //$prods_query = $this->db->query("select p.product_id, ve1.idn from " . DB_PREFIX . "product p LEFT JOIN  vov_export1 ve1 on (p.old_id = ve1.idn) where ve1.idn IS NULL");
+        $prods_query = $this->db->query("select p.product_id, ve1.idn from " . DB_PREFIX . "product p LEFT JOIN  vov_export1 ve1 on (p.product_id = ve1.idn) where ve1.idn IS NULL");
         foreach ($prods_query -> rows as $product) {
             $this->deleteProduct($product['product_id']);
         }
