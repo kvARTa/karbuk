@@ -14,10 +14,10 @@ class ControllerVovImportsImport extends Controller {
 		$this->model_vov_import_s_import->load_to_mysql();
 		echo "dba loaded\n";
 
- 		$this->model_vov_import_s_import->delete_categories();
+ 		//$this->model_vov_import_s_import->delete_categories();
 		$this->model_vov_import_s_import->delete_discount();
- 		$this->model_vov_import_s_import->delete_products();
- 		$this->model_vov_import_s_import->delete_manufacturers();
+ 		//$this->model_vov_import_s_import->delete_products();
+ 		//$this->model_vov_import_s_import->delete_manufacturers();
 		$this->model_vov_import_s_import->delete_attributes();
 
 		echo "base cleared\n";
