@@ -16,5 +16,5 @@ $_['text_account']      = 'Личный Кабинет';
 $_['text_order']        = 'История заказов';
 $_['text_wishlist']     = 'Закладки';
 $_['text_newsletter']   = 'Рассылка';
-$_['text_powered'] 		  = '&copy ООО "КАРБУК", 2013';//'&copy; %s   %s';
+$_['text_powered'] 		  = '&copy ООО "КАРБУК", 2014';//'&copy; %s   %s';
 ?>
