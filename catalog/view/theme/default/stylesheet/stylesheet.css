@@ -3570,6 +3570,7 @@ a.button:hover, input.button:hover:hover:hover {
     margin: 0 auto;
 
     text-align: left;
+    clear: left;
 
 }
 
