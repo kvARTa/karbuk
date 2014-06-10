@@ -3442,6 +3442,24 @@ a.button:hover, input.button:hover:hover:hover {
 
 
 
+
+
+.compare-attr-info{
+    border-collapse: collapse;
+    width: 100%;
+    border-top: 1px solid #DDDDDD;
+    border-left: 1px solid #DDDDDD;}
+
+
+.compare-attr-info td{
+    border-bottom: 1px solid #DDDDDD;
+    color: #4D4D4D;
+    padding: 3px 7px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+
 .compare-attr-info tr.odd td{
     background-color: #F2F2F2;
 }
