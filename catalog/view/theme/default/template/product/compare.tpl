@@ -122,7 +122,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
         <?php } ?>
       </tr>
       <tr>
-        <td></td>
+        <td class="com_first_col"></td>
         <?php foreach ($products as $product) {  ?>
         <td><?php if ($products[$product['product_id']]['thumb']) { ?>
        <div class="image">   <img src="<?php echo $products[$product['product_id']]['thumb']; ?>" alt="<?php echo $products[$product['product_id']]['name']; ?>" /></div>
@@ -186,7 +186,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
       </tr>
       
 <?php /*      <tr class="grey-td2">
-        <td class="com_first_col"><?php echo $text_weight; ?></td>
+        <td><?php echo $text_weight; ?></td>
         <?php foreach ($products as $product) { ?>
         <td><?php echo $products[$product['product_id']]['weight']; ?></td>
         <?php } ?>
@@ -207,7 +207,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
     <?php $k=0; foreach ($attribute_group['attribute'] as $key => $attribute) { $k=$k+1; ?>
     <tbody>
       <tr <? if ($k==1) {echo 'class="grey-td2"'; $k=0;} else echo 'class="grey-td"'?> >
-        <td align="center"><?php echo $attribute['name']; ?></td>
+        <td class="com_first_col" align="center"><?php echo $attribute['name']; ?></td>
         <?php foreach ($products as $product) { ?>
         <?php if (isset($products[$product['product_id']]['attribute'][$key])) { ?>
         <td><?php echo $products[$product['product_id']]['attribute'][$key]; ?></td>
