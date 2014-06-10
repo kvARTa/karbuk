@@ -3432,7 +3432,7 @@ a.button:hover, input.button:hover:hover:hover {
 
 .compare-info td {
     padding: 7px;
-    min-width: 165px;
+    width: 165px;
     color: #4D4D4D;
     text-align: center;
     vertical-align: top;
