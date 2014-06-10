@@ -3441,6 +3441,16 @@ a.button:hover, input.button:hover:hover:hover {
 }
 
 
+
+.compare-attr-info tr.odd td{
+    background-color: #F2F2F2;
+}
+
+.compare-attr-info tr:hover td{
+    background-color: #e0f3ff;
+}
+
+
 .compare-info .com_first_col{
     width: 250px;
 }
