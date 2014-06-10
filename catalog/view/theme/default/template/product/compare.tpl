@@ -240,6 +240,14 @@ die('<center><h2>Пожалуйста, выберите более одного 
   <?php } ?>
   </div>
 
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('table.compare-attr-info tr:odd').addClass('odd');
+            $('table.compare-attr-info tr:even').addClass('even');
+        });
+    </script>
+
   
 <body>
 </body>
