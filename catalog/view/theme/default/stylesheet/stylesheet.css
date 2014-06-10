@@ -3456,7 +3456,7 @@ a.button:hover, input.button:hover:hover:hover {
     padding: 3px 7px;
     text-align: left;
     vertical-align: middle;
-}
+    background-color:#ffffff!important;}
 
 
 .compare-attr-info tr.odd td{
