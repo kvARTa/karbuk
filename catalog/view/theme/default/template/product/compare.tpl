@@ -200,7 +200,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
  */ ?>
     </tbody>
     
-     <table class="compare-info">
+     <table class="compare-info compare-attr-info">
      <tbody>
     <?php foreach ($attribute_groups as $attribute_group) { ?>
    

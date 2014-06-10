@@ -3435,7 +3435,7 @@ a.button:hover, input.button:hover:hover:hover {
     width: 165px;
     color: #4D4D4D;
     text-align: center;
-    vertical-align: top;
+    vertical-align: middle;
     border-right: 1px solid #FFF;
     border-bottom: 1px solid #FFF;
 }
