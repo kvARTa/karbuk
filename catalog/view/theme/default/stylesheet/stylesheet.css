@@ -3460,11 +3460,11 @@ a.button:hover, input.button:hover:hover:hover {
 
 
 .compare-attr-info tr.odd td{
-    background-color: #F2F2F2;
+    background-color: #F2F2F2!important;
 }
 
 .compare-attr-info tr:hover td{
-    background-color: #e0f3ff;
+    background-color: #e0f3ff!important;
 }
 
 
