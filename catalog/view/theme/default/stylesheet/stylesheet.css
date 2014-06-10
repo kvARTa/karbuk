@@ -3427,6 +3427,9 @@ a.button:hover, input.button:hover:hover:hover {
 
 }
 
+
+
+
 .compare-info td {
     padding: 7px;
     width: 120px;
@@ -3435,6 +3438,11 @@ a.button:hover, input.button:hover:hover:hover {
     vertical-align: top;
     border-right: 1px solid #FFF;
     border-bottom: 1px solid #FFF;
+}
+
+
+.compare-info .com_first_col{
+    width: 250px;
 }
 
 .compare-info .name a {
