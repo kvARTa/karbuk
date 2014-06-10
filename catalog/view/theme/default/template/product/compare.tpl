@@ -205,7 +205,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
     <?php foreach ($attribute_groups as $attribute_group) { ?>
    
     <?php $k=0; foreach ($attribute_group['attribute'] as $key => $attribute) { $k=$k+1; ?>
-    <tbody>
+
       <tr <? if ($k==1) {echo 'class="grey-td2"'; $k=0;} else echo 'class="grey-td"'?> >
         <td class="com_first_col" align="center"><?php echo $attribute['name']; ?></td>
         <?php foreach ($products as $product) { ?>
@@ -217,7 +217,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
         <?php } ?>
       </tr>
 
-    </tbody>
+
     <?php } ?>
     <?php } ?>
     <tr>
