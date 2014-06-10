@@ -116,7 +116,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
   <table class="compare-info">
      <tbody>
       <tr>
-        <td  class="grey-td">Для сравнения вы выбрали</td>
+        <td  class="com_first_col grey-td">Для сравнения вы выбрали</td>
         <?php foreach ($products as $product) { ?>
         <td class="name grey-td"><a href="<?php echo $products[$product['product_id']]['href']; ?>" style="color:#000;text-decoration:none;"><?php echo $products[$product['product_id']]['name']; ?></a></td>
         <?php } ?>
@@ -186,7 +186,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
       </tr>
       
 <?php /*      <tr class="grey-td2">
-        <td><?php echo $text_weight; ?></td>
+        <td class="com_first_col"><?php echo $text_weight; ?></td>
         <?php foreach ($products as $product) { ?>
         <td><?php echo $products[$product['product_id']]['weight']; ?></td>
         <?php } ?>
