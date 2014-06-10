@@ -3390,7 +3390,7 @@ a.button:hover, input.button:hover:hover:hover {
     padding: 3px 7px;
     color: #4D4D4D;
     text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
     border-right: 1px solid #DDDDDD;
     border-bottom: 1px solid #DDDDDD;
 }
