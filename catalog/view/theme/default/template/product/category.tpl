@@ -375,6 +375,20 @@ Shadowbox.init({
 
   <?php } ?>
 
+
+123
+
+<?php if ($thumb || $description) { ?>
+<div class="category-info">
+    <?php if ($thumb) { ?>
+    <div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>
+    <?php } ?>
+    <?php if ($description) { ?>
+    <?php echo $description; ?>
+    <?php } ?>
+</div>
+<?php } ?>
+
   <?php if (!$categories && !$products) { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <div class="buttons">
