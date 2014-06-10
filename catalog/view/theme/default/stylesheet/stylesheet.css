@@ -5351,6 +5351,13 @@ ul.manufacturers li a.active {
 .rating{display:none;}
 
 
+
+#bottom_info{
+    width: 100%;
+    padding-top: 20px;
+}
+
+
 /*
 .category-list.catimglist ul{
     margin: 0px 15px 0px 0px;

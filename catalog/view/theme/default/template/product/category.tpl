@@ -339,10 +339,10 @@ Shadowbox.init({
   <?php } ?>
 
 
+<div id="bottom_info">
 
 <?php if ($thumb || $description) { ?>
 <div class="category-info">
-
     <?php if ($description) { ?>
     <?php echo $description; ?>
     <?php } ?>
@@ -381,6 +381,8 @@ Shadowbox.init({
 </div>
 <?php endif; ?>
 <!-- Конец производителей-->
+
+</div><!-- end bottom_info-->
 
 
 
