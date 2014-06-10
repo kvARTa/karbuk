@@ -85,7 +85,48 @@ Shadowbox.init({
   <?php } ?>
 
 
+  <?php if ($thumb || $description) { ?>
+  <div class="category-info">
 
+    <?php if ($description) { ?>
+    <?php echo $description; ?>
+    <?php } ?>
+  </div>
+  <?php } ?>
+
+  <?php if ($products) { ?>
+
+	<!-- Здесь проходимся циклом по массиву имен и ссылок производителей -->
+	<?php if (!empty($manufacturers)) : ?>
+	<div>
+		<ul class="manufacturers">
+			<?php foreach ($manufacturers as $manufacturer) : ?>
+			<li>
+				<?php if ($manufacturer['manufacturer_id'] == $manufacturer_id) : ?>
+				<a href="<?= $manufacturer['href']; ?>" class="active"><?= $manufacturer['name']; ?></a>
+				<?php else : ?>
+				<a href="<?= $manufacturer['href']; ?>"><?= $manufacturer['name']; ?></a>
+				<?php endif; ?>
+			</li>
+			<?php endforeach; ?>
+			<li>
+				<?php if ($manufacturer_id == 'null') : ?>
+				<a href="<?= $manufacturer['hrefOther']; ?>" class="active">Другие</a>
+				<?php else : ?>
+				<a href="<?= $manufacturer['hrefOther']; ?>">Другие</a>
+				<?php endif; ?>
+			</li>
+			<li>
+				<?php if (!$manufacturer_id) : ?>
+				<a href="<?= $manufacturer['hrefall']; ?>" class="active" ><?= $text_all; ?></a>
+				<?php else : ?>
+				<a href="<?= $manufacturer['hrefall']; ?>"><?= $text_all; ?></a>
+				<?php endif; ?>
+			</li>
+		</ul>
+	</div>
+	<?php endif; ?>
+	<!-- Конец производителей-->
 
 <div class="product-filter">
 
