@@ -3447,12 +3447,12 @@ a.button:hover, input.button:hover:hover:hover {
 .compare-attr-info{
     border-collapse: collapse;
     width: 100%;
-    border-top: 1px solid #DDDDDD;
-    border-left: 1px solid #DDDDDD;}
+    border: 1px solid #DDDDDD;}
 
 
 .compare-attr-info td{
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD!important;
+    border-bottom: 1px solid #DDDDDD!important;
     color: #4D4D4D;
     padding: 3px 7px;
     text-align: left;
