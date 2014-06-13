@@ -262,7 +262,7 @@ Shadowbox.init({
       	<a class="comp" <?=(($show_comp)?"":"style='display:none'")?> onclick="addToCompare('<?php echo $product['product_id']; ?>');">
       		<?php echo $button_compare; ?>
       	</a>
-      	<a class="textRed gocomp" <?=((!$show_comp)?"":"style='display:none'")?> href="index.php?route=product/compare" rel="shadowbox;">
+      	<a class="textRed gocomp" <?=((!$show_comp)?"":"style='display:none'")?> href="index.php?route=product/compare" rel="shadowbox; min-width=500">
       		Перейти к сравнению
       	</a>
 
