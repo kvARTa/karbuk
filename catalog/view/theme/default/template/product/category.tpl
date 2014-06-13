@@ -340,9 +340,6 @@ Shadowbox.init({
 
 
 <div id="bottom_info">
-    123
-    <?php echo $description; ?>
-
 <?php if ($thumb || $description) { ?>
 <div class="category-info">
     <?php if ($description) { ?>
