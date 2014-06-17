@@ -410,6 +410,8 @@ class ControllerProductProduct extends Controller {
 				} else {
 					$rating = false;
 				}
+
+                $cat_path = '&path==' . $this->model_catalog_product->getPath($result['category_id']);
 							
 				$this->data['similar_products'][] = array(
 					'product_id' => $result['product_id'],
@@ -419,7 +421,7 @@ class ControllerProductProduct extends Controller {
 					'special' 	 => $special,
 					'rating'     => $rating,
 					'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
-					'href'    	 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+					'href'    	 => $this->url->link('product/product', $cat_path . '&product_id=' . $result['product_id']),
 				);
 			}
 
