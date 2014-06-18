@@ -37,7 +37,7 @@ Shadowbox.init({
 
   <?php if ($categories) { ?>
     <?php //print_r($categories);?>
-  <div class="category-list">
+  <div class="category-list <?php echo $series_category ? 'series-category' : '' ;?>">
     <?php if (count($categories) <= 5) { ?>
       <?php foreach ($categories as $category) { ?>
       <ul>

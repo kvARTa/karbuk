@@ -5217,8 +5217,41 @@ ul.manufacturers li a.active {
 .category-list li.catimglist .catname a:hover{
     text-decoration: underline;
 }
+/************************************************/
+/*series*/
+.series-category li.catimglist .catimg_container{
+    width:345px;
+    height: 230px;
+}
+.series-category li.catimglist .catname_container{
+    width:345px;
+}
+
+.series-category li.catimglist{
+    width:345px;
+    height: 250px;
+    float: left;
+    margin-left: 20px;
+}
+
+.series-category li.catimglist:first-child{
+    margin-left: 0px;
+}
+
+.series-category ul{
+    width: 95%;
+    margin: 0;
+    padding: 0px 0px 0px 25px;
+}
+
+.series-category li.catimglist .catimg_container img {
+    max-width: 350px;
+}
 
 /************************************************/
+
+/************************************************/
+
 .product_colors ul{
     margin: 0;
     padding: 0;

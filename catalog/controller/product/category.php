@@ -1,6 +1,8 @@
 <?php
 class ControllerProductCategory extends Controller
 {
+    private $series_categories = array('528_278570','528_274888','528_239257');
+
 	public function index()
 	{
 		$this->language->load('product/category');
@@ -82,6 +84,11 @@ class ControllerProductCategory extends Controller
 
 				}
 			}
+            if (in_array($this->request->get['path'],$this->series_categories)) {
+                $this->data['series_category'] = true;
+            }else{
+                $this->data['series_category'] = false;
+            }
 
 			$category_id = array_pop($parts);
 		} else {
@@ -202,18 +209,11 @@ class ControllerProductCategory extends Controller
 					'filter_sub_category' => true
 				);
 
-                /* Картинки подкатегорий, только если есть */
-               /* if ($result['image']) {
-                    $image = $this->model_tool_image->resize($result['image'], 200, 135, false);
-                } else {
-                    $image = null;
-                }*/
-
                 $dir_cat_img = 'category_images/';
                 $cat_img = DIR_IMAGE . $dir_cat_img . $result['old_id'] . '.jpg';
                 //echo $cat_img.'<br>';
                 if (file_exists($cat_img)) {
-                    $image = $this->model_tool_image->resize($dir_cat_img . $result['old_id'] . '.jpg', 145, 135, false);
+                    $image = $this->model_tool_image->resize($dir_cat_img . $result['old_id'] . '.jpg', 345, 230, false);
                 } else {
                     $image = null;
                 }
