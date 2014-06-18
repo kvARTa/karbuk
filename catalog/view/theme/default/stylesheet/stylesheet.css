@@ -2077,7 +2077,7 @@ a.button:hover, input.button:hover:hover:hover {
 
     float: left;
 
-    width: 18%;
+
 
 }
 
@@ -5216,6 +5216,19 @@ ul.manufacturers li a.active {
 
 .category-list li.catimglist .catname a:hover{
     text-decoration: underline;
+}
+.category-list .child1 {
+    padding: 0;
+}
+
+.category-list .cat-column{
+    vertical-align: top;
+    width: 272px;
+    border-left: 1px solid #e5e5e5;
+    min-height: 70px;
+    text-align: left;
+
+    position: relative;
 }
 /************************************************/
 /*series*/

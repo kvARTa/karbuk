@@ -35,54 +35,66 @@ Shadowbox.init({
         </div>
     <?php } ?>
 
-  <?php if ($categories) { ?>
-    <?php //print_r($categories);?>
-  <div class="category-list <?php echo $series_category ? 'series-category' : '' ;?>">
-    <?php if (count($categories) <= 5) { ?>
-      <?php foreach ($categories as $category) { ?>
-      <ul>
-      <li class="<?php if($category['thumb']) { ?>catimglist<?php } ?>">
-          <a href="<?php echo $category['href']; ?>">
+<?php if ($categories) { ?>
+    <?php if ($series_category) { ?>
+        <div class="category-list series-category">
+        <?php for ($i = 0; $i < count($categories);) { ?>
+        <ul>
+            <?php $j = $i + ceil(count($categories) / 4); ?>
+            <?php for (; $i < $j; $i++) { ?>
+            <?php if (isset($categories[$i])) { ?>
+            <li class="<?php if($categories[$i]['thumb']) { ?>catimglist<?php } ?>">
+                <a class="vvv" href="<?php echo $categories[$i]['href']; ?>">
+                    <div class="catimg_container">
+                        <?php if($categories[$i]['thumb']) { ?>
+                        <img src="<?php echo $categories[$i]['thumb'];?>">
+                        <?php } ?>
+                    </div>
+                    <div class="catname_container">
+                        <div class="catname"><?php echo $categories[$i]['name']; ?></div>
+                    </div>
 
-              <?php if($category['thumb']) { ?>
-                <div class="catimg_container">
-                    <img src="<?php echo $category['thumb'];?>">
-                </div><!-- end catimg_container-->
-              <?php } ?>
+                </a>
+            </li>
+            <?php } ?>
+            <?php } ?>
+        </ul>
+        <?php } ?>
+        </div>
+    <?php } else { ?>
+    <div class="category-list">
+        <?php $r=1; $td=1; $col = 1; $catInCol = 1;?>
+        <table style="width: 771px;">
+            <tr>
+                <td class="cat-column" style = "border-left: 0;">
+                    <ul>
+                        <?php $catCount = count($categories); ?>
+                        <?php $maxCatInCol = ceil($catCount/4); ?>
+                        <?php foreach($categories as $category) { ?>
+                        <li>
+                            <a href="<?php echo $category['href']; ?>">
+                                <div class="catname_container">
+                                    <div class="catname"><?php echo $category['name']; ?></div>
+                                </div>
+                            </a>
+                        </li>
+                        <?php
+                            if ($catInCol < $maxCatInCol){
+                                $catInCol++;
+                            }else{
+                                echo '</ul> </td>';
+                                echo $col == 4 ? '' : '<td class="cat-column"> <ul>';
+                                $col ++;
+                                $catInCol = 1;
+                            }
 
-              <div class="catname_container">
-                    <div class="catname"><?php echo $category['name']; ?></div>
-              </div><!-- end catname_container-->
-          </a>
-      </li>
-    </ul>
-      <?php } ?>
-      <?php } else { ?>
-    <?php for ($i = 0; $i < count($categories);) { ?>
-    <ul>
-      <?php $j = $i + ceil(count($categories) / 4); ?>
-      <?php for (; $i < $j; $i++) { ?>
-      <?php if (isset($categories[$i])) { ?>
-      <li class="<?php if($categories[$i]['thumb']) { ?>catimglist<?php } ?>">
-          <a class="vvv" href="<?php echo $categories[$i]['href']; ?>">
-              <div class="catimg_container">
-                  <?php if($categories[$i]['thumb']) { ?>
-                    <img src="<?php echo $categories[$i]['thumb'];?>">
-                  <?php } ?>
-              </div>
-              <div class="catname_container">
-                  <div class="catname"><?php echo $categories[$i]['name']; ?></div>
-              </div><!-- end catname_container-->
-
-          </a>
-      </li>
-      <?php } ?>
-      <?php } ?>
-    </ul>
+                        }
+                        ?>
+            </tr>
+        </table>
+    </div>
     <?php } ?>
-    <?php } ?>
-  </div>
-  <?php } ?>
+<?php } ?>
 
 
 
