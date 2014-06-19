@@ -38,7 +38,7 @@ class ModelCatalogRecord extends Model {
 		comment_status_reg = '" . (int)$data['comment_status_reg'] . "',
 		comment_status_now = '" . (int)$data['comment_status_now'] . "',
 		status = '" . (int)$data['status'] . "',
-		sort_order = '" . $sort_order . "', date_added = NOW()";
+		sort_order = '" . $sort_order . "', date_added = '" . $this->db->escape($data['date_create']) . "'";
 
 		$this->db->query($sql);
 
@@ -165,7 +165,7 @@ class ModelCatalogRecord extends Model {
 		comment_status_reg = '" . (int)$data['comment_status_reg'] . "',
 		comment_status_now = '" . (int)$data['comment_status_now'] . "',
 		status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "',
-		date_modified = NOW() WHERE record_id = '" . (int)$record_id . "'";
+		date_modified = NOW(), date_added = '" . $this->db->escape($data['date_create']) . "' WHERE record_id = '" . (int)$record_id . "'";
 
 //print_r($sql);
 

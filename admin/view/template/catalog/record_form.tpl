@@ -71,6 +71,10 @@
               <td><?php echo $entry_date_available; ?></td>
               <td><input type="text" name="date_available" value="<?php echo $date_available; ?>" size="12" class="date" /></td>
             </tr>
+              <tr>
+                  <td>Дата создания:</td>
+                  <td><input type="text" name="date_create" value="<?php echo $date_create; ?>" size="12" class="date" /></td>
+              </tr>
 
 
             <tr>

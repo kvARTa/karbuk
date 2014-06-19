@@ -668,6 +668,12 @@ print_r("</PRE>");
 			$this->data['error_date_available'] = '';
 		}
 
+        if (isset($this->error['date_create'])) {
+            $this->data['error_date_create'] = $this->error['date_create'];
+        } else {
+            $this->data['error_date_create'] = '';
+        }
+
 		$url = '';
 
 		if (isset($this->request->get['filter_name'])) {
@@ -865,6 +871,14 @@ print_r("</PRE>");
 		} else {
 			$this->data['date_available'] = date('Y-m-d', time() - 86400);
 		}
+
+        if (isset($this->request->post['date_create'])) {
+            $this->data['date_create'] = $this->request->post['date_create'];
+        } elseif (!empty($record_info)) {
+            $this->data['date_create'] = date('Y-m-d', strtotime($record_info['date_added']));
+        } else {
+            $this->data['date_create'] = date('Y-m-d', time());
+        }
 
     	if (isset($this->request->post['quantity'])) {
       		$this->data['quantity'] = $this->request->post['quantity'];

@@ -9,7 +9,7 @@
         <li>
 <img src="<?=$record['thumb'] ? $record['thumb'] : "http://karbuk.ru/test/image/cache/no_image-40x40.jpg"?>" style="float: left;width: 21%;margin-right:10px;">
     <?php //echo $record['date_added'] ;?>
-          <a href="<?php echo $record['href']; ?>"><b><?php echo $record['name']; ?></b><br/><?php $d = date_parse($record['date_added']); echo $d["day"].".".$d["month"].".".substr($d["year"],2); ?><span style="color:#999999;"><?php echo $record['description']; ?></span></a>
+          <a href="<?php echo $record['href']; ?>"><b><?php echo $record['name']; ?></b><br/><?php echo $record['date_added']; ?><span style="color:#999999;"><?php echo $record['description']; ?></span></a>
          
           <?php if ($blog['children']) { ?>
           <ul>
