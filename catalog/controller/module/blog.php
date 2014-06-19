@@ -137,7 +137,7 @@ class ControllerModuleBlog extends Controller {
 					'special'     => $special,
 					'tax'         => $tax,
 					'rating'      => $result['rating'],
-					'date_added'        => $result['date_added'],
+					'date_added'        => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 					'viewed'        => $result['viewed'],
 					'comments'     => (int)$result['comments'],
 					'href'        => $this->url->link('record/record', '&record_id=' . $result['record_id'])
