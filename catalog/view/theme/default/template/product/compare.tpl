@@ -116,9 +116,9 @@ die('<center><h2>Пожалуйста, выберите более одного 
   <table class="compare-info">
      <tbody>
       <tr>
-        <td  class="com_first_col grey-td">Для сравнения вы выбрали</td>
+        <td  class="com_first_col grey-td" style="width: 265px;">Для сравнения вы выбрали</td>
         <?php foreach ($products as $product) { ?>
-        <td class="name grey-td"><a href="<?php echo $products[$product['product_id']]['href']; ?>" style="color:#000;text-decoration:none;"><?php echo $products[$product['product_id']]['name']; ?></a></td>
+        <td class="name grey-td" style="width: 180px;"><a href="<?php echo $products[$product['product_id']]['href']; ?>" style="color:#000;text-decoration:none;"><?php echo $products[$product['product_id']]['name']; ?></a></td>
         <?php } ?>
       </tr>
       <tr>
@@ -221,9 +221,9 @@ die('<center><h2>Пожалуйста, выберите более одного 
     <?php } ?>
     <?php } ?>
     <tr>
-      <td style="width:50px;"></td>
+      <td style="width:256px;"></td>
       <?php foreach ($products as $product) { ?>
-      <td class="remove"><a href="<?php echo $product['remove']; ?>" class="button1">Удалить из сравнения</a></td>
+      <td class="remove" style="width: 180px;"><a href="<?php echo $product['remove']; ?>" class="button1">Удалить из сравнения</a></td>
       <?php } ?>
      </tr>
     </tr>

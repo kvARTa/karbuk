@@ -225,5 +225,11 @@ class ControllerProductCompare extends Controller {
 
 		$this->response->setOutput(json_encode($json));
 	}
+
+    public function count() {
+        if ($this->request->server['REQUEST_METHOD'] == 'POST'){
+            echo count($this->session->data['compare']);
+        }
+    }
 }
 ?>
