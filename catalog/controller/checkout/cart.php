@@ -609,7 +609,7 @@ class ControllerCheckoutCart extends Controller {
 				if ($total >= 1000000){
 					$total = $total / 1000000;
 					$total = round($total,2);
-					$formatTotal = (string)$total.' М. руб.';
+					$formatTotal = (string)$total.' �. ���.';
 					$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $formatTotal);
 				}else{
 					$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
@@ -864,7 +864,7 @@ class ControllerCheckoutCart extends Controller {
 		
               //print_r($parseData);die;
 		//$headersCsv = array();
-		$headersCsv = array ('Артикул','Количество');
+		$headersCsv = array ('�������','����������');
 		$dataRender[] = join(';', $headersCsv);
 		foreach ($productData as $data) {
 			$rowCsvArray  = array(
@@ -889,20 +889,20 @@ class ControllerCheckoutCart extends Controller {
             $loadFile = '';
             $tmpDirName = 'tmp';
             $fileName = $_FILES['filecsv']['name'];
-            if (!(move_uploaded_file($_FILES['filecsv']['tmp_name'], $tmpDirName . DIRECTORY_SEPARATOR . $fileName))) {
-                throw new Exception ('Произошла ошибка при копировании файла');
-            }
-            $loadFile = $tmpDirName . DIRECTORY_SEPARATOR . $fileName;
-            $csvData = (file($loadFile));
-            unlink($loadFile);
-            foreach ($csvData as $csvRow){
-                $csvRow = mb_convert_encoding($csvRow, "UTF-8", "windows-1251");
-                $csv = explode(';', $csvRow);
-                if (trim($csv[0]) != 'Артикул'){
-                    //echo $csv[0] .' ' . $csv[1];
-                    $this->cart->add($csv[0], $csv[1]);
-                }
-            }
+            if (move_uploaded_file($_FILES['filecsv']['tmp_name'], $tmpDirName . DIRECTORY_SEPARATOR . $fileName)) {
+				$loadFile = $tmpDirName . DIRECTORY_SEPARATOR . $fileName;
+				$csvData = (file($loadFile));
+				unlink($loadFile);
+				$count = 0;
+				foreach ($csvData as $csvRow){
+					$csvRow = mb_convert_encoding($csvRow, "UTF-8", "windows-1251");
+					$csv = explode(';', $csvRow);
+					if ($count > 0){		
+						!$this->cart->add($csv[0], $csv[1]) ;
+					}
+					$count++;
+				}
+			}
         }
         header("Location: index.php?route=checkout/cart");
 		//$this->redirect($this->url->link('checkout/cart'));
