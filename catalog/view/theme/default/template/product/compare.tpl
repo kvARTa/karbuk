@@ -90,7 +90,7 @@ die('<center><h2>Пожалуйста, выберите более одного 
 
 
 
-<div id="content">
+<div id="content" style="min-height: 385px;">
 
 <!-- <div class="box-heading">Сравнение товаров
 
