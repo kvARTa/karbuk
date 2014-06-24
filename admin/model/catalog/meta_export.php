@@ -42,6 +42,6 @@ class ModelCatalogMetaExport extends Model
 
         $headersCsv = join(';', $headersCsv);
         $dataRender = array_merge(array($headersCsv), $dataRender);
-        return join("\n", $dataRender);
+        return mb_convert_encoding(join("\n", $dataRender),"windows-1251", "UTF-8");
     }
 } 
