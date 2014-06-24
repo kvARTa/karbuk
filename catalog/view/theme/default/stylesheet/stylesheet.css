@@ -5168,7 +5168,7 @@ ul.manufacturers li a.active {
     width:145px;
     height: 135px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border:solid 1px #ef7a08;
     list-style: none;
 }
@@ -5243,7 +5243,7 @@ ul.manufacturers li a.active {
     width:345px;
     height: 250px;
     float: left;
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 .series-category li.catimglist:first-child{
@@ -5253,7 +5253,7 @@ ul.manufacturers li a.active {
 .series-category ul{
     width: 95%;
     margin: 0;
-    padding: 0px 0px 0px 25px;
+    padding: 0px 0px 0px 27px;
 }
 
 .series-category li.catimglist .catimg_container img {
