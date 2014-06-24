@@ -187,6 +187,7 @@ $(document).ready(function(){
               <li><a href="<?php echo $report_affiliate_commission; ?>"><?php echo $text_report_affiliate_commission; ?></a></li>
             </ul>
           </li>
+            <li><a href="<?php echo $report_report; ?>">Сформировать отчет</a></li>
         </ul>
       </li>
       <li id="help"><a class="top"><?php echo $text_help; ?></a>
