@@ -61,7 +61,7 @@ class ModelReportReport extends Model
             foreach ($items as $item) {
                 $rowCsvArr = array(
                     $item['id'],
-                    $item['name'],
+                    '"' . $item['name'] . '"',
                 );
                 $dataRender[] = join(';', $rowCsvArr);
             }

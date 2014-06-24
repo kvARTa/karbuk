@@ -44,7 +44,7 @@ class ControllerReportReport extends Controller
             'Пустые категории'                      => $category_without_products,
             'Товары на одном уровне с категорией'   => $category_without_cat_and_prod
         );
-        print_r($this->data['items']);die;
+        //print_r($this->data['items']);die;
 
 
         $this->data['heading_title'] = $this->language->get('heading_title');
