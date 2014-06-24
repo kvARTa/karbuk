@@ -22,11 +22,17 @@ class ControllerVovImportsImport extends Controller {
 
 		echo "base cleared\n";
 
+       // $this->model_vov_import_s_import->upCategoryIds();
+
 		$this->model_vov_import_s_import->import_categories();
-		echo "categories done\n";
-			
+		//echo "categories done\n";
+
+        //$this->model_vov_import_s_import->upProductsIds();
+        //echo "products ids changed\n";
+       // $this->model_vov_import_s_import->import_products2();
+        //echo "new products ids changed\n";
 		$this->model_vov_import_s_import->import_products();
-		echo "products done\n";
+		//echo "products done\n";
 		
 		$this->model_vov_import_s_import->import_xsell();
 		echo "xsell done\n";

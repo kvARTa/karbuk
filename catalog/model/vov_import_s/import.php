@@ -250,8 +250,8 @@ class ModelVovImportsImport extends Model {
   	
   	private function insert_or_update_category($data) {
 
-        //$exist_query = $this->db->query("SELECT category_id FROM ".DB_PREFIX."category WHERE old_id='".$data['idn']."'");
-        $exist_query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "category WHERE category_id='".$data['idn']."'");
+        $exist_query = $this->db->query("SELECT category_id FROM ".DB_PREFIX."category WHERE old_id='".$data['idn']."'");
+        //$exist_query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "category WHERE category_id='".$data['idn']."'");
         
         
         
@@ -470,7 +470,7 @@ class ModelVovImportsImport extends Model {
         $this->db->query("INSERT INTO " . DB_PREFIX . "product_to_store SET product_id = '" . (int)$product_id . "', store_id = '" . (int)$store_id . "'");
 
     }
-  	
+
   	public function delete_categories() {
         $this->db->query("TRUNCATE TABLE " . DB_PREFIX . "category ");
         $this->db->query("TRUNCATE TABLE " . DB_PREFIX . "category_description ");
