@@ -272,9 +272,9 @@ window.onload= function() {
         <a class="comp" <?=(($show_comp)?"":"style='display:none'")?> onclick="addToCompare('<?php echo $product['product_id']; ?>');">
           <?php echo $button_compare; ?>
         </a>
-        <a class="textRed gocomp" <?=((!$show_comp)?"":"style='display:none'")?> href="index.php?route=product/compare" rel="shadowbox; width=1024">
+          <a class="textRed gocomp" onclick="compare()" <?=((!$show_comp)?"":"style='display:none'")?> >
           Перейти к сравнению
-        </a>
+          </a>
 
       </div>
      </div> 
@@ -566,5 +566,24 @@ if (view) {
 } else {
 	display('list');
 }
+
+function compare(){
+    var compareLink = "index.php?route=product/compare";
+    var compreCountLink = "index.php?route=product/compare/count";
+    var width = 265;
+    $.post(compreCountLink, function(count){
+        //alert("Data Loaded: " + data);
+        Shadowbox.open({
+            content:    compareLink,
+            type:        "iframe",
+            player:      "iframe",
+            width:      width + (180*count),
+            options:   {
+                loadingImage:"loading.gif",
+                handleUnsupported:  'link'
+            }
+        });
+    });
+};
 //--></script> </div>
 <?php echo $footer; ?>

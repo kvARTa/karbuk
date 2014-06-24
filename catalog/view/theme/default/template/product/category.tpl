@@ -40,7 +40,7 @@ Shadowbox.init({
         <div class="category-list series-category">
         <?php for ($i = 0; $i < count($categories);) { ?>
         <ul>
-            <?php $j = $i + ceil(count($categories) / 4); ?>
+            <?php $j = $i + 2; ?>
             <?php for (; $i < $j; $i++) { ?>
             <?php if (isset($categories[$i])) { ?>
             <li class="<?php if($categories[$i]['thumb']) { ?>catimglist<?php } ?>">
@@ -69,7 +69,7 @@ Shadowbox.init({
                 <td class="cat-column" style = "border-left: 0;">
                     <ul>
                         <?php $catCount = count($categories); ?>
-                        <?php $maxCatInCol = ceil($catCount/4); ?>
+                        <?php $maxCatInCol = ceil($catCount/3); ?>
                         <?php foreach($categories as $category) { ?>
                         <li>
                             <a href="<?php echo $category['href']; ?>">
@@ -83,7 +83,7 @@ Shadowbox.init({
                                 $catInCol++;
                             }else{
                                 echo '</ul> </td>';
-                                echo $col == 4 ? '' : '<td class="cat-column"> <ul>';
+                                echo $col == 3 ? '' : '<td class="cat-column"> <ul>';
                                 $col ++;
                                 $catInCol = 1;
                             }
