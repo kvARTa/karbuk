@@ -85,9 +85,9 @@ Shadowbox.init({
                                 echo '</ul> </td>';
                                 echo $col == 3 ? '' : '<td class="cat-column"> <ul>';
                                 $col ++;
+                                $maxCatInCol = ceil(($catCount-$catInCol)/2);
                                 $catInCol = 1;
                             }
-
                         }
                         ?>
             </tr>
